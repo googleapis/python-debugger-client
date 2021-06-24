@@ -24,20 +24,36 @@ default_version = "v2"
 
 for library in s.get_staging_dirs(default_version):
     # Work around gapic generator bug https://github.com/googleapis/gapic-generator-python/issues/902
-    s.replace(library / f"google/cloud/debugger_{library.name}/types/data.py",
-                r""".
+    s.replace(
+        [
+            library / f"google/cloud/debugger_{library.name}/types/data.py",
+            library / f"google/cloud/debugger_{library.name}/types/debugger.py",
+        ],
+        r""".
     Attributes:""",
-                r""".\n
+        r""".\n
     Attributes:""",
     )
 
-    s.replace(library / f"google/cloud/debugger_{library.name}/types/data.py",
+    # Replace `google.devtools.source.v1` with `google.cloud.source_context_v1.types`
+    s.replace(
+        [
+            library / f"google/cloud/debugger_{library.name}/types/data.py",
+            library / f"tests/unit/gapic/debugger_{library.name}/test_controller2.py",
+        ],
         "from google.devtools.source.v1 import source_context_pb2",
         "from google.cloud.source_context_v1.types import source_context as source_context_pb2"
     )
 
-    s.copy(library, excludes=["setup.py", "README.rst", "docs/index.rst"])
-#s.remove_staging_dirs()
+    # Replace `google.devtools.source.v1` with `google.cloud.source_context_v1.types`
+    s.replace(library / f"google/cloud/debugger_{library.name}/types/data.py",
+        "google.devtools.source.v1.source_context_pb2",
+        "google.cloud.source_context_v1.types.source_context_pb2"
+    )
+
+    s.move(library, excludes=["setup.py", "README.rst", "docs/index.rst"])
+
+s.remove_staging_dirs()
 
 # ----------------------------------------------------------------------------
 # Add templated files

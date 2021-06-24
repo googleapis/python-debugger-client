@@ -23,7 +23,7 @@ name = "google-cloud-debugger-client"
 description = "Cloud Debugger API client library"
 version = "0.1.0"
 release_status = "Development Status :: 4 - Beta"
-url = ("https://github.com/googleapis/python-debugger-client",)
+url = "https://github.com/googleapis/python-debugger-client"
 dependencies = [
     "google-api-core[grpc] >= 1.22.2, < 2.0.0dev",
     "proto-plus >= 1.15.0",
@@ -53,6 +53,7 @@ setuptools.setup(
     version=version,
     description=description,
     long_description=readme,
+    url=url,
     author="Google LLC",
     author_email="googleapis-packages@google.com",
     license="Apache 2.0",
