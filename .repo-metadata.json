@@ -1,0 +1,13 @@
+{
+    "name": "clouddebugger",
+    "name_pretty": "Cloud Debugger",
+    "product_documentation": "cloud.google.com/debugger",
+    "client_documentation": "https://googleapis.dev/python/clouddebugger/latest",
+    "issue_tracker": "",
+    "release_level": "beta",
+    "language": "python",
+    "library_type": "GAPIC_AUTO",
+    "repo": "googleapis/python-debugger-client",
+    "distribution_name": "google-cloud-debugger-client",
+    "api_id": "clouddebugger.googleapis.com"
+}
