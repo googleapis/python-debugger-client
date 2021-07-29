@@ -3,14 +3,14 @@
 ### [0.1.3](https://www.github.com/googleapis/python-debugger-client/compare/v0.1.2...v0.1.3) (2021-07-29)
 
 
-### Features
-
-* add Samples section to CONTRIBUTING.rst ([#10](https://www.github.com/googleapis/python-debugger-client/issues/10)) ([4e55f78](https://www.github.com/googleapis/python-debugger-client/commit/4e55f78e0dfbc4cc804dce8d048c502bdd972ab7))
-
-
 ### Bug Fixes
 
 * enable self signed jwt for grpc ([#14](https://www.github.com/googleapis/python-debugger-client/issues/14)) ([7b1faea](https://www.github.com/googleapis/python-debugger-client/commit/7b1faea9588b66d46bf51da09d337ba90ec7090f))
+
+
+### Documentation
+
+* add Samples section to CONTRIBUTING.rst ([#10](https://www.github.com/googleapis/python-debugger-client/issues/10)) ([4e55f78](https://www.github.com/googleapis/python-debugger-client/commit/4e55f78e0dfbc4cc804dce8d048c502bdd972ab7))
 
 
 ### Miscellaneous Chores
