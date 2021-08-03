@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0](https://www.github.com/googleapis/python-debugger-client/compare/v0.1.3...v1.0.0) (2021-08-03)
+
+
+### Features
+
+* bump release level to production/stable ([#18](https://www.github.com/googleapis/python-debugger-client/issues/18)) ([2eb231c](https://www.github.com/googleapis/python-debugger-client/commit/2eb231ca3913485e2d33d7ca1c5aa0a7c69c6872))
+
 ### [0.1.3](https://www.github.com/googleapis/python-debugger-client/compare/v0.1.2...v0.1.3) (2021-07-29)
 
 
