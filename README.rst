@@ -1,7 +1,7 @@
 Python Client for Google Cloud Debugger API
 ===========================================
 
-|beta| |pypi| |versions|
+|ga| |pypi| |versions|
 
 `Cloud Debugger`_: is a feature of Google Cloud Platform that lets you inspect the state of an application, 
 at any code location, without stopping or slowing down the running app. Cloud Debugger makes it easier to 
@@ -10,8 +10,8 @@ view the application state without adding logging statements.
 - `Client Library Documentation`_
 - `Product Documentation`_
 
-.. |beta| image:: https://img.shields.io/badge/support-beta-orange.svg
-   :target: https://github.com/googleapis/google-cloud-python/blob/master/README.rst#beta-support
+.. |ga| image:: https://img.shields.io/badge/support-ga-gold.svg
+   :target: https://github.com/googleapis/google-cloud-python/blob/master/README.rst#ga-support
 .. |pypi| image:: https://img.shields.io/pypi/v/google-cloud-debugger-client.svg
    :target: https://pypi.org/project/google-cloud-debugger-client/
 .. |versions| image:: https://img.shields.io/pypi/pyversions/google-cloud-debugger-client.svg
