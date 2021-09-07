@@ -11,7 +11,7 @@ view the application state without adding logging statements.
 - `Product Documentation`_
 
 .. |ga| image:: https://img.shields.io/badge/support-ga-gold.svg
-   :target: https://github.com/googleapis/google-cloud-python/blob/master/README.rst#ga-support
+   :target: https://github.com/googleapis/google-cloud-python/blob/main/README.rst#ga-support
 .. |pypi| image:: https://img.shields.io/pypi/v/google-cloud-debugger-client.svg
    :target: https://pypi.org/project/google-cloud-debugger-client/
 .. |versions| image:: https://img.shields.io/pypi/pyversions/google-cloud-debugger-client.svg
@@ -81,4 +81,4 @@ Next Steps
    APIs that we cover.
 
 .. _Cloud Debugger Product documentation:  https://cloud.google.com/debugger/docs
-.. _README: https://github.com/googleapis/google-cloud-python/blob/master/README.rst
+.. _README: https://github.com/googleapis/google-cloud-python/blob/main/README.rst
