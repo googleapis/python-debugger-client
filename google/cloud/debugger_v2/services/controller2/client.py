@@ -17,7 +17,7 @@ from collections import OrderedDict
 from distutils import util
 import os
 import re
-from typing import Callable, Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib  # type: ignore
@@ -356,7 +356,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
 
     def register_debuggee(
         self,
-        request: controller.RegisterDebuggeeRequest = None,
+        request: Union[controller.RegisterDebuggeeRequest, dict] = None,
         *,
         debuggee: data.Debuggee = None,
         retry: retries.Retry = gapic_v1.method.DEFAULT,
@@ -377,7 +377,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
         re-registration.
 
         Args:
-            request (google.cloud.debugger_v2.types.RegisterDebuggeeRequest):
+            request (Union[google.cloud.debugger_v2.types.RegisterDebuggeeRequest, dict]):
                 The request object. Request to register a debuggee.
             debuggee (google.cloud.debugger_v2.types.Debuggee):
                 Required. Debuggee information to register. The fields
@@ -430,7 +430,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
 
     def list_active_breakpoints(
         self,
-        request: controller.ListActiveBreakpointsRequest = None,
+        request: Union[controller.ListActiveBreakpointsRequest, dict] = None,
         *,
         debuggee_id: str = None,
         retry: retries.Retry = gapic_v1.method.DEFAULT,
@@ -453,7 +453,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
         from the active list to avoid setting those breakpoints again.
 
         Args:
-            request (google.cloud.debugger_v2.types.ListActiveBreakpointsRequest):
+            request (Union[google.cloud.debugger_v2.types.ListActiveBreakpointsRequest, dict]):
                 The request object. Request to list active breakpoints.
             debuggee_id (str):
                 Required. Identifies the debuggee.
@@ -505,7 +505,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
 
     def update_active_breakpoint(
         self,
-        request: controller.UpdateActiveBreakpointRequest = None,
+        request: Union[controller.UpdateActiveBreakpointRequest, dict] = None,
         *,
         debuggee_id: str = None,
         breakpoint_: data.Breakpoint = None,
@@ -524,7 +524,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
         to the correct line of code.
 
         Args:
-            request (google.cloud.debugger_v2.types.UpdateActiveBreakpointRequest):
+            request (Union[google.cloud.debugger_v2.types.UpdateActiveBreakpointRequest, dict]):
                 The request object. Request to update an active
                 breakpoint.
             debuggee_id (str):
