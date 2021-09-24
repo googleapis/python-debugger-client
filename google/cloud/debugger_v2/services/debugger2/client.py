@@ -17,7 +17,7 @@ from collections import OrderedDict
 from distutils import util
 import os
 import re
-from typing import Callable, Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib  # type: ignore
@@ -347,7 +347,7 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
 
     def set_breakpoint(
         self,
-        request: debugger.SetBreakpointRequest = None,
+        request: Union[debugger.SetBreakpointRequest, dict] = None,
         *,
         debuggee_id: str = None,
         breakpoint_: data.Breakpoint = None,
@@ -359,7 +359,7 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
         r"""Sets the breakpoint to the debuggee.
 
         Args:
-            request (google.cloud.debugger_v2.types.SetBreakpointRequest):
+            request (Union[google.cloud.debugger_v2.types.SetBreakpointRequest, dict]):
                 The request object. Request to set a breakpoint
             debuggee_id (str):
                 Required. ID of the debuggee where
@@ -430,7 +430,7 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
 
     def get_breakpoint(
         self,
-        request: debugger.GetBreakpointRequest = None,
+        request: Union[debugger.GetBreakpointRequest, dict] = None,
         *,
         debuggee_id: str = None,
         breakpoint_id: str = None,
@@ -442,7 +442,7 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
         r"""Gets breakpoint information.
 
         Args:
-            request (google.cloud.debugger_v2.types.GetBreakpointRequest):
+            request (Union[google.cloud.debugger_v2.types.GetBreakpointRequest, dict]):
                 The request object. Request to get breakpoint
                 information.
             debuggee_id (str):
@@ -516,7 +516,7 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
 
     def delete_breakpoint(
         self,
-        request: debugger.DeleteBreakpointRequest = None,
+        request: Union[debugger.DeleteBreakpointRequest, dict] = None,
         *,
         debuggee_id: str = None,
         breakpoint_id: str = None,
@@ -528,7 +528,7 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
         r"""Deletes the breakpoint from the debuggee.
 
         Args:
-            request (google.cloud.debugger_v2.types.DeleteBreakpointRequest):
+            request (Union[google.cloud.debugger_v2.types.DeleteBreakpointRequest, dict]):
                 The request object. Request to delete a breakpoint.
             debuggee_id (str):
                 Required. ID of the debuggee whose
@@ -594,7 +594,7 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
 
     def list_breakpoints(
         self,
-        request: debugger.ListBreakpointsRequest = None,
+        request: Union[debugger.ListBreakpointsRequest, dict] = None,
         *,
         debuggee_id: str = None,
         client_version: str = None,
@@ -605,7 +605,7 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
         r"""Lists all breakpoints for the debuggee.
 
         Args:
-            request (google.cloud.debugger_v2.types.ListBreakpointsRequest):
+            request (Union[google.cloud.debugger_v2.types.ListBreakpointsRequest, dict]):
                 The request object. Request to list breakpoints.
             debuggee_id (str):
                 Required. ID of the debuggee whose
@@ -667,7 +667,7 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
 
     def list_debuggees(
         self,
-        request: debugger.ListDebuggeesRequest = None,
+        request: Union[debugger.ListDebuggeesRequest, dict] = None,
         *,
         project: str = None,
         client_version: str = None,
@@ -678,7 +678,7 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
         r"""Lists all the debuggees that the user has access to.
 
         Args:
-            request (google.cloud.debugger_v2.types.ListDebuggeesRequest):
+            request (Union[google.cloud.debugger_v2.types.ListDebuggeesRequest, dict]):
                 The request object. Request to list debuggees.
             project (str):
                 Required. Project number of a Google

@@ -39,14 +39,14 @@ def partition(
 class debuggerCallTransformer(cst.CSTTransformer):
     CTRL_PARAMS: Tuple[str] = ('retry', 'timeout', 'metadata')
     METHOD_TO_PARAMS: Dict[str, Tuple[str]] = {
-          'delete_breakpoint': ('debuggee_id', 'breakpoint_id', 'client_version', ),
-          'get_breakpoint': ('debuggee_id', 'breakpoint_id', 'client_version', ),
-          'list_active_breakpoints': ('debuggee_id', 'wait_token', 'success_on_timeout', ),
-          'list_breakpoints': ('debuggee_id', 'client_version', 'include_all_users', 'include_inactive', 'action', 'strip_results', 'wait_token', ),
-          'list_debuggees': ('project', 'client_version', 'include_inactive', ),
-          'register_debuggee': ('debuggee', ),
-          'set_breakpoint': ('debuggee_id', 'breakpoint_', 'client_version', ),
-          'update_active_breakpoint': ('debuggee_id', 'breakpoint_', ),
+        'delete_breakpoint': ('debuggee_id', 'breakpoint_id', 'client_version', ),
+        'get_breakpoint': ('debuggee_id', 'breakpoint_id', 'client_version', ),
+        'list_active_breakpoints': ('debuggee_id', 'wait_token', 'success_on_timeout', ),
+        'list_breakpoints': ('debuggee_id', 'client_version', 'include_all_users', 'include_inactive', 'action', 'strip_results', 'wait_token', ),
+        'list_debuggees': ('project', 'client_version', 'include_inactive', ),
+        'register_debuggee': ('debuggee', ),
+        'set_breakpoint': ('debuggee_id', 'breakpoint_', 'client_version', ),
+        'update_active_breakpoint': ('debuggee_id', 'breakpoint_', ),
     }
 
     def leave_Call(self, original: cst.Call, updated: cst.Call) -> cst.CSTNode:
@@ -65,7 +65,7 @@ class debuggerCallTransformer(cst.CSTTransformer):
             return updated
 
         kwargs, ctrl_kwargs = partition(
-            lambda a: not a.keyword.value in self.CTRL_PARAMS,
+            lambda a: a.keyword.value not in self.CTRL_PARAMS,
             kwargs
         )
 
