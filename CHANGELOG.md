@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.1](https://www.github.com/googleapis/python-debugger-client/compare/v1.0.0...v1.0.1) (2021-09-24)
+
+
+### Bug Fixes
+
+* add 'dict' annotation type to 'request' ([6387d7c](https://www.github.com/googleapis/python-debugger-client/commit/6387d7c589f7c04f0d832b7976b5fa7d64956d99))
+
 ## [1.0.0](https://www.github.com/googleapis/python-debugger-client/compare/v0.1.3...v1.0.0) (2021-08-03)
 
 
