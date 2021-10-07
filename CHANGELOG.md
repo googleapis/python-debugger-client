@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.2](https://www.github.com/googleapis/python-debugger-client/compare/v1.0.1...v1.0.2) (2021-10-07)
+
+
+### Bug Fixes
+
+* **deps:** require google-cloud-source-context 1.0.0 ([#35](https://www.github.com/googleapis/python-debugger-client/issues/35)) ([1db551b](https://www.github.com/googleapis/python-debugger-client/commit/1db551b8a06f85377052f0408a59e012677f94ff))
+
 ### [1.0.1](https://www.github.com/googleapis/python-debugger-client/compare/v1.0.0...v1.0.1) (2021-09-24)
 
 
