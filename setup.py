@@ -31,7 +31,7 @@ dependencies = [
     "google-api-core[grpc] >= 1.26.0, <3.0.0dev",
     "proto-plus >= 1.15.0",
     "packaging >= 14.3",
-    "google-cloud-source-context >= 0.1.0, < 1.0.0dev",
+    "google-cloud-source-context >= 1.0.0",
 ]
 
 package_root = os.path.abspath(os.path.dirname(__file__))
