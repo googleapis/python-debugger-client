@@ -35,7 +35,7 @@ __protobuf__ = proto.module(
 
 
 class SetBreakpointRequest(proto.Message):
-    r"""Request to set a breakpoin.
+    r"""Request to set a breakpoint
 
     Attributes:
         debuggee_id (str):

@@ -364,5 +364,8 @@ class Controller2GrpcTransport(Controller2Transport):
             )
         return self._stubs["update_active_breakpoint"]
 
+    def close(self):
+        self.grpc_channel.close()
+
 
 __all__ = ("Controller2GrpcTransport",)
