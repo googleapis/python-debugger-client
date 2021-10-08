@@ -368,5 +368,8 @@ class Controller2GrpcAsyncIOTransport(Controller2Transport):
             )
         return self._stubs["update_active_breakpoint"]
 
+    def close(self):
+        return self.grpc_channel.close()
+
 
 __all__ = ("Controller2GrpcAsyncIOTransport",)

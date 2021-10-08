@@ -379,5 +379,8 @@ class Debugger2GrpcAsyncIOTransport(Debugger2Transport):
             )
         return self._stubs["list_debuggees"]
 
+    def close(self):
+        return self.grpc_channel.close()
+
 
 __all__ = ("Debugger2GrpcAsyncIOTransport",)
