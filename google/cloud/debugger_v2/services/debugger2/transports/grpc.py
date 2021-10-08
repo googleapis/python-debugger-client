@@ -368,5 +368,8 @@ class Debugger2GrpcTransport(Debugger2Transport):
             )
         return self._stubs["list_debuggees"]
 
+    def close(self):
+        self.grpc_channel.close()
+
 
 __all__ = ("Debugger2GrpcTransport",)
