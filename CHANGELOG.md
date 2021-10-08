@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://www.github.com/googleapis/python-debugger-client/compare/v1.0.2...v1.1.0) (2021-10-08)
+
+
+### Features
+
+* add context manager support in client ([#38](https://www.github.com/googleapis/python-debugger-client/issues/38)) ([d8ef19f](https://www.github.com/googleapis/python-debugger-client/commit/d8ef19fdee913a1b8988fd54938bf2b8f4b11233))
+
 ### [1.0.2](https://www.github.com/googleapis/python-debugger-client/compare/v1.0.1...v1.0.2) (2021-10-07)
 
 
