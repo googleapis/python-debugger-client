@@ -19,12 +19,14 @@ import re
 from typing import Dict, Sequence, Tuple, Type, Union
 import pkg_resources
 
-import google.api_core.client_options as ClientOptions  # type: ignore
+from google.api_core.client_options import ClientOptions  # type: ignore
 from google.api_core import exceptions as core_exceptions  # type: ignore
 from google.api_core import gapic_v1  # type: ignore
 from google.api_core import retry as retries  # type: ignore
 from google.auth import credentials as ga_credentials  # type: ignore
 from google.oauth2 import service_account  # type: ignore
+
+OptionalRetry = Union[retries.Retry, object]
 
 from google.cloud.debugger_v2.types import controller
 from google.cloud.debugger_v2.types import data
@@ -179,10 +181,10 @@ class Controller2AsyncClient:
 
     async def register_debuggee(
         self,
-        request: controller.RegisterDebuggeeRequest = None,
+        request: Union[controller.RegisterDebuggeeRequest, dict] = None,
         *,
         debuggee: data.Debuggee = None,
-        retry: retries.Retry = gapic_v1.method.DEFAULT,
+        retry: OptionalRetry = gapic_v1.method.DEFAULT,
         timeout: float = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> controller.RegisterDebuggeeResponse:
@@ -200,7 +202,7 @@ class Controller2AsyncClient:
         re-registration.
 
         Args:
-            request (:class:`google.cloud.debugger_v2.types.RegisterDebuggeeRequest`):
+            request (Union[google.cloud.debugger_v2.types.RegisterDebuggeeRequest, dict]):
                 The request object. Request to register a debuggee.
             debuggee (:class:`google.cloud.debugger_v2.types.Debuggee`):
                 Required. Debuggee information to register. The fields
@@ -253,10 +255,10 @@ class Controller2AsyncClient:
 
     async def list_active_breakpoints(
         self,
-        request: controller.ListActiveBreakpointsRequest = None,
+        request: Union[controller.ListActiveBreakpointsRequest, dict] = None,
         *,
         debuggee_id: str = None,
-        retry: retries.Retry = gapic_v1.method.DEFAULT,
+        retry: OptionalRetry = gapic_v1.method.DEFAULT,
         timeout: float = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> controller.ListActiveBreakpointsResponse:
@@ -276,7 +278,7 @@ class Controller2AsyncClient:
         from the active list to avoid setting those breakpoints again.
 
         Args:
-            request (:class:`google.cloud.debugger_v2.types.ListActiveBreakpointsRequest`):
+            request (Union[google.cloud.debugger_v2.types.ListActiveBreakpointsRequest, dict]):
                 The request object. Request to list active breakpoints.
             debuggee_id (:class:`str`):
                 Required. Identifies the debuggee.
@@ -338,11 +340,11 @@ class Controller2AsyncClient:
 
     async def update_active_breakpoint(
         self,
-        request: controller.UpdateActiveBreakpointRequest = None,
+        request: Union[controller.UpdateActiveBreakpointRequest, dict] = None,
         *,
         debuggee_id: str = None,
         breakpoint_: data.Breakpoint = None,
-        retry: retries.Retry = gapic_v1.method.DEFAULT,
+        retry: OptionalRetry = gapic_v1.method.DEFAULT,
         timeout: float = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> controller.UpdateActiveBreakpointResponse:
@@ -357,7 +359,7 @@ class Controller2AsyncClient:
         to the correct line of code.
 
         Args:
-            request (:class:`google.cloud.debugger_v2.types.UpdateActiveBreakpointRequest`):
+            request (Union[google.cloud.debugger_v2.types.UpdateActiveBreakpointRequest, dict]):
                 The request object. Request to update an active
                 breakpoint.
             debuggee_id (:class:`str`):

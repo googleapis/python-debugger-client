@@ -30,6 +30,8 @@ from google.auth.transport.grpc import SslCredentials  # type: ignore
 from google.auth.exceptions import MutualTLSChannelError  # type: ignore
 from google.oauth2 import service_account  # type: ignore
 
+OptionalRetry = Union[retries.Retry, object]
+
 from google.cloud.debugger_v2.types import controller
 from google.cloud.debugger_v2.types import data
 from .transports.base import Controller2Transport, DEFAULT_CLIENT_INFO
@@ -356,7 +358,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
         request: Union[controller.RegisterDebuggeeRequest, dict] = None,
         *,
         debuggee: data.Debuggee = None,
-        retry: retries.Retry = gapic_v1.method.DEFAULT,
+        retry: OptionalRetry = gapic_v1.method.DEFAULT,
         timeout: float = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> controller.RegisterDebuggeeResponse:
@@ -430,7 +432,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
         request: Union[controller.ListActiveBreakpointsRequest, dict] = None,
         *,
         debuggee_id: str = None,
-        retry: retries.Retry = gapic_v1.method.DEFAULT,
+        retry: OptionalRetry = gapic_v1.method.DEFAULT,
         timeout: float = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> controller.ListActiveBreakpointsResponse:
@@ -506,7 +508,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
         *,
         debuggee_id: str = None,
         breakpoint_: data.Breakpoint = None,
-        retry: retries.Retry = gapic_v1.method.DEFAULT,
+        retry: OptionalRetry = gapic_v1.method.DEFAULT,
         timeout: float = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> controller.UpdateActiveBreakpointResponse:
