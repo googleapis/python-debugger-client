@@ -1,5 +1,18 @@
 # Changelog
 
+### [1.2.1](https://www.github.com/googleapis/python-debugger-client/compare/v1.2.0...v1.2.1) (2021-11-01)
+
+
+### Bug Fixes
+
+* **deps:** drop packaging dependency ([b68553f](https://www.github.com/googleapis/python-debugger-client/commit/b68553ff06d1f13cc77eb64909b53758e1610fd0))
+* **deps:** require google-api-core >= 1.28.0 ([b68553f](https://www.github.com/googleapis/python-debugger-client/commit/b68553ff06d1f13cc77eb64909b53758e1610fd0))
+
+
+### Documentation
+
+* list oneofs in docstring ([b68553f](https://www.github.com/googleapis/python-debugger-client/commit/b68553ff06d1f13cc77eb64909b53758e1610fd0))
+
 ## [1.2.0](https://www.github.com/googleapis/python-debugger-client/compare/v1.1.0...v1.2.0) (2021-10-14)
 
 
