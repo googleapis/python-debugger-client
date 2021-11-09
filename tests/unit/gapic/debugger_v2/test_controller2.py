@@ -569,7 +569,9 @@ def test_register_debuggee_flattened():
         # request object values.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
-        assert args[0].debuggee == data.Debuggee(id="id_value")
+        arg = args[0].debuggee
+        mock_val = data.Debuggee(id="id_value")
+        assert arg == mock_val
 
 
 def test_register_debuggee_flattened_error():
@@ -607,7 +609,9 @@ async def test_register_debuggee_flattened_async():
         # request object values.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
-        assert args[0].debuggee == data.Debuggee(id="id_value")
+        arg = args[0].debuggee
+        mock_val = data.Debuggee(id="id_value")
+        assert arg == mock_val
 
 
 @pytest.mark.asyncio
@@ -733,7 +737,9 @@ def test_list_active_breakpoints_flattened():
         # request object values.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
-        assert args[0].debuggee_id == "debuggee_id_value"
+        arg = args[0].debuggee_id
+        mock_val = "debuggee_id_value"
+        assert arg == mock_val
 
 
 def test_list_active_breakpoints_flattened_error():
@@ -771,7 +777,9 @@ async def test_list_active_breakpoints_flattened_async():
         # request object values.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
-        assert args[0].debuggee_id == "debuggee_id_value"
+        arg = args[0].debuggee_id
+        mock_val = "debuggee_id_value"
+        assert arg == mock_val
 
 
 @pytest.mark.asyncio
@@ -891,8 +899,12 @@ def test_update_active_breakpoint_flattened():
         # request object values.
         assert len(call.mock_calls) == 1
         _, args, _ = call.mock_calls[0]
-        assert args[0].debuggee_id == "debuggee_id_value"
-        assert args[0].breakpoint_ == data.Breakpoint(id="id_value")
+        arg = args[0].debuggee_id
+        mock_val = "debuggee_id_value"
+        assert arg == mock_val
+        arg = args[0].breakpoint_
+        mock_val = data.Breakpoint(id="id_value")
+        assert arg == mock_val
 
 
 def test_update_active_breakpoint_flattened_error():
@@ -932,8 +944,12 @@ async def test_update_active_breakpoint_flattened_async():
         # request object values.
         assert len(call.mock_calls)
         _, args, _ = call.mock_calls[0]
-        assert args[0].debuggee_id == "debuggee_id_value"
-        assert args[0].breakpoint_ == data.Breakpoint(id="id_value")
+        arg = args[0].debuggee_id
+        mock_val = "debuggee_id_value"
+        assert arg == mock_val
+        arg = args[0].breakpoint_
+        mock_val = data.Breakpoint(id="id_value")
+        assert arg == mock_val
 
 
 @pytest.mark.asyncio
