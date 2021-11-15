@@ -2,7 +2,7 @@
     "name": "clouddebugger",
     "name_pretty": "Cloud Debugger",
     "product_documentation": "cloud.google.com/debugger",
-    "client_documentation": "https://googleapis.dev/python/clouddebugger/latest",
+    "client_documentation": "https://cloud.google.com/python/docs/reference/clouddebugger/latest",
     "issue_tracker": "",
     "release_level": "ga",
     "language": "python",
