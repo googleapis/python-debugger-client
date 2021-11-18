@@ -17,7 +17,7 @@ view the application state without adding logging statements.
 .. |versions| image:: https://img.shields.io/pypi/pyversions/google-cloud-debugger-client.svg
    :target: https://pypi.org/project/google-cloud-debugger-client/
 .. _Cloud Debugger: https://cloud.google.com/debugger/docs
-.. _Client Library Documentation: https://googleapis.dev/python/clouddebugger/latest
+.. _Client Library Documentation: https://cloud.google.com/python/docs/reference/clouddebugger/latest
 .. _Product Documentation:  https://cloud.google.com/debugger/docs
 
 Quick Start
