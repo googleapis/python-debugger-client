@@ -240,6 +240,25 @@ class Controller2AsyncClient:
         format. Agents must handle ``debuggee_id`` value changing upon
         re-registration.
 
+
+        .. code-block::
+
+            from google.cloud import debugger_v2
+
+            def sample_register_debuggee():
+                # Create a client
+                client = debugger_v2.Controller2Client()
+
+                # Initialize request argument(s)
+                request = debugger_v2.RegisterDebuggeeRequest(
+                )
+
+                # Make the request
+                response = client.register_debuggee(request=request)
+
+                # Handle response
+                print(response)
+
         Args:
             request (Union[google.cloud.debugger_v2.types.RegisterDebuggeeRequest, dict]):
                 The request object. Request to register a debuggee.
@@ -315,6 +334,26 @@ class Controller2AsyncClient:
         successive call. Moreover, an agent should remember the
         breakpoints that are completed until the controller removes them
         from the active list to avoid setting those breakpoints again.
+
+
+        .. code-block::
+
+            from google.cloud import debugger_v2
+
+            def sample_list_active_breakpoints():
+                # Create a client
+                client = debugger_v2.Controller2Client()
+
+                # Initialize request argument(s)
+                request = debugger_v2.ListActiveBreakpointsRequest(
+                    debuggee_id="debuggee_id_value",
+                )
+
+                # Make the request
+                response = client.list_active_breakpoints(request=request)
+
+                # Handle response
+                print(response)
 
         Args:
             request (Union[google.cloud.debugger_v2.types.ListActiveBreakpointsRequest, dict]):
@@ -396,6 +435,26 @@ class Controller2AsyncClient:
         should not alter the breakpoint semantics. These may only make
         changes such as canonicalizing a value or snapping the location
         to the correct line of code.
+
+
+        .. code-block::
+
+            from google.cloud import debugger_v2
+
+            def sample_update_active_breakpoint():
+                # Create a client
+                client = debugger_v2.Controller2Client()
+
+                # Initialize request argument(s)
+                request = debugger_v2.UpdateActiveBreakpointRequest(
+                    debuggee_id="debuggee_id_value",
+                )
+
+                # Make the request
+                response = client.update_active_breakpoint(request=request)
+
+                # Handle response
+                print(response)
 
         Args:
             request (Union[google.cloud.debugger_v2.types.UpdateActiveBreakpointRequest, dict]):
