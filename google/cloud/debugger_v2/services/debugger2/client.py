@@ -407,6 +407,27 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
     ) -> debugger.SetBreakpointResponse:
         r"""Sets the breakpoint to the debuggee.
 
+
+        .. code-block::
+
+            from google.cloud import debugger_v2
+
+            def sample_set_breakpoint():
+                # Create a client
+                client = debugger_v2.Debugger2Client()
+
+                # Initialize request argument(s)
+                request = debugger_v2.SetBreakpointRequest(
+                    debuggee_id="debuggee_id_value",
+                    client_version="client_version_value",
+                )
+
+                # Make the request
+                response = client.set_breakpoint(request=request)
+
+                # Handle the response
+                print(response)
+
         Args:
             request (Union[google.cloud.debugger_v2.types.SetBreakpointRequest, dict]):
                 The request object. Request to set a breakpoint
@@ -489,6 +510,28 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> debugger.GetBreakpointResponse:
         r"""Gets breakpoint information.
+
+
+        .. code-block::
+
+            from google.cloud import debugger_v2
+
+            def sample_get_breakpoint():
+                # Create a client
+                client = debugger_v2.Debugger2Client()
+
+                # Initialize request argument(s)
+                request = debugger_v2.GetBreakpointRequest(
+                    debuggee_id="debuggee_id_value",
+                    breakpoint_id="breakpoint_id_value",
+                    client_version="client_version_value",
+                )
+
+                # Make the request
+                response = client.get_breakpoint(request=request)
+
+                # Handle the response
+                print(response)
 
         Args:
             request (Union[google.cloud.debugger_v2.types.GetBreakpointRequest, dict]):
@@ -576,6 +619,25 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
     ) -> None:
         r"""Deletes the breakpoint from the debuggee.
 
+
+        .. code-block::
+
+            from google.cloud import debugger_v2
+
+            def sample_delete_breakpoint():
+                # Create a client
+                client = debugger_v2.Debugger2Client()
+
+                # Initialize request argument(s)
+                request = debugger_v2.DeleteBreakpointRequest(
+                    debuggee_id="debuggee_id_value",
+                    breakpoint_id="breakpoint_id_value",
+                    client_version="client_version_value",
+                )
+
+                # Make the request
+                client.delete_breakpoint(request=request)
+
         Args:
             request (Union[google.cloud.debugger_v2.types.DeleteBreakpointRequest, dict]):
                 The request object. Request to delete a breakpoint.
@@ -653,6 +715,27 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
     ) -> debugger.ListBreakpointsResponse:
         r"""Lists all breakpoints for the debuggee.
 
+
+        .. code-block::
+
+            from google.cloud import debugger_v2
+
+            def sample_list_breakpoints():
+                # Create a client
+                client = debugger_v2.Debugger2Client()
+
+                # Initialize request argument(s)
+                request = debugger_v2.ListBreakpointsRequest(
+                    debuggee_id="debuggee_id_value",
+                    client_version="client_version_value",
+                )
+
+                # Make the request
+                response = client.list_breakpoints(request=request)
+
+                # Handle the response
+                print(response)
+
         Args:
             request (Union[google.cloud.debugger_v2.types.ListBreakpointsRequest, dict]):
                 The request object. Request to list breakpoints.
@@ -725,6 +808,27 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> debugger.ListDebuggeesResponse:
         r"""Lists all the debuggees that the user has access to.
+
+
+        .. code-block::
+
+            from google.cloud import debugger_v2
+
+            def sample_list_debuggees():
+                # Create a client
+                client = debugger_v2.Debugger2Client()
+
+                # Initialize request argument(s)
+                request = debugger_v2.ListDebuggeesRequest(
+                    project="project_value",
+                    client_version="client_version_value",
+                )
+
+                # Make the request
+                response = client.list_debuggees(request=request)
+
+                # Handle the response
+                print(response)
 
         Args:
             request (Union[google.cloud.debugger_v2.types.ListDebuggeesRequest, dict]):
