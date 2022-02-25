@@ -15,7 +15,7 @@
 #
 # Generated code. DO NOT EDIT!
 #
-# Snippet for GetBreakpoint
+# Snippet for RegisterDebuggee
 # NOTE: This snippet has been automatically generated for illustrative purposes only.
 # It may require modifications to work in your environment.
 
@@ -23,25 +23,22 @@
 #   python3 -m pip install google-cloud-debugger-client
 
 
-# [START clouddebugger_generated_debugger_v2_Debugger2_GetBreakpoint_async]
+# [START clouddebugger_v2_generated_Controller2_RegisterDebuggee_sync]
 from google.cloud import debugger_v2
 
 
-async def sample_get_breakpoint():
+def sample_register_debuggee():
     # Create a client
-    client = debugger_v2.Debugger2AsyncClient()
+    client = debugger_v2.Controller2Client()
 
     # Initialize request argument(s)
-    request = debugger_v2.GetBreakpointRequest(
-        debuggee_id="debuggee_id_value",
-        breakpoint_id="breakpoint_id_value",
-        client_version="client_version_value",
+    request = debugger_v2.RegisterDebuggeeRequest(
     )
 
     # Make the request
-    response = await client.get_breakpoint(request=request)
+    response = client.register_debuggee(request=request)
 
     # Handle the response
     print(response)
 
-# [END clouddebugger_generated_debugger_v2_Debugger2_GetBreakpoint_async]
+# [END clouddebugger_v2_generated_Controller2_RegisterDebuggee_sync]

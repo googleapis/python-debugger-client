@@ -15,7 +15,7 @@
 #
 # Generated code. DO NOT EDIT!
 #
-# Snippet for ListBreakpoints
+# Snippet for ListActiveBreakpoints
 # NOTE: This snippet has been automatically generated for illustrative purposes only.
 # It may require modifications to work in your environment.
 
@@ -23,24 +23,23 @@
 #   python3 -m pip install google-cloud-debugger-client
 
 
-# [START clouddebugger_generated_debugger_v2_Debugger2_ListBreakpoints_sync]
+# [START clouddebugger_v2_generated_Controller2_ListActiveBreakpoints_async]
 from google.cloud import debugger_v2
 
 
-def sample_list_breakpoints():
+async def sample_list_active_breakpoints():
     # Create a client
-    client = debugger_v2.Debugger2Client()
+    client = debugger_v2.Controller2AsyncClient()
 
     # Initialize request argument(s)
-    request = debugger_v2.ListBreakpointsRequest(
+    request = debugger_v2.ListActiveBreakpointsRequest(
         debuggee_id="debuggee_id_value",
-        client_version="client_version_value",
     )
 
     # Make the request
-    response = client.list_breakpoints(request=request)
+    response = await client.list_active_breakpoints(request=request)
 
     # Handle the response
     print(response)
 
-# [END clouddebugger_generated_debugger_v2_Debugger2_ListBreakpoints_sync]
+# [END clouddebugger_v2_generated_Controller2_ListActiveBreakpoints_async]

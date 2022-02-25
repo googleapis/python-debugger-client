@@ -241,7 +241,7 @@ class Controller2AsyncClient:
         re-registration.
 
 
-        .. code-block::
+        .. code-block:: python
 
             from google.cloud import debugger_v2
 
@@ -336,7 +336,7 @@ class Controller2AsyncClient:
         from the active list to avoid setting those breakpoints again.
 
 
-        .. code-block::
+        .. code-block:: python
 
             from google.cloud import debugger_v2
 
@@ -437,7 +437,7 @@ class Controller2AsyncClient:
         to the correct line of code.
 
 
-        .. code-block::
+        .. code-block:: python
 
             from google.cloud import debugger_v2
 

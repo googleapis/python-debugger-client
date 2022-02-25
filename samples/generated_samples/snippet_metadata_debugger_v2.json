@@ -10,8 +10,8 @@
           "shortName": "ListActiveBreakpoints"
         }
       },
-      "file": "clouddebugger_generated_debugger_v2_controller2_list_active_breakpoints_async.py",
-      "regionTag": "clouddebugger_generated_debugger_v2_Controller2_ListActiveBreakpoints_async",
+      "file": "clouddebugger_v2_generated_controller2_list_active_breakpoints_async.py",
+      "regionTag": "clouddebugger_v2_generated_Controller2_ListActiveBreakpoints_async",
       "segments": [
         {
           "end": 44,
@@ -54,8 +54,8 @@
           "shortName": "ListActiveBreakpoints"
         }
       },
-      "file": "clouddebugger_generated_debugger_v2_controller2_list_active_breakpoints_sync.py",
-      "regionTag": "clouddebugger_generated_debugger_v2_Controller2_ListActiveBreakpoints_sync",
+      "file": "clouddebugger_v2_generated_controller2_list_active_breakpoints_sync.py",
+      "regionTag": "clouddebugger_v2_generated_Controller2_ListActiveBreakpoints_sync",
       "segments": [
         {
           "end": 44,
@@ -99,8 +99,8 @@
           "shortName": "RegisterDebuggee"
         }
       },
-      "file": "clouddebugger_generated_debugger_v2_controller2_register_debuggee_async.py",
-      "regionTag": "clouddebugger_generated_debugger_v2_Controller2_RegisterDebuggee_async",
+      "file": "clouddebugger_v2_generated_controller2_register_debuggee_async.py",
+      "regionTag": "clouddebugger_v2_generated_Controller2_RegisterDebuggee_async",
       "segments": [
         {
           "end": 43,
@@ -143,8 +143,8 @@
           "shortName": "RegisterDebuggee"
         }
       },
-      "file": "clouddebugger_generated_debugger_v2_controller2_register_debuggee_sync.py",
-      "regionTag": "clouddebugger_generated_debugger_v2_Controller2_RegisterDebuggee_sync",
+      "file": "clouddebugger_v2_generated_controller2_register_debuggee_sync.py",
+      "regionTag": "clouddebugger_v2_generated_Controller2_RegisterDebuggee_sync",
       "segments": [
         {
           "end": 43,
@@ -188,8 +188,8 @@
           "shortName": "UpdateActiveBreakpoint"
         }
       },
-      "file": "clouddebugger_generated_debugger_v2_controller2_update_active_breakpoint_async.py",
-      "regionTag": "clouddebugger_generated_debugger_v2_Controller2_UpdateActiveBreakpoint_async",
+      "file": "clouddebugger_v2_generated_controller2_update_active_breakpoint_async.py",
+      "regionTag": "clouddebugger_v2_generated_Controller2_UpdateActiveBreakpoint_async",
       "segments": [
         {
           "end": 44,
@@ -232,8 +232,8 @@
           "shortName": "UpdateActiveBreakpoint"
         }
       },
-      "file": "clouddebugger_generated_debugger_v2_controller2_update_active_breakpoint_sync.py",
-      "regionTag": "clouddebugger_generated_debugger_v2_Controller2_UpdateActiveBreakpoint_sync",
+      "file": "clouddebugger_v2_generated_controller2_update_active_breakpoint_sync.py",
+      "regionTag": "clouddebugger_v2_generated_Controller2_UpdateActiveBreakpoint_sync",
       "segments": [
         {
           "end": 44,
@@ -277,8 +277,8 @@
           "shortName": "DeleteBreakpoint"
         }
       },
-      "file": "clouddebugger_generated_debugger_v2_debugger2_delete_breakpoint_async.py",
-      "regionTag": "clouddebugger_generated_debugger_v2_Debugger2_DeleteBreakpoint_async",
+      "file": "clouddebugger_v2_generated_debugger2_delete_breakpoint_async.py",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_DeleteBreakpoint_async",
       "segments": [
         {
           "end": 44,
@@ -319,8 +319,8 @@
           "shortName": "DeleteBreakpoint"
         }
       },
-      "file": "clouddebugger_generated_debugger_v2_debugger2_delete_breakpoint_sync.py",
-      "regionTag": "clouddebugger_generated_debugger_v2_Debugger2_DeleteBreakpoint_sync",
+      "file": "clouddebugger_v2_generated_debugger2_delete_breakpoint_sync.py",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_DeleteBreakpoint_sync",
       "segments": [
         {
           "end": 44,
@@ -362,8 +362,8 @@
           "shortName": "GetBreakpoint"
         }
       },
-      "file": "clouddebugger_generated_debugger_v2_debugger2_get_breakpoint_async.py",
-      "regionTag": "clouddebugger_generated_debugger_v2_Debugger2_GetBreakpoint_async",
+      "file": "clouddebugger_v2_generated_debugger2_get_breakpoint_async.py",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_GetBreakpoint_async",
       "segments": [
         {
           "end": 46,
@@ -406,8 +406,8 @@
           "shortName": "GetBreakpoint"
         }
       },
-      "file": "clouddebugger_generated_debugger_v2_debugger2_get_breakpoint_sync.py",
-      "regionTag": "clouddebugger_generated_debugger_v2_Debugger2_GetBreakpoint_sync",
+      "file": "clouddebugger_v2_generated_debugger2_get_breakpoint_sync.py",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_GetBreakpoint_sync",
       "segments": [
         {
           "end": 46,
@@ -451,8 +451,8 @@
           "shortName": "ListBreakpoints"
         }
       },
-      "file": "clouddebugger_generated_debugger_v2_debugger2_list_breakpoints_async.py",
-      "regionTag": "clouddebugger_generated_debugger_v2_Debugger2_ListBreakpoints_async",
+      "file": "clouddebugger_v2_generated_debugger2_list_breakpoints_async.py",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_ListBreakpoints_async",
       "segments": [
         {
           "end": 45,
@@ -495,8 +495,8 @@
           "shortName": "ListBreakpoints"
         }
       },
-      "file": "clouddebugger_generated_debugger_v2_debugger2_list_breakpoints_sync.py",
-      "regionTag": "clouddebugger_generated_debugger_v2_Debugger2_ListBreakpoints_sync",
+      "file": "clouddebugger_v2_generated_debugger2_list_breakpoints_sync.py",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_ListBreakpoints_sync",
       "segments": [
         {
           "end": 45,
@@ -540,8 +540,8 @@
           "shortName": "ListDebuggees"
         }
       },
-      "file": "clouddebugger_generated_debugger_v2_debugger2_list_debuggees_async.py",
-      "regionTag": "clouddebugger_generated_debugger_v2_Debugger2_ListDebuggees_async",
+      "file": "clouddebugger_v2_generated_debugger2_list_debuggees_async.py",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_ListDebuggees_async",
       "segments": [
         {
           "end": 45,
@@ -584,8 +584,8 @@
           "shortName": "ListDebuggees"
         }
       },
-      "file": "clouddebugger_generated_debugger_v2_debugger2_list_debuggees_sync.py",
-      "regionTag": "clouddebugger_generated_debugger_v2_Debugger2_ListDebuggees_sync",
+      "file": "clouddebugger_v2_generated_debugger2_list_debuggees_sync.py",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_ListDebuggees_sync",
       "segments": [
         {
           "end": 45,
@@ -629,8 +629,8 @@
           "shortName": "SetBreakpoint"
         }
       },
-      "file": "clouddebugger_generated_debugger_v2_debugger2_set_breakpoint_async.py",
-      "regionTag": "clouddebugger_generated_debugger_v2_Debugger2_SetBreakpoint_async",
+      "file": "clouddebugger_v2_generated_debugger2_set_breakpoint_async.py",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_SetBreakpoint_async",
       "segments": [
         {
           "end": 45,
@@ -673,8 +673,8 @@
           "shortName": "SetBreakpoint"
         }
       },
-      "file": "clouddebugger_generated_debugger_v2_debugger2_set_breakpoint_sync.py",
-      "regionTag": "clouddebugger_generated_debugger_v2_Debugger2_SetBreakpoint_sync",
+      "file": "clouddebugger_v2_generated_debugger2_set_breakpoint_sync.py",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_SetBreakpoint_sync",
       "segments": [
         {
           "end": 45,

@@ -15,7 +15,7 @@
 #
 # Generated code. DO NOT EDIT!
 #
-# Snippet for SetBreakpoint
+# Snippet for DeleteBreakpoint
 # NOTE: This snippet has been automatically generated for illustrative purposes only.
 # It may require modifications to work in your environment.
 
@@ -23,24 +23,23 @@
 #   python3 -m pip install google-cloud-debugger-client
 
 
-# [START clouddebugger_generated_debugger_v2_Debugger2_SetBreakpoint_sync]
+# [START clouddebugger_v2_generated_Debugger2_DeleteBreakpoint_sync]
 from google.cloud import debugger_v2
 
 
-def sample_set_breakpoint():
+def sample_delete_breakpoint():
     # Create a client
     client = debugger_v2.Debugger2Client()
 
     # Initialize request argument(s)
-    request = debugger_v2.SetBreakpointRequest(
+    request = debugger_v2.DeleteBreakpointRequest(
         debuggee_id="debuggee_id_value",
+        breakpoint_id="breakpoint_id_value",
         client_version="client_version_value",
     )
 
     # Make the request
-    response = client.set_breakpoint(request=request)
+    client.delete_breakpoint(request=request)
 
-    # Handle the response
-    print(response)
 
-# [END clouddebugger_generated_debugger_v2_Debugger2_SetBreakpoint_sync]
+# [END clouddebugger_v2_generated_Debugger2_DeleteBreakpoint_sync]

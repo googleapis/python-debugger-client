@@ -23,13 +23,13 @@
 #   python3 -m pip install google-cloud-debugger-client
 
 
-# [START clouddebugger_generated_debugger_v2_Debugger2_SetBreakpoint_async]
+# [START clouddebugger_v2_generated_Debugger2_SetBreakpoint_sync]
 from google.cloud import debugger_v2
 
 
-async def sample_set_breakpoint():
+def sample_set_breakpoint():
     # Create a client
-    client = debugger_v2.Debugger2AsyncClient()
+    client = debugger_v2.Debugger2Client()
 
     # Initialize request argument(s)
     request = debugger_v2.SetBreakpointRequest(
@@ -38,9 +38,9 @@ async def sample_set_breakpoint():
     )
 
     # Make the request
-    response = await client.set_breakpoint(request=request)
+    response = client.set_breakpoint(request=request)
 
     # Handle the response
     print(response)
 
-# [END clouddebugger_generated_debugger_v2_Debugger2_SetBreakpoint_async]
+# [END clouddebugger_v2_generated_Debugger2_SetBreakpoint_sync]

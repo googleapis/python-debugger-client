@@ -407,8 +407,7 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
     ) -> debugger.SetBreakpointResponse:
         r"""Sets the breakpoint to the debuggee.
 
-
-        .. code-block::
+        .. code-block:: python
 
             from google.cloud import debugger_v2
 
@@ -511,8 +510,7 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
     ) -> debugger.GetBreakpointResponse:
         r"""Gets breakpoint information.
 
-
-        .. code-block::
+        .. code-block:: python
 
             from google.cloud import debugger_v2
 
@@ -619,8 +617,7 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
     ) -> None:
         r"""Deletes the breakpoint from the debuggee.
 
-
-        .. code-block::
+        .. code-block:: python
 
             from google.cloud import debugger_v2
 
@@ -715,8 +712,7 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
     ) -> debugger.ListBreakpointsResponse:
         r"""Lists all breakpoints for the debuggee.
 
-
-        .. code-block::
+        .. code-block:: python
 
             from google.cloud import debugger_v2
 
@@ -809,8 +805,7 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
     ) -> debugger.ListDebuggeesResponse:
         r"""Lists all the debuggees that the user has access to.
 
-
-        .. code-block::
+        .. code-block:: python
 
             from google.cloud import debugger_v2
 

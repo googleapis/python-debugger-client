@@ -23,22 +23,22 @@
 #   python3 -m pip install google-cloud-debugger-client
 
 
-# [START clouddebugger_generated_debugger_v2_Controller2_RegisterDebuggee_sync]
+# [START clouddebugger_v2_generated_Controller2_RegisterDebuggee_async]
 from google.cloud import debugger_v2
 
 
-def sample_register_debuggee():
+async def sample_register_debuggee():
     # Create a client
-    client = debugger_v2.Controller2Client()
+    client = debugger_v2.Controller2AsyncClient()
 
     # Initialize request argument(s)
     request = debugger_v2.RegisterDebuggeeRequest(
     )
 
     # Make the request
-    response = client.register_debuggee(request=request)
+    response = await client.register_debuggee(request=request)
 
     # Handle the response
     print(response)
 
-# [END clouddebugger_generated_debugger_v2_Controller2_RegisterDebuggee_sync]
+# [END clouddebugger_v2_generated_Controller2_RegisterDebuggee_async]

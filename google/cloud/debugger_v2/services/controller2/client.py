@@ -426,8 +426,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
         re-registration.
 
 
-
-        .. code-block::
+        .. code-block:: python
 
             from google.cloud import debugger_v2
 
@@ -522,8 +521,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
         from the active list to avoid setting those breakpoints again.
 
 
-
-        .. code-block::
+        .. code-block:: python
 
             from google.cloud import debugger_v2
 
@@ -614,8 +612,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
         to the correct line of code.
 
 
-
-        .. code-block::
+        .. code-block:: python
 
             from google.cloud import debugger_v2
 

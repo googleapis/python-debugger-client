@@ -15,7 +15,7 @@
 #
 # Generated code. DO NOT EDIT!
 #
-# Snippet for UpdateActiveBreakpoint
+# Snippet for ListDebuggees
 # NOTE: This snippet has been automatically generated for illustrative purposes only.
 # It may require modifications to work in your environment.
 
@@ -23,23 +23,24 @@
 #   python3 -m pip install google-cloud-debugger-client
 
 
-# [START clouddebugger_generated_debugger_v2_Controller2_UpdateActiveBreakpoint_async]
+# [START clouddebugger_v2_generated_Debugger2_ListDebuggees_sync]
 from google.cloud import debugger_v2
 
 
-async def sample_update_active_breakpoint():
+def sample_list_debuggees():
     # Create a client
-    client = debugger_v2.Controller2AsyncClient()
+    client = debugger_v2.Debugger2Client()
 
     # Initialize request argument(s)
-    request = debugger_v2.UpdateActiveBreakpointRequest(
-        debuggee_id="debuggee_id_value",
+    request = debugger_v2.ListDebuggeesRequest(
+        project="project_value",
+        client_version="client_version_value",
     )
 
     # Make the request
-    response = await client.update_active_breakpoint(request=request)
+    response = client.list_debuggees(request=request)
 
     # Handle the response
     print(response)
 
-# [END clouddebugger_generated_debugger_v2_Controller2_UpdateActiveBreakpoint_async]
+# [END clouddebugger_v2_generated_Debugger2_ListDebuggees_sync]
