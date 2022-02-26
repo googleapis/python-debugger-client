@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0](https://github.com/googleapis/python-debugger-client/compare/v1.2.1...v1.3.0) (2022-02-26)
+
+
+### Features
+
+* add api key support ([#61](https://github.com/googleapis/python-debugger-client/issues/61)) ([57c2e93](https://github.com/googleapis/python-debugger-client/commit/57c2e9396b2b56e7bed4fe49d68f2cb0a9495a22))
+
+
+### Bug Fixes
+
+* resolve DuplicateCredentialArgs error when using credentials_file ([a4fe64d](https://github.com/googleapis/python-debugger-client/commit/a4fe64ddb07ff580ec7ba64fe02629678117a1bf))
+
 ### [1.2.1](https://www.github.com/googleapis/python-debugger-client/compare/v1.2.0...v1.2.1) (2021-11-01)
 
 
