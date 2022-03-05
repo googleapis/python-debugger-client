@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.3.1](https://github.com/googleapis/python-debugger-client/compare/v1.3.0...v1.3.1) (2022-03-05)
+
+
+### Bug Fixes
+
+* **deps:** require google-api-core>=1.31.5, >=2.3.2 ([#75](https://github.com/googleapis/python-debugger-client/issues/75)) ([26f0b3f](https://github.com/googleapis/python-debugger-client/commit/26f0b3f4f0f0ae325d61bdb69e711dee288d8c93))
+
 ## [1.3.0](https://github.com/googleapis/python-debugger-client/compare/v1.2.1...v1.3.0) (2022-02-26)
 
 
