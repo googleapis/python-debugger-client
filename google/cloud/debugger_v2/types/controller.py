@@ -41,7 +41,11 @@ class RegisterDebuggeeRequest(proto.Message):
             ``agent_version`` of the debuggee must be set.
     """
 
-    debuggee = proto.Field(proto.MESSAGE, number=1, message=data.Debuggee,)
+    debuggee = proto.Field(
+        proto.MESSAGE,
+        number=1,
+        message=data.Debuggee,
+    )
 
 
 class RegisterDebuggeeResponse(proto.Message):
@@ -57,7 +61,11 @@ class RegisterDebuggeeResponse(proto.Message):
             ``RegisterDebuggee`` until reenabled.
     """
 
-    debuggee = proto.Field(proto.MESSAGE, number=1, message=data.Debuggee,)
+    debuggee = proto.Field(
+        proto.MESSAGE,
+        number=1,
+        message=data.Debuggee,
+    )
 
 
 class ListActiveBreakpointsRequest(proto.Message):
@@ -83,9 +91,18 @@ class ListActiveBreakpointsRequest(proto.Message):
             timeout has expired.
     """
 
-    debuggee_id = proto.Field(proto.STRING, number=1,)
-    wait_token = proto.Field(proto.STRING, number=2,)
-    success_on_timeout = proto.Field(proto.BOOL, number=3,)
+    debuggee_id = proto.Field(
+        proto.STRING,
+        number=1,
+    )
+    wait_token = proto.Field(
+        proto.STRING,
+        number=2,
+    )
+    success_on_timeout = proto.Field(
+        proto.BOOL,
+        number=3,
+    )
 
 
 class ListActiveBreakpointsResponse(proto.Message):
@@ -106,9 +123,19 @@ class ListActiveBreakpointsResponse(proto.Message):
             should be ignored.
     """
 
-    breakpoints = proto.RepeatedField(proto.MESSAGE, number=1, message=data.Breakpoint,)
-    next_wait_token = proto.Field(proto.STRING, number=2,)
-    wait_expired = proto.Field(proto.BOOL, number=3,)
+    breakpoints = proto.RepeatedField(
+        proto.MESSAGE,
+        number=1,
+        message=data.Breakpoint,
+    )
+    next_wait_token = proto.Field(
+        proto.STRING,
+        number=2,
+    )
+    wait_expired = proto.Field(
+        proto.BOOL,
+        number=3,
+    )
 
 
 class UpdateActiveBreakpointRequest(proto.Message):
@@ -124,8 +151,15 @@ class UpdateActiveBreakpointRequest(proto.Message):
             specification fields in the update.
     """
 
-    debuggee_id = proto.Field(proto.STRING, number=1,)
-    breakpoint_ = proto.Field(proto.MESSAGE, number=2, message=data.Breakpoint,)
+    debuggee_id = proto.Field(
+        proto.STRING,
+        number=1,
+    )
+    breakpoint_ = proto.Field(
+        proto.MESSAGE,
+        number=2,
+        message=data.Breakpoint,
+    )
 
 
 class UpdateActiveBreakpointResponse(proto.Message):

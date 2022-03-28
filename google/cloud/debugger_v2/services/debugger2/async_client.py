@@ -305,7 +305,12 @@ class Debugger2AsyncClient:
         )
 
         # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
+        response = await rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
 
         # Done; return the response.
         return response
@@ -422,7 +427,12 @@ class Debugger2AsyncClient:
         )
 
         # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
+        response = await rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
 
         # Done; return the response.
         return response
@@ -530,7 +540,10 @@ class Debugger2AsyncClient:
 
         # Send the request.
         await rpc(
-            request, retry=retry, timeout=timeout, metadata=metadata,
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
         )
 
     async def list_breakpoints(
@@ -631,7 +644,12 @@ class Debugger2AsyncClient:
         )
 
         # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
+        response = await rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
 
         # Done; return the response.
         return response
@@ -734,7 +752,12 @@ class Debugger2AsyncClient:
         )
 
         # Send the request.
-        response = await rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
+        response = await rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
 
         # Done; return the response.
         return response
