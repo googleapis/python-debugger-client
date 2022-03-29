@@ -49,9 +49,19 @@ class SetBreakpointRequest(proto.Message):
             ``domain/type/version`` (e.g., ``google.com/intellij/v1``).
     """
 
-    debuggee_id = proto.Field(proto.STRING, number=1,)
-    breakpoint_ = proto.Field(proto.MESSAGE, number=2, message=data.Breakpoint,)
-    client_version = proto.Field(proto.STRING, number=4,)
+    debuggee_id = proto.Field(
+        proto.STRING,
+        number=1,
+    )
+    breakpoint_ = proto.Field(
+        proto.MESSAGE,
+        number=2,
+        message=data.Breakpoint,
+    )
+    client_version = proto.Field(
+        proto.STRING,
+        number=4,
+    )
 
 
 class SetBreakpointResponse(proto.Message):
@@ -63,7 +73,11 @@ class SetBreakpointResponse(proto.Message):
             set (in addition to the echoed fileds).
     """
 
-    breakpoint_ = proto.Field(proto.MESSAGE, number=1, message=data.Breakpoint,)
+    breakpoint_ = proto.Field(
+        proto.MESSAGE,
+        number=1,
+        message=data.Breakpoint,
+    )
 
 
 class GetBreakpointRequest(proto.Message):
@@ -80,9 +94,18 @@ class GetBreakpointRequest(proto.Message):
             ``domain/type/version`` (e.g., ``google.com/intellij/v1``).
     """
 
-    debuggee_id = proto.Field(proto.STRING, number=1,)
-    breakpoint_id = proto.Field(proto.STRING, number=2,)
-    client_version = proto.Field(proto.STRING, number=4,)
+    debuggee_id = proto.Field(
+        proto.STRING,
+        number=1,
+    )
+    breakpoint_id = proto.Field(
+        proto.STRING,
+        number=2,
+    )
+    client_version = proto.Field(
+        proto.STRING,
+        number=4,
+    )
 
 
 class GetBreakpointResponse(proto.Message):
@@ -94,7 +117,11 @@ class GetBreakpointResponse(proto.Message):
             ``location`` are guaranteed to be set.
     """
 
-    breakpoint_ = proto.Field(proto.MESSAGE, number=1, message=data.Breakpoint,)
+    breakpoint_ = proto.Field(
+        proto.MESSAGE,
+        number=1,
+        message=data.Breakpoint,
+    )
 
 
 class DeleteBreakpointRequest(proto.Message):
@@ -111,9 +138,18 @@ class DeleteBreakpointRequest(proto.Message):
             ``domain/type/version`` (e.g., ``google.com/intellij/v1``).
     """
 
-    debuggee_id = proto.Field(proto.STRING, number=1,)
-    breakpoint_id = proto.Field(proto.STRING, number=2,)
-    client_version = proto.Field(proto.STRING, number=3,)
+    debuggee_id = proto.Field(
+        proto.STRING,
+        number=1,
+    )
+    breakpoint_id = proto.Field(
+        proto.STRING,
+        number=2,
+    )
+    client_version = proto.Field(
+        proto.STRING,
+        number=3,
+    )
 
 
 class ListBreakpointsRequest(proto.Message):
@@ -160,15 +196,41 @@ class ListBreakpointsRequest(proto.Message):
                 will pass the filter.
         """
 
-        value = proto.Field(proto.ENUM, number=1, enum=data.Breakpoint.Action,)
+        value = proto.Field(
+            proto.ENUM,
+            number=1,
+            enum=data.Breakpoint.Action,
+        )
 
-    debuggee_id = proto.Field(proto.STRING, number=1,)
-    include_all_users = proto.Field(proto.BOOL, number=2,)
-    include_inactive = proto.Field(proto.BOOL, number=3,)
-    action = proto.Field(proto.MESSAGE, number=4, message=BreakpointActionValue,)
-    strip_results = proto.Field(proto.BOOL, number=5,)
-    wait_token = proto.Field(proto.STRING, number=6,)
-    client_version = proto.Field(proto.STRING, number=8,)
+    debuggee_id = proto.Field(
+        proto.STRING,
+        number=1,
+    )
+    include_all_users = proto.Field(
+        proto.BOOL,
+        number=2,
+    )
+    include_inactive = proto.Field(
+        proto.BOOL,
+        number=3,
+    )
+    action = proto.Field(
+        proto.MESSAGE,
+        number=4,
+        message=BreakpointActionValue,
+    )
+    strip_results = proto.Field(
+        proto.BOOL,
+        number=5,
+    )
+    wait_token = proto.Field(
+        proto.STRING,
+        number=6,
+    )
+    client_version = proto.Field(
+        proto.STRING,
+        number=8,
+    )
 
 
 class ListBreakpointsResponse(proto.Message):
@@ -187,8 +249,15 @@ class ListBreakpointsResponse(proto.Message):
             of breakpoints has changes.
     """
 
-    breakpoints = proto.RepeatedField(proto.MESSAGE, number=1, message=data.Breakpoint,)
-    next_wait_token = proto.Field(proto.STRING, number=2,)
+    breakpoints = proto.RepeatedField(
+        proto.MESSAGE,
+        number=1,
+        message=data.Breakpoint,
+    )
+    next_wait_token = proto.Field(
+        proto.STRING,
+        number=2,
+    )
 
 
 class ListDebuggeesRequest(proto.Message):
@@ -207,9 +276,18 @@ class ListDebuggeesRequest(proto.Message):
             ``domain/type/version`` (e.g., ``google.com/intellij/v1``).
     """
 
-    project = proto.Field(proto.STRING, number=2,)
-    include_inactive = proto.Field(proto.BOOL, number=3,)
-    client_version = proto.Field(proto.STRING, number=4,)
+    project = proto.Field(
+        proto.STRING,
+        number=2,
+    )
+    include_inactive = proto.Field(
+        proto.BOOL,
+        number=3,
+    )
+    client_version = proto.Field(
+        proto.STRING,
+        number=4,
+    )
 
 
 class ListDebuggeesResponse(proto.Message):
@@ -223,7 +301,11 @@ class ListDebuggeesResponse(proto.Message):
             provided by agents and can be displayed to users.
     """
 
-    debuggees = proto.RepeatedField(proto.MESSAGE, number=1, message=data.Debuggee,)
+    debuggees = proto.RepeatedField(
+        proto.MESSAGE,
+        number=1,
+        message=data.Debuggee,
+    )
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))
