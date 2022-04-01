@@ -84,7 +84,13 @@ def test__get_default_mtls_endpoint():
     assert Controller2Client._get_default_mtls_endpoint(non_googleapi) == non_googleapi
 
 
-@pytest.mark.parametrize("client_class", [Controller2Client, Controller2AsyncClient,])
+@pytest.mark.parametrize(
+    "client_class",
+    [
+        Controller2Client,
+        Controller2AsyncClient,
+    ],
+)
 def test_controller2_client_from_service_account_info(client_class):
     creds = ga_credentials.AnonymousCredentials()
     with mock.patch.object(
@@ -124,7 +130,13 @@ def test_controller2_client_service_account_always_use_jwt(
         use_jwt.assert_not_called()
 
 
-@pytest.mark.parametrize("client_class", [Controller2Client, Controller2AsyncClient,])
+@pytest.mark.parametrize(
+    "client_class",
+    [
+        Controller2Client,
+        Controller2AsyncClient,
+    ],
+)
 def test_controller2_client_from_service_account_file(client_class):
     creds = ga_credentials.AnonymousCredentials()
     with mock.patch.object(
@@ -479,7 +491,9 @@ def test_controller2_client_client_options_scopes(
     client_class, transport_class, transport_name
 ):
     # Check the case scopes are provided.
-    options = client_options.ClientOptions(scopes=["1", "2"],)
+    options = client_options.ClientOptions(
+        scopes=["1", "2"],
+    )
     with mock.patch.object(transport_class, "__init__") as patched:
         patched.return_value = None
         client = client_class(client_options=options, transport=transport_name)
@@ -610,10 +624,17 @@ def test_controller2_client_create_channel_credentials_file(
         )
 
 
-@pytest.mark.parametrize("request_type", [controller.RegisterDebuggeeRequest, dict,])
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        controller.RegisterDebuggeeRequest,
+        dict,
+    ],
+)
 def test_register_debuggee(request_type, transport: str = "grpc"):
     client = Controller2Client(
-        credentials=ga_credentials.AnonymousCredentials(), transport=transport,
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
@@ -641,7 +662,8 @@ def test_register_debuggee_empty_call():
     # This test is a coverage failsafe to make sure that totally empty calls,
     # i.e. request == None and no flattened fields passed, work.
     client = Controller2Client(
-        credentials=ga_credentials.AnonymousCredentials(), transport="grpc",
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="grpc",
     )
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -659,7 +681,8 @@ async def test_register_debuggee_async(
     transport: str = "grpc_asyncio", request_type=controller.RegisterDebuggeeRequest
 ):
     client = Controller2AsyncClient(
-        credentials=ga_credentials.AnonymousCredentials(), transport=transport,
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
@@ -691,7 +714,9 @@ async def test_register_debuggee_async_from_dict():
 
 
 def test_register_debuggee_flattened():
-    client = Controller2Client(credentials=ga_credentials.AnonymousCredentials(),)
+    client = Controller2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -701,7 +726,9 @@ def test_register_debuggee_flattened():
         call.return_value = controller.RegisterDebuggeeResponse()
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
-        client.register_debuggee(debuggee=data.Debuggee(id="id_value"),)
+        client.register_debuggee(
+            debuggee=data.Debuggee(id="id_value"),
+        )
 
         # Establish that the underlying call was made with the expected
         # request object values.
@@ -713,19 +740,24 @@ def test_register_debuggee_flattened():
 
 
 def test_register_debuggee_flattened_error():
-    client = Controller2Client(credentials=ga_credentials.AnonymousCredentials(),)
+    client = Controller2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
     with pytest.raises(ValueError):
         client.register_debuggee(
-            controller.RegisterDebuggeeRequest(), debuggee=data.Debuggee(id="id_value"),
+            controller.RegisterDebuggeeRequest(),
+            debuggee=data.Debuggee(id="id_value"),
         )
 
 
 @pytest.mark.asyncio
 async def test_register_debuggee_flattened_async():
-    client = Controller2AsyncClient(credentials=ga_credentials.AnonymousCredentials(),)
+    client = Controller2AsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -754,22 +786,30 @@ async def test_register_debuggee_flattened_async():
 
 @pytest.mark.asyncio
 async def test_register_debuggee_flattened_error_async():
-    client = Controller2AsyncClient(credentials=ga_credentials.AnonymousCredentials(),)
+    client = Controller2AsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
     with pytest.raises(ValueError):
         await client.register_debuggee(
-            controller.RegisterDebuggeeRequest(), debuggee=data.Debuggee(id="id_value"),
+            controller.RegisterDebuggeeRequest(),
+            debuggee=data.Debuggee(id="id_value"),
         )
 
 
 @pytest.mark.parametrize(
-    "request_type", [controller.ListActiveBreakpointsRequest, dict,]
+    "request_type",
+    [
+        controller.ListActiveBreakpointsRequest,
+        dict,
+    ],
 )
 def test_list_active_breakpoints(request_type, transport: str = "grpc"):
     client = Controller2Client(
-        credentials=ga_credentials.AnonymousCredentials(), transport=transport,
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
@@ -782,7 +822,8 @@ def test_list_active_breakpoints(request_type, transport: str = "grpc"):
     ) as call:
         # Designate an appropriate return value for the call.
         call.return_value = controller.ListActiveBreakpointsResponse(
-            next_wait_token="next_wait_token_value", wait_expired=True,
+            next_wait_token="next_wait_token_value",
+            wait_expired=True,
         )
         response = client.list_active_breakpoints(request)
 
@@ -801,7 +842,8 @@ def test_list_active_breakpoints_empty_call():
     # This test is a coverage failsafe to make sure that totally empty calls,
     # i.e. request == None and no flattened fields passed, work.
     client = Controller2Client(
-        credentials=ga_credentials.AnonymousCredentials(), transport="grpc",
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="grpc",
     )
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -820,7 +862,8 @@ async def test_list_active_breakpoints_async(
     request_type=controller.ListActiveBreakpointsRequest,
 ):
     client = Controller2AsyncClient(
-        credentials=ga_credentials.AnonymousCredentials(), transport=transport,
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
@@ -834,7 +877,8 @@ async def test_list_active_breakpoints_async(
         # Designate an appropriate return value for the call.
         call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
             controller.ListActiveBreakpointsResponse(
-                next_wait_token="next_wait_token_value", wait_expired=True,
+                next_wait_token="next_wait_token_value",
+                wait_expired=True,
             )
         )
         response = await client.list_active_breakpoints(request)
@@ -856,7 +900,9 @@ async def test_list_active_breakpoints_async_from_dict():
 
 
 def test_list_active_breakpoints_flattened():
-    client = Controller2Client(credentials=ga_credentials.AnonymousCredentials(),)
+    client = Controller2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -866,7 +912,9 @@ def test_list_active_breakpoints_flattened():
         call.return_value = controller.ListActiveBreakpointsResponse()
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
-        client.list_active_breakpoints(debuggee_id="debuggee_id_value",)
+        client.list_active_breakpoints(
+            debuggee_id="debuggee_id_value",
+        )
 
         # Establish that the underlying call was made with the expected
         # request object values.
@@ -878,19 +926,24 @@ def test_list_active_breakpoints_flattened():
 
 
 def test_list_active_breakpoints_flattened_error():
-    client = Controller2Client(credentials=ga_credentials.AnonymousCredentials(),)
+    client = Controller2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
     with pytest.raises(ValueError):
         client.list_active_breakpoints(
-            controller.ListActiveBreakpointsRequest(), debuggee_id="debuggee_id_value",
+            controller.ListActiveBreakpointsRequest(),
+            debuggee_id="debuggee_id_value",
         )
 
 
 @pytest.mark.asyncio
 async def test_list_active_breakpoints_flattened_async():
-    client = Controller2AsyncClient(credentials=ga_credentials.AnonymousCredentials(),)
+    client = Controller2AsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -919,22 +972,30 @@ async def test_list_active_breakpoints_flattened_async():
 
 @pytest.mark.asyncio
 async def test_list_active_breakpoints_flattened_error_async():
-    client = Controller2AsyncClient(credentials=ga_credentials.AnonymousCredentials(),)
+    client = Controller2AsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
     with pytest.raises(ValueError):
         await client.list_active_breakpoints(
-            controller.ListActiveBreakpointsRequest(), debuggee_id="debuggee_id_value",
+            controller.ListActiveBreakpointsRequest(),
+            debuggee_id="debuggee_id_value",
         )
 
 
 @pytest.mark.parametrize(
-    "request_type", [controller.UpdateActiveBreakpointRequest, dict,]
+    "request_type",
+    [
+        controller.UpdateActiveBreakpointRequest,
+        dict,
+    ],
 )
 def test_update_active_breakpoint(request_type, transport: str = "grpc"):
     client = Controller2Client(
-        credentials=ga_credentials.AnonymousCredentials(), transport=transport,
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
@@ -962,7 +1023,8 @@ def test_update_active_breakpoint_empty_call():
     # This test is a coverage failsafe to make sure that totally empty calls,
     # i.e. request == None and no flattened fields passed, work.
     client = Controller2Client(
-        credentials=ga_credentials.AnonymousCredentials(), transport="grpc",
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="grpc",
     )
 
     # Mock the actual call within the gRPC stub, and fake the request.
@@ -981,7 +1043,8 @@ async def test_update_active_breakpoint_async(
     request_type=controller.UpdateActiveBreakpointRequest,
 ):
     client = Controller2AsyncClient(
-        credentials=ga_credentials.AnonymousCredentials(), transport=transport,
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport=transport,
     )
 
     # Everything is optional in proto3 as far as the runtime is concerned,
@@ -1013,7 +1076,9 @@ async def test_update_active_breakpoint_async_from_dict():
 
 
 def test_update_active_breakpoint_flattened():
-    client = Controller2Client(credentials=ga_credentials.AnonymousCredentials(),)
+    client = Controller2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -1024,7 +1089,8 @@ def test_update_active_breakpoint_flattened():
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
         client.update_active_breakpoint(
-            debuggee_id="debuggee_id_value", breakpoint_=data.Breakpoint(id="id_value"),
+            debuggee_id="debuggee_id_value",
+            breakpoint_=data.Breakpoint(id="id_value"),
         )
 
         # Establish that the underlying call was made with the expected
@@ -1040,7 +1106,9 @@ def test_update_active_breakpoint_flattened():
 
 
 def test_update_active_breakpoint_flattened_error():
-    client = Controller2Client(credentials=ga_credentials.AnonymousCredentials(),)
+    client = Controller2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -1054,7 +1122,9 @@ def test_update_active_breakpoint_flattened_error():
 
 @pytest.mark.asyncio
 async def test_update_active_breakpoint_flattened_async():
-    client = Controller2AsyncClient(credentials=ga_credentials.AnonymousCredentials(),)
+    client = Controller2AsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -1069,7 +1139,8 @@ async def test_update_active_breakpoint_flattened_async():
         # Call the method with a truthy value for each flattened field,
         # using the keyword arguments to the method.
         response = await client.update_active_breakpoint(
-            debuggee_id="debuggee_id_value", breakpoint_=data.Breakpoint(id="id_value"),
+            debuggee_id="debuggee_id_value",
+            breakpoint_=data.Breakpoint(id="id_value"),
         )
 
         # Establish that the underlying call was made with the expected
@@ -1086,7 +1157,9 @@ async def test_update_active_breakpoint_flattened_async():
 
 @pytest.mark.asyncio
 async def test_update_active_breakpoint_flattened_error_async():
-    client = Controller2AsyncClient(credentials=ga_credentials.AnonymousCredentials(),)
+    client = Controller2AsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -1105,7 +1178,8 @@ def test_credentials_transport_error():
     )
     with pytest.raises(ValueError):
         client = Controller2Client(
-            credentials=ga_credentials.AnonymousCredentials(), transport=transport,
+            credentials=ga_credentials.AnonymousCredentials(),
+            transport=transport,
         )
 
     # It is an error to provide a credentials file and a transport instance.
@@ -1125,7 +1199,10 @@ def test_credentials_transport_error():
     options = client_options.ClientOptions()
     options.api_key = "api_key"
     with pytest.raises(ValueError):
-        client = Controller2Client(client_options=options, transport=transport,)
+        client = Controller2Client(
+            client_options=options,
+            transport=transport,
+        )
 
     # It is an error to provide an api_key and a credential.
     options = mock.Mock()
@@ -1141,7 +1218,8 @@ def test_credentials_transport_error():
     )
     with pytest.raises(ValueError):
         client = Controller2Client(
-            client_options={"scopes": ["1", "2"]}, transport=transport,
+            client_options={"scopes": ["1", "2"]},
+            transport=transport,
         )
 
 
@@ -1171,7 +1249,10 @@ def test_transport_get_channel():
 
 @pytest.mark.parametrize(
     "transport_class",
-    [transports.Controller2GrpcTransport, transports.Controller2GrpcAsyncIOTransport,],
+    [
+        transports.Controller2GrpcTransport,
+        transports.Controller2GrpcAsyncIOTransport,
+    ],
 )
 def test_transport_adc(transport_class):
     # Test default credentials are used if not provided.
@@ -1183,8 +1264,13 @@ def test_transport_adc(transport_class):
 
 def test_transport_grpc_default():
     # A client should use the gRPC transport by default.
-    client = Controller2Client(credentials=ga_credentials.AnonymousCredentials(),)
-    assert isinstance(client.transport, transports.Controller2GrpcTransport,)
+    client = Controller2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
+    assert isinstance(
+        client.transport,
+        transports.Controller2GrpcTransport,
+    )
 
 
 def test_controller2_base_transport_error():
@@ -1231,7 +1317,8 @@ def test_controller2_base_transport_with_credentials_file():
         Transport.return_value = None
         load_creds.return_value = (ga_credentials.AnonymousCredentials(), None)
         transport = transports.Controller2Transport(
-            credentials_file="credentials.json", quota_project_id="octopus",
+            credentials_file="credentials.json",
+            quota_project_id="octopus",
         )
         load_creds.assert_called_once_with(
             "credentials.json",
@@ -1272,7 +1359,10 @@ def test_controller2_auth_adc():
 
 @pytest.mark.parametrize(
     "transport_class",
-    [transports.Controller2GrpcTransport, transports.Controller2GrpcAsyncIOTransport,],
+    [
+        transports.Controller2GrpcTransport,
+        transports.Controller2GrpcAsyncIOTransport,
+    ],
 )
 def test_controller2_transport_auth_adc(transport_class):
     # If credentials and host are not provided, the transport class should use
@@ -1395,7 +1485,8 @@ def test_controller2_grpc_transport_channel():
 
     # Check that channel is used if provided.
     transport = transports.Controller2GrpcTransport(
-        host="squid.clam.whelk", channel=channel,
+        host="squid.clam.whelk",
+        channel=channel,
     )
     assert transport.grpc_channel == channel
     assert transport._host == "squid.clam.whelk:443"
@@ -1407,7 +1498,8 @@ def test_controller2_grpc_asyncio_transport_channel():
 
     # Check that channel is used if provided.
     transport = transports.Controller2GrpcAsyncIOTransport(
-        host="squid.clam.whelk", channel=channel,
+        host="squid.clam.whelk",
+        channel=channel,
     )
     assert transport.grpc_channel == channel
     assert transport._host == "squid.clam.whelk:443"
@@ -1528,7 +1620,9 @@ def test_parse_common_billing_account_path():
 
 def test_common_folder_path():
     folder = "whelk"
-    expected = "folders/{folder}".format(folder=folder,)
+    expected = "folders/{folder}".format(
+        folder=folder,
+    )
     actual = Controller2Client.common_folder_path(folder)
     assert expected == actual
 
@@ -1546,7 +1640,9 @@ def test_parse_common_folder_path():
 
 def test_common_organization_path():
     organization = "oyster"
-    expected = "organizations/{organization}".format(organization=organization,)
+    expected = "organizations/{organization}".format(
+        organization=organization,
+    )
     actual = Controller2Client.common_organization_path(organization)
     assert expected == actual
 
@@ -1564,7 +1660,9 @@ def test_parse_common_organization_path():
 
 def test_common_project_path():
     project = "cuttlefish"
-    expected = "projects/{project}".format(project=project,)
+    expected = "projects/{project}".format(
+        project=project,
+    )
     actual = Controller2Client.common_project_path(project)
     assert expected == actual
 
@@ -1584,7 +1682,8 @@ def test_common_location_path():
     project = "winkle"
     location = "nautilus"
     expected = "projects/{project}/locations/{location}".format(
-        project=project, location=location,
+        project=project,
+        location=location,
     )
     actual = Controller2Client.common_location_path(project, location)
     assert expected == actual
@@ -1609,7 +1708,8 @@ def test_client_with_default_client_info():
         transports.Controller2Transport, "_prep_wrapped_messages"
     ) as prep:
         client = Controller2Client(
-            credentials=ga_credentials.AnonymousCredentials(), client_info=client_info,
+            credentials=ga_credentials.AnonymousCredentials(),
+            client_info=client_info,
         )
         prep.assert_called_once_with(client_info)
 
@@ -1618,7 +1718,8 @@ def test_client_with_default_client_info():
     ) as prep:
         transport_class = Controller2Client.get_transport_class()
         transport = transport_class(
-            credentials=ga_credentials.AnonymousCredentials(), client_info=client_info,
+            credentials=ga_credentials.AnonymousCredentials(),
+            client_info=client_info,
         )
         prep.assert_called_once_with(client_info)
 
@@ -1626,7 +1727,8 @@ def test_client_with_default_client_info():
 @pytest.mark.asyncio
 async def test_transport_close_async():
     client = Controller2AsyncClient(
-        credentials=ga_credentials.AnonymousCredentials(), transport="grpc_asyncio",
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="grpc_asyncio",
     )
     with mock.patch.object(
         type(getattr(client.transport, "grpc_channel")), "close"

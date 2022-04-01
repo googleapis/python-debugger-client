@@ -52,8 +52,14 @@ class FormatMessage(proto.Message):
             message.
     """
 
-    format_ = proto.Field(proto.STRING, number=1,)
-    parameters = proto.RepeatedField(proto.STRING, number=2,)
+    format_ = proto.Field(
+        proto.STRING,
+        number=1,
+    )
+    parameters = proto.RepeatedField(
+        proto.STRING,
+        number=2,
+    )
 
 
 class StatusMessage(proto.Message):
@@ -83,9 +89,20 @@ class StatusMessage(proto.Message):
         VARIABLE_NAME = 5
         VARIABLE_VALUE = 6
 
-    is_error = proto.Field(proto.BOOL, number=1,)
-    refers_to = proto.Field(proto.ENUM, number=2, enum=Reference,)
-    description = proto.Field(proto.MESSAGE, number=3, message="FormatMessage",)
+    is_error = proto.Field(
+        proto.BOOL,
+        number=1,
+    )
+    refers_to = proto.Field(
+        proto.ENUM,
+        number=2,
+        enum=Reference,
+    )
+    description = proto.Field(
+        proto.MESSAGE,
+        number=3,
+        message="FormatMessage",
+    )
 
 
 class SourceLocation(proto.Message):
@@ -104,9 +121,18 @@ class SourceLocation(proto.Message):
             on specific columns ignore this field.
     """
 
-    path = proto.Field(proto.STRING, number=1,)
-    line = proto.Field(proto.INT32, number=2,)
-    column = proto.Field(proto.INT32, number=3,)
+    path = proto.Field(
+        proto.STRING,
+        number=1,
+    )
+    line = proto.Field(
+        proto.INT32,
+        number=2,
+    )
+    column = proto.Field(
+        proto.INT32,
+        number=3,
+    )
 
 
 class Variable(proto.Message):
@@ -240,14 +266,33 @@ class Variable(proto.Message):
             -  ``Null pointer dereference``
     """
 
-    name = proto.Field(proto.STRING, number=1,)
-    value = proto.Field(proto.STRING, number=2,)
-    type_ = proto.Field(proto.STRING, number=6,)
-    members = proto.RepeatedField(proto.MESSAGE, number=3, message="Variable",)
-    var_table_index = proto.Field(
-        proto.MESSAGE, number=4, message=wrappers_pb2.Int32Value,
+    name = proto.Field(
+        proto.STRING,
+        number=1,
     )
-    status = proto.Field(proto.MESSAGE, number=5, message="StatusMessage",)
+    value = proto.Field(
+        proto.STRING,
+        number=2,
+    )
+    type_ = proto.Field(
+        proto.STRING,
+        number=6,
+    )
+    members = proto.RepeatedField(
+        proto.MESSAGE,
+        number=3,
+        message="Variable",
+    )
+    var_table_index = proto.Field(
+        proto.MESSAGE,
+        number=4,
+        message=wrappers_pb2.Int32Value,
+    )
+    status = proto.Field(
+        proto.MESSAGE,
+        number=5,
+        message="StatusMessage",
+    )
 
 
 class StackFrame(proto.Message):
@@ -268,10 +313,25 @@ class StackFrame(proto.Message):
             for all stack frames.
     """
 
-    function = proto.Field(proto.STRING, number=1,)
-    location = proto.Field(proto.MESSAGE, number=2, message="SourceLocation",)
-    arguments = proto.RepeatedField(proto.MESSAGE, number=3, message="Variable",)
-    locals_ = proto.RepeatedField(proto.MESSAGE, number=4, message="Variable",)
+    function = proto.Field(
+        proto.STRING,
+        number=1,
+    )
+    location = proto.Field(
+        proto.MESSAGE,
+        number=2,
+        message="SourceLocation",
+    )
+    arguments = proto.RepeatedField(
+        proto.MESSAGE,
+        number=3,
+        message="Variable",
+    )
+    locals_ = proto.RepeatedField(
+        proto.MESSAGE,
+        number=4,
+        message="Variable",
+    )
 
 
 class Breakpoint(proto.Message):
@@ -387,26 +447,80 @@ class Breakpoint(proto.Message):
         WARNING = 1
         ERROR = 2
 
-    id = proto.Field(proto.STRING, number=1,)
-    action = proto.Field(proto.ENUM, number=13, enum=Action,)
-    location = proto.Field(proto.MESSAGE, number=2, message="SourceLocation",)
-    condition = proto.Field(proto.STRING, number=3,)
-    expressions = proto.RepeatedField(proto.STRING, number=4,)
-    log_message_format = proto.Field(proto.STRING, number=14,)
-    log_level = proto.Field(proto.ENUM, number=15, enum=LogLevel,)
-    is_final_state = proto.Field(proto.BOOL, number=5,)
+    id = proto.Field(
+        proto.STRING,
+        number=1,
+    )
+    action = proto.Field(
+        proto.ENUM,
+        number=13,
+        enum=Action,
+    )
+    location = proto.Field(
+        proto.MESSAGE,
+        number=2,
+        message="SourceLocation",
+    )
+    condition = proto.Field(
+        proto.STRING,
+        number=3,
+    )
+    expressions = proto.RepeatedField(
+        proto.STRING,
+        number=4,
+    )
+    log_message_format = proto.Field(
+        proto.STRING,
+        number=14,
+    )
+    log_level = proto.Field(
+        proto.ENUM,
+        number=15,
+        enum=LogLevel,
+    )
+    is_final_state = proto.Field(
+        proto.BOOL,
+        number=5,
+    )
     create_time = proto.Field(
-        proto.MESSAGE, number=11, message=timestamp_pb2.Timestamp,
+        proto.MESSAGE,
+        number=11,
+        message=timestamp_pb2.Timestamp,
     )
-    final_time = proto.Field(proto.MESSAGE, number=12, message=timestamp_pb2.Timestamp,)
-    user_email = proto.Field(proto.STRING, number=16,)
-    status = proto.Field(proto.MESSAGE, number=10, message="StatusMessage",)
-    stack_frames = proto.RepeatedField(proto.MESSAGE, number=7, message="StackFrame",)
+    final_time = proto.Field(
+        proto.MESSAGE,
+        number=12,
+        message=timestamp_pb2.Timestamp,
+    )
+    user_email = proto.Field(
+        proto.STRING,
+        number=16,
+    )
+    status = proto.Field(
+        proto.MESSAGE,
+        number=10,
+        message="StatusMessage",
+    )
+    stack_frames = proto.RepeatedField(
+        proto.MESSAGE,
+        number=7,
+        message="StackFrame",
+    )
     evaluated_expressions = proto.RepeatedField(
-        proto.MESSAGE, number=8, message="Variable",
+        proto.MESSAGE,
+        number=8,
+        message="Variable",
     )
-    variable_table = proto.RepeatedField(proto.MESSAGE, number=9, message="Variable",)
-    labels = proto.MapField(proto.STRING, proto.STRING, number=17,)
+    variable_table = proto.RepeatedField(
+        proto.MESSAGE,
+        number=9,
+        message="Variable",
+    )
+    labels = proto.MapField(
+        proto.STRING,
+        proto.STRING,
+        number=17,
+    )
 
 
 class Debuggee(proto.Message):
@@ -471,21 +585,54 @@ class Debuggee(proto.Message):
             user.
     """
 
-    id = proto.Field(proto.STRING, number=1,)
-    project = proto.Field(proto.STRING, number=2,)
-    uniquifier = proto.Field(proto.STRING, number=3,)
-    description = proto.Field(proto.STRING, number=4,)
-    is_inactive = proto.Field(proto.BOOL, number=5,)
-    agent_version = proto.Field(proto.STRING, number=6,)
-    is_disabled = proto.Field(proto.BOOL, number=7,)
-    status = proto.Field(proto.MESSAGE, number=8, message="StatusMessage",)
+    id = proto.Field(
+        proto.STRING,
+        number=1,
+    )
+    project = proto.Field(
+        proto.STRING,
+        number=2,
+    )
+    uniquifier = proto.Field(
+        proto.STRING,
+        number=3,
+    )
+    description = proto.Field(
+        proto.STRING,
+        number=4,
+    )
+    is_inactive = proto.Field(
+        proto.BOOL,
+        number=5,
+    )
+    agent_version = proto.Field(
+        proto.STRING,
+        number=6,
+    )
+    is_disabled = proto.Field(
+        proto.BOOL,
+        number=7,
+    )
+    status = proto.Field(
+        proto.MESSAGE,
+        number=8,
+        message="StatusMessage",
+    )
     source_contexts = proto.RepeatedField(
-        proto.MESSAGE, number=9, message=source_context_pb2.SourceContext,
+        proto.MESSAGE,
+        number=9,
+        message=source_context_pb2.SourceContext,
     )
     ext_source_contexts = proto.RepeatedField(
-        proto.MESSAGE, number=13, message=source_context_pb2.ExtendedSourceContext,
+        proto.MESSAGE,
+        number=13,
+        message=source_context_pb2.ExtendedSourceContext,
     )
-    labels = proto.MapField(proto.STRING, proto.STRING, number=11,)
+    labels = proto.MapField(
+        proto.STRING,
+        proto.STRING,
+        number=11,
+    )
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))

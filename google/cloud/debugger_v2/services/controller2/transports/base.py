@@ -124,7 +124,9 @@ class Controller2Transport(abc.ABC):
         # Precompute the wrapped methods.
         self._wrapped_methods = {
             self.register_debuggee: gapic_v1.method.wrap_method(
-                self.register_debuggee, default_timeout=600.0, client_info=client_info,
+                self.register_debuggee,
+                default_timeout=600.0,
+                client_info=client_info,
             ),
             self.list_active_breakpoints: gapic_v1.method.wrap_method(
                 self.list_active_breakpoints,
@@ -161,9 +163,9 @@ class Controller2Transport(abc.ABC):
     def close(self):
         """Closes resources associated with the transport.
 
-       .. warning::
-            Only call this method if the transport is NOT shared
-            with other clients - this may cause errors in other clients!
+        .. warning::
+             Only call this method if the transport is NOT shared
+             with other clients - this may cause errors in other clients!
         """
         raise NotImplementedError()
 

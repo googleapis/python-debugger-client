@@ -125,7 +125,9 @@ class Debugger2Transport(abc.ABC):
         # Precompute the wrapped methods.
         self._wrapped_methods = {
             self.set_breakpoint: gapic_v1.method.wrap_method(
-                self.set_breakpoint, default_timeout=600.0, client_info=client_info,
+                self.set_breakpoint,
+                default_timeout=600.0,
+                client_info=client_info,
             ),
             self.get_breakpoint: gapic_v1.method.wrap_method(
                 self.get_breakpoint,
@@ -192,9 +194,9 @@ class Debugger2Transport(abc.ABC):
     def close(self):
         """Closes resources associated with the transport.
 
-       .. warning::
-            Only call this method if the transport is NOT shared
-            with other clients - this may cause errors in other clients!
+        .. warning::
+             Only call this method if the transport is NOT shared
+             with other clients - this may cause errors in other clients!
         """
         raise NotImplementedError()
 

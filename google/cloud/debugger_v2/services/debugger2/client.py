@@ -53,7 +53,10 @@ class Debugger2ClientMeta(type):
     _transport_registry["grpc"] = Debugger2GrpcTransport
     _transport_registry["grpc_asyncio"] = Debugger2GrpcAsyncIOTransport
 
-    def get_transport_class(cls, label: str = None,) -> Type[Debugger2Transport]:
+    def get_transport_class(
+        cls,
+        label: str = None,
+    ) -> Type[Debugger2Transport]:
         """Returns an appropriate transport class.
 
         Args:
@@ -171,7 +174,9 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
         return self._transport
 
     @staticmethod
-    def common_billing_account_path(billing_account: str,) -> str:
+    def common_billing_account_path(
+        billing_account: str,
+    ) -> str:
         """Returns a fully-qualified billing_account string."""
         return "billingAccounts/{billing_account}".format(
             billing_account=billing_account,
@@ -184,9 +189,13 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
         return m.groupdict() if m else {}
 
     @staticmethod
-    def common_folder_path(folder: str,) -> str:
+    def common_folder_path(
+        folder: str,
+    ) -> str:
         """Returns a fully-qualified folder string."""
-        return "folders/{folder}".format(folder=folder,)
+        return "folders/{folder}".format(
+            folder=folder,
+        )
 
     @staticmethod
     def parse_common_folder_path(path: str) -> Dict[str, str]:
@@ -195,9 +204,13 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
         return m.groupdict() if m else {}
 
     @staticmethod
-    def common_organization_path(organization: str,) -> str:
+    def common_organization_path(
+        organization: str,
+    ) -> str:
         """Returns a fully-qualified organization string."""
-        return "organizations/{organization}".format(organization=organization,)
+        return "organizations/{organization}".format(
+            organization=organization,
+        )
 
     @staticmethod
     def parse_common_organization_path(path: str) -> Dict[str, str]:
@@ -206,9 +219,13 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
         return m.groupdict() if m else {}
 
     @staticmethod
-    def common_project_path(project: str,) -> str:
+    def common_project_path(
+        project: str,
+    ) -> str:
         """Returns a fully-qualified project string."""
-        return "projects/{project}".format(project=project,)
+        return "projects/{project}".format(
+            project=project,
+        )
 
     @staticmethod
     def parse_common_project_path(path: str) -> Dict[str, str]:
@@ -217,10 +234,14 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
         return m.groupdict() if m else {}
 
     @staticmethod
-    def common_location_path(project: str, location: str,) -> str:
+    def common_location_path(
+        project: str,
+        location: str,
+    ) -> str:
         """Returns a fully-qualified location string."""
         return "projects/{project}/locations/{location}".format(
-            project=project, location=location,
+            project=project,
+            location=location,
         )
 
     @staticmethod
@@ -492,7 +513,12 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
         rpc = self._transport._wrapped_methods[self._transport.set_breakpoint]
 
         # Send the request.
-        response = rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
+        response = rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
 
         # Done; return the response.
         return response
@@ -599,7 +625,12 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
         rpc = self._transport._wrapped_methods[self._transport.get_breakpoint]
 
         # Send the request.
-        response = rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
+        response = rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
 
         # Done; return the response.
         return response
@@ -697,7 +728,10 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
 
         # Send the request.
         rpc(
-            request, retry=retry, timeout=timeout, metadata=metadata,
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
         )
 
     def list_breakpoints(
@@ -788,7 +822,12 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
         rpc = self._transport._wrapped_methods[self._transport.list_breakpoints]
 
         # Send the request.
-        response = rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
+        response = rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
 
         # Done; return the response.
         return response
@@ -881,7 +920,12 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
         rpc = self._transport._wrapped_methods[self._transport.list_debuggees]
 
         # Send the request.
-        response = rpc(request, retry=retry, timeout=timeout, metadata=metadata,)
+        response = rpc(
+            request,
+            retry=retry,
+            timeout=timeout,
+            metadata=metadata,
+        )
 
         # Done; return the response.
         return response
