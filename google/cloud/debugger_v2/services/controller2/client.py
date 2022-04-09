@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -449,7 +449,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import debugger_v2
+                    from google.cloud import debugger_v2
 
             def sample_register_debuggee():
                 # Create a client
@@ -549,7 +549,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import debugger_v2
+                    from google.cloud import debugger_v2
 
             def sample_list_active_breakpoints():
                 # Create a client
@@ -645,7 +645,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
 
         .. code-block:: python
 
-            from google.cloud import debugger_v2
+                    from google.cloud import debugger_v2
 
             def sample_update_active_breakpoint():
                 # Create a client
