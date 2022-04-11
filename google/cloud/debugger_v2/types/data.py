@@ -427,7 +427,7 @@ class Breakpoint(proto.Message):
             their name from the referencing variable. The effective
             variable is a merge of the referencing variable and the
             referenced variable.
-        labels (Sequence[google.cloud.debugger_v2.types.Breakpoint.LabelsEntry]):
+        labels (Mapping[str, str]):
             A set of custom breakpoint properties,
             populated by the agent, to be displayed to the
             user.
@@ -579,7 +579,7 @@ class Debuggee(proto.Message):
             References to the locations and revisions of
             the source code used in the deployed
             application.
-        labels (Sequence[google.cloud.debugger_v2.types.Debuggee.LabelsEntry]):
+        labels (Mapping[str, str]):
             A set of custom debuggee properties,
             populated by the agent, to be displayed to the
             user.
