@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import functools
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core.client_options import ClientOptions
@@ -240,7 +240,6 @@ class Controller2AsyncClient:
         format. Agents must handle ``debuggee_id`` value changing upon
         re-registration.
 
-
         .. code-block:: python
 
             from google.cloud import debugger_v2
@@ -340,7 +339,6 @@ class Controller2AsyncClient:
         breakpoints that are completed until the controller removes them
         from the active list to avoid setting those breakpoints again.
 
-
         .. code-block:: python
 
             from google.cloud import debugger_v2
@@ -406,8 +404,7 @@ class Controller2AsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=600.0,
             ),
@@ -445,7 +442,6 @@ class Controller2AsyncClient:
         should not alter the breakpoint semantics. These may only make
         changes such as canonicalizing a value or snapping the location
         to the correct line of code.
-
 
         .. code-block:: python
 
@@ -526,8 +522,7 @@ class Controller2AsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=600.0,
             ),
