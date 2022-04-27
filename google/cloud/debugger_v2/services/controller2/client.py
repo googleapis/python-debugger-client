@@ -609,6 +609,14 @@ class Controller2Client(metaclass=Controller2ClientMeta):
         # and friendly error handling.
         rpc = self._transport._wrapped_methods[self._transport.list_active_breakpoints]
 
+        # Certain fields should be provided within the metadata header;
+        # add these here.
+        metadata = tuple(metadata) + (
+            gapic_v1.routing_header.to_grpc_metadata(
+                (("debuggee_id", request.debuggee_id),)
+            ),
+        )
+
         # Send the request.
         response = rpc(
             request,
@@ -717,6 +725,17 @@ class Controller2Client(metaclass=Controller2ClientMeta):
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
         rpc = self._transport._wrapped_methods[self._transport.update_active_breakpoint]
+
+        # Certain fields should be provided within the metadata header;
+        # add these here.
+        metadata = tuple(metadata) + (
+            gapic_v1.routing_header.to_grpc_metadata(
+                (
+                    ("debuggee_id", request.debuggee_id),
+                    ("breakpoint.id", request.breakpoint.id),
+                )
+            ),
+        )
 
         # Send the request.
         response = rpc(

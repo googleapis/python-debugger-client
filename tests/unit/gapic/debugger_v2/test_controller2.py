@@ -903,6 +903,71 @@ async def test_list_active_breakpoints_async_from_dict():
     await test_list_active_breakpoints_async(request_type=dict)
 
 
+def test_list_active_breakpoints_field_headers():
+    client = Controller2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
+
+    # Any value that is part of the HTTP/1.1 URI should be sent as
+    # a field header. Set these to a non-empty value.
+    request = controller.ListActiveBreakpointsRequest()
+
+    request.debuggee_id = "debuggee_id_value"
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.list_active_breakpoints), "__call__"
+    ) as call:
+        call.return_value = controller.ListActiveBreakpointsResponse()
+        client.list_active_breakpoints(request)
+
+        # Establish that the underlying gRPC stub method was called.
+        assert len(call.mock_calls) == 1
+        _, args, _ = call.mock_calls[0]
+        assert args[0] == request
+
+    # Establish that the field header was sent.
+    _, _, kw = call.mock_calls[0]
+    assert (
+        "x-goog-request-params",
+        "debuggee_id=debuggee_id_value",
+    ) in kw["metadata"]
+
+
+@pytest.mark.asyncio
+async def test_list_active_breakpoints_field_headers_async():
+    client = Controller2AsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
+
+    # Any value that is part of the HTTP/1.1 URI should be sent as
+    # a field header. Set these to a non-empty value.
+    request = controller.ListActiveBreakpointsRequest()
+
+    request.debuggee_id = "debuggee_id_value"
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.list_active_breakpoints), "__call__"
+    ) as call:
+        call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
+            controller.ListActiveBreakpointsResponse()
+        )
+        await client.list_active_breakpoints(request)
+
+        # Establish that the underlying gRPC stub method was called.
+        assert len(call.mock_calls)
+        _, args, _ = call.mock_calls[0]
+        assert args[0] == request
+
+    # Establish that the field header was sent.
+    _, _, kw = call.mock_calls[0]
+    assert (
+        "x-goog-request-params",
+        "debuggee_id=debuggee_id_value",
+    ) in kw["metadata"]
+
+
 def test_list_active_breakpoints_flattened():
     client = Controller2Client(
         credentials=ga_credentials.AnonymousCredentials(),
@@ -1077,6 +1142,73 @@ async def test_update_active_breakpoint_async(
 @pytest.mark.asyncio
 async def test_update_active_breakpoint_async_from_dict():
     await test_update_active_breakpoint_async(request_type=dict)
+
+
+def test_update_active_breakpoint_field_headers():
+    client = Controller2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
+
+    # Any value that is part of the HTTP/1.1 URI should be sent as
+    # a field header. Set these to a non-empty value.
+    request = controller.UpdateActiveBreakpointRequest()
+
+    request.debuggee_id = "debuggee_id_value"
+    request.breakpoint.id = "id_value"
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.update_active_breakpoint), "__call__"
+    ) as call:
+        call.return_value = controller.UpdateActiveBreakpointResponse()
+        client.update_active_breakpoint(request)
+
+        # Establish that the underlying gRPC stub method was called.
+        assert len(call.mock_calls) == 1
+        _, args, _ = call.mock_calls[0]
+        assert args[0] == request
+
+    # Establish that the field header was sent.
+    _, _, kw = call.mock_calls[0]
+    assert (
+        "x-goog-request-params",
+        "debuggee_id=debuggee_id_value&breakpoint.id=id_value",
+    ) in kw["metadata"]
+
+
+@pytest.mark.asyncio
+async def test_update_active_breakpoint_field_headers_async():
+    client = Controller2AsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
+
+    # Any value that is part of the HTTP/1.1 URI should be sent as
+    # a field header. Set these to a non-empty value.
+    request = controller.UpdateActiveBreakpointRequest()
+
+    request.debuggee_id = "debuggee_id_value"
+    request.breakpoint.id = "id_value"
+
+    # Mock the actual call within the gRPC stub, and fake the request.
+    with mock.patch.object(
+        type(client.transport.update_active_breakpoint), "__call__"
+    ) as call:
+        call.return_value = grpc_helpers_async.FakeUnaryUnaryCall(
+            controller.UpdateActiveBreakpointResponse()
+        )
+        await client.update_active_breakpoint(request)
+
+        # Establish that the underlying gRPC stub method was called.
+        assert len(call.mock_calls)
+        _, args, _ = call.mock_calls[0]
+        assert args[0] == request
+
+    # Establish that the field header was sent.
+    _, _, kw = call.mock_calls[0]
+    assert (
+        "x-goog-request-params",
+        "debuggee_id=debuggee_id_value&breakpoint.id=id_value",
+    ) in kw["metadata"]
 
 
 def test_update_active_breakpoint_flattened():
