@@ -1154,7 +1154,7 @@ def test_update_active_breakpoint_field_headers():
     request = controller.UpdateActiveBreakpointRequest()
 
     request.debuggee_id = "debuggee_id_value"
-    request.breakpoint.id = "id_value"
+    request.breakpoint_.id = "id_value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -1187,7 +1187,7 @@ async def test_update_active_breakpoint_field_headers_async():
     request = controller.UpdateActiveBreakpointRequest()
 
     request.debuggee_id = "debuggee_id_value"
-    request.breakpoint.id = "id_value"
+    request.breakpoint_.id = "id_value"
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(

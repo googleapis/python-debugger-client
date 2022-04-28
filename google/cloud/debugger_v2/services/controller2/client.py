@@ -732,7 +732,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
             gapic_v1.routing_header.to_grpc_metadata(
                 (
                     ("debuggee_id", request.debuggee_id),
-                    ("breakpoint.id", request.breakpoint.id),
+                    ("breakpoint.id", request.breakpoint_.id),
                 )
             ),
         )
