@@ -51,6 +51,15 @@ for library in s.get_staging_dirs(default_version):
         "google.cloud.source_context_v1.types.source_context_pb2"
     )
 
+    s.replace(
+        [
+            library / f"google/cloud/debugger_{library.name}/services/**/*client.py",
+            library / f"tests/unit/gapic/debugger_{library.name}/test_controller2.py",
+        ],
+        "request\.breakpoint\.",
+        "request.breakpoint_."
+    )
+
     s.move(library, excludes=["setup.py", "README.rst", "docs/index.rst"])
 
 s.remove_staging_dirs()

@@ -224,9 +224,9 @@ class Debugger2AsyncClient:
 
             from google.cloud import debugger_v2
 
-            def sample_set_breakpoint():
+            async def sample_set_breakpoint():
                 # Create a client
-                client = debugger_v2.Debugger2Client()
+                client = debugger_v2.Debugger2AsyncClient()
 
                 # Initialize request argument(s)
                 request = debugger_v2.SetBreakpointRequest(
@@ -235,7 +235,7 @@ class Debugger2AsyncClient:
                 )
 
                 # Make the request
-                response = client.set_breakpoint(request=request)
+                response = await client.set_breakpoint(request=request)
 
                 # Handle the response
                 print(response)
@@ -304,6 +304,14 @@ class Debugger2AsyncClient:
             client_info=DEFAULT_CLIENT_INFO,
         )
 
+        # Certain fields should be provided within the metadata header;
+        # add these here.
+        metadata = tuple(metadata) + (
+            gapic_v1.routing_header.to_grpc_metadata(
+                (("debuggee_id", request.debuggee_id),)
+            ),
+        )
+
         # Send the request.
         response = await rpc(
             request,
@@ -332,9 +340,9 @@ class Debugger2AsyncClient:
 
             from google.cloud import debugger_v2
 
-            def sample_get_breakpoint():
+            async def sample_get_breakpoint():
                 # Create a client
-                client = debugger_v2.Debugger2Client()
+                client = debugger_v2.Debugger2AsyncClient()
 
                 # Initialize request argument(s)
                 request = debugger_v2.GetBreakpointRequest(
@@ -344,7 +352,7 @@ class Debugger2AsyncClient:
                 )
 
                 # Make the request
-                response = client.get_breakpoint(request=request)
+                response = await client.get_breakpoint(request=request)
 
                 # Handle the response
                 print(response)
@@ -426,6 +434,17 @@ class Debugger2AsyncClient:
             client_info=DEFAULT_CLIENT_INFO,
         )
 
+        # Certain fields should be provided within the metadata header;
+        # add these here.
+        metadata = tuple(metadata) + (
+            gapic_v1.routing_header.to_grpc_metadata(
+                (
+                    ("debuggee_id", request.debuggee_id),
+                    ("breakpoint_id", request.breakpoint_id),
+                )
+            ),
+        )
+
         # Send the request.
         response = await rpc(
             request,
@@ -454,9 +473,9 @@ class Debugger2AsyncClient:
 
             from google.cloud import debugger_v2
 
-            def sample_delete_breakpoint():
+            async def sample_delete_breakpoint():
                 # Create a client
-                client = debugger_v2.Debugger2Client()
+                client = debugger_v2.Debugger2AsyncClient()
 
                 # Initialize request argument(s)
                 request = debugger_v2.DeleteBreakpointRequest(
@@ -466,7 +485,7 @@ class Debugger2AsyncClient:
                 )
 
                 # Make the request
-                client.delete_breakpoint(request=request)
+                await client.delete_breakpoint(request=request)
 
         Args:
             request (Union[google.cloud.debugger_v2.types.DeleteBreakpointRequest, dict]):
@@ -538,6 +557,17 @@ class Debugger2AsyncClient:
             client_info=DEFAULT_CLIENT_INFO,
         )
 
+        # Certain fields should be provided within the metadata header;
+        # add these here.
+        metadata = tuple(metadata) + (
+            gapic_v1.routing_header.to_grpc_metadata(
+                (
+                    ("debuggee_id", request.debuggee_id),
+                    ("breakpoint_id", request.breakpoint_id),
+                )
+            ),
+        )
+
         # Send the request.
         await rpc(
             request,
@@ -562,9 +592,9 @@ class Debugger2AsyncClient:
 
             from google.cloud import debugger_v2
 
-            def sample_list_breakpoints():
+            async def sample_list_breakpoints():
                 # Create a client
-                client = debugger_v2.Debugger2Client()
+                client = debugger_v2.Debugger2AsyncClient()
 
                 # Initialize request argument(s)
                 request = debugger_v2.ListBreakpointsRequest(
@@ -573,7 +603,7 @@ class Debugger2AsyncClient:
                 )
 
                 # Make the request
-                response = client.list_breakpoints(request=request)
+                response = await client.list_breakpoints(request=request)
 
                 # Handle the response
                 print(response)
@@ -643,6 +673,14 @@ class Debugger2AsyncClient:
             client_info=DEFAULT_CLIENT_INFO,
         )
 
+        # Certain fields should be provided within the metadata header;
+        # add these here.
+        metadata = tuple(metadata) + (
+            gapic_v1.routing_header.to_grpc_metadata(
+                (("debuggee_id", request.debuggee_id),)
+            ),
+        )
+
         # Send the request.
         response = await rpc(
             request,
@@ -670,9 +708,9 @@ class Debugger2AsyncClient:
 
             from google.cloud import debugger_v2
 
-            def sample_list_debuggees():
+            async def sample_list_debuggees():
                 # Create a client
-                client = debugger_v2.Debugger2Client()
+                client = debugger_v2.Debugger2AsyncClient()
 
                 # Initialize request argument(s)
                 request = debugger_v2.ListDebuggeesRequest(
@@ -681,7 +719,7 @@ class Debugger2AsyncClient:
                 )
 
                 # Make the request
-                response = client.list_debuggees(request=request)
+                response = await client.list_debuggees(request=request)
 
                 # Handle the response
                 print(response)
