@@ -1,6 +1,6 @@
 # Changelog
 
-### [1.3.1](https://github.com/googleapis/python-debugger-client/compare/v1.3.0...v1.3.1) (2022-03-05)
+## [1.3.1](https://github.com/googleapis/python-debugger-client/compare/v1.3.0...v1.3.1) (2022-03-05)
 
 
 ### Bug Fixes
@@ -19,7 +19,7 @@
 
 * resolve DuplicateCredentialArgs error when using credentials_file ([a4fe64d](https://github.com/googleapis/python-debugger-client/commit/a4fe64ddb07ff580ec7ba64fe02629678117a1bf))
 
-### [1.2.1](https://www.github.com/googleapis/python-debugger-client/compare/v1.2.0...v1.2.1) (2021-11-01)
+## [1.2.1](https://www.github.com/googleapis/python-debugger-client/compare/v1.2.0...v1.2.1) (2021-11-01)
 
 
 ### Bug Fixes
@@ -46,14 +46,14 @@
 
 * add context manager support in client ([#38](https://www.github.com/googleapis/python-debugger-client/issues/38)) ([d8ef19f](https://www.github.com/googleapis/python-debugger-client/commit/d8ef19fdee913a1b8988fd54938bf2b8f4b11233))
 
-### [1.0.2](https://www.github.com/googleapis/python-debugger-client/compare/v1.0.1...v1.0.2) (2021-10-07)
+## [1.0.2](https://www.github.com/googleapis/python-debugger-client/compare/v1.0.1...v1.0.2) (2021-10-07)
 
 
 ### Bug Fixes
 
 * **deps:** require google-cloud-source-context 1.0.0 ([#35](https://www.github.com/googleapis/python-debugger-client/issues/35)) ([1db551b](https://www.github.com/googleapis/python-debugger-client/commit/1db551b8a06f85377052f0408a59e012677f94ff))
 
-### [1.0.1](https://www.github.com/googleapis/python-debugger-client/compare/v1.0.0...v1.0.1) (2021-09-24)
+## [1.0.1](https://www.github.com/googleapis/python-debugger-client/compare/v1.0.0...v1.0.1) (2021-09-24)
 
 
 ### Bug Fixes
@@ -67,7 +67,7 @@
 
 * bump release level to production/stable ([#18](https://www.github.com/googleapis/python-debugger-client/issues/18)) ([2eb231c](https://www.github.com/googleapis/python-debugger-client/commit/2eb231ca3913485e2d33d7ca1c5aa0a7c69c6872))
 
-### [0.1.3](https://www.github.com/googleapis/python-debugger-client/compare/v0.1.2...v0.1.3) (2021-07-29)
+## [0.1.3](https://www.github.com/googleapis/python-debugger-client/compare/v0.1.2...v0.1.3) (2021-07-29)
 
 
 ### Bug Fixes
@@ -84,14 +84,14 @@
 
 * release as 0.1.3 ([#15](https://www.github.com/googleapis/python-debugger-client/issues/15)) ([bdc4b8f](https://www.github.com/googleapis/python-debugger-client/commit/bdc4b8f52863c4993dcc8648e0fa50ba1654e3ff))
 
-### [0.1.2](https://www.github.com/googleapis/python-debugger-client/compare/v0.1.1...v0.1.2) (2021-07-21)
+## [0.1.2](https://www.github.com/googleapis/python-debugger-client/compare/v0.1.1...v0.1.2) (2021-07-21)
 
 
 ### Bug Fixes
 
 * **deps:** pin 'google-{api,cloud}-core', 'google-auth' to allow 2.x versions ([#9](https://www.github.com/googleapis/python-debugger-client/issues/9)) ([e465487](https://www.github.com/googleapis/python-debugger-client/commit/e465487f8c682efdacaf977085d3143af2d146da))
 
-### [0.1.1](https://www.github.com/googleapis/python-debugger-client/compare/v0.1.0...v0.1.1) (2021-07-14)
+## [0.1.1](https://www.github.com/googleapis/python-debugger-client/compare/v0.1.0...v0.1.1) (2021-07-14)
 
 
 ### Bug Fixes
