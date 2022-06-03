@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.2](https://github.com/googleapis/python-debugger-client/compare/v1.3.1...v1.3.2) (2022-06-03)
+
+
+### Bug Fixes
+
+* **deps:** require protobuf <4.0.0dev ([#100](https://github.com/googleapis/python-debugger-client/issues/100)) ([2a37072](https://github.com/googleapis/python-debugger-client/commit/2a37072151041db69d2c71fd31a9e5bfa5256218))
+
+
+### Documentation
+
+* fix changelog header to consistent size ([#101](https://github.com/googleapis/python-debugger-client/issues/101)) ([835df83](https://github.com/googleapis/python-debugger-client/commit/835df83d50beeb0ab452264f2ebb7cc8657b8c0a))
+
 ## [1.3.1](https://github.com/googleapis/python-debugger-client/compare/v1.3.0...v1.3.1) (2022-03-05)
 
 
