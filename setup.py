@@ -21,7 +21,7 @@ import setuptools
 
 name = "google-cloud-debugger-client"
 description = "Cloud Debugger API client library"
-version = "0.1.4"
+version = "0.1.5"
 release_status = "Development Status :: 4 - Beta"
 url = "https://github.com/googleapis/python-debugger-client"
 dependencies = [
