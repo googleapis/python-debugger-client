@@ -1,24 +1,22 @@
-Python Client for Google Cloud Debugger API
-===========================================
+Python Client for Cloud Debugger API
+====================================
 
-|ga| |pypi| |versions|
+|stable| |pypi| |versions|
 
-`Cloud Debugger`_: is a feature of Google Cloud Platform that lets you inspect the state of an application, 
-at any code location, without stopping or slowing down the running app. Cloud Debugger makes it easier to 
-view the application state without adding logging statements.
+`Cloud Debugger API`_: 
 
 - `Client Library Documentation`_
 - `Product Documentation`_
 
-.. |ga| image:: https://img.shields.io/badge/support-ga-gold.svg
-   :target: https://github.com/googleapis/google-cloud-python/blob/main/README.rst#ga-support
+.. |stable| image:: https://img.shields.io/badge/support-stable-gold.svg
+   :target: https://github.com/googleapis/google-cloud-python/blob/main/README.rst#stability-levels
 .. |pypi| image:: https://img.shields.io/pypi/v/google-cloud-debugger-client.svg
    :target: https://pypi.org/project/google-cloud-debugger-client/
 .. |versions| image:: https://img.shields.io/pypi/pyversions/google-cloud-debugger-client.svg
    :target: https://pypi.org/project/google-cloud-debugger-client/
-.. _Cloud Debugger: https://cloud.google.com/debugger/docs
+.. _Cloud Debugger API: cloud.google.com/debugger
 .. _Client Library Documentation: https://cloud.google.com/python/docs/reference/clouddebugger/latest
-.. _Product Documentation:  https://cloud.google.com/debugger/docs
+.. _Product Documentation:  cloud.google.com/debugger
 
 Quick Start
 -----------
@@ -32,7 +30,7 @@ In order to use this library, you first need to go through the following steps:
 
 .. _Select or create a Cloud Platform project.: https://console.cloud.google.com/project
 .. _Enable billing for your project.: https://cloud.google.com/billing/docs/how-to/modify-project#enable_billing_for_a_project
-.. _Enable the Cloud Debugger API.:  https://cloud.google.com/debugger/docs/setup/python#verifying_the_api_is_enabled
+.. _Enable the Cloud Debugger API.:  cloud.google.com/debugger
 .. _Setup Authentication.: https://googleapis.dev/python/google-api-core/latest/auth.html
 
 Installation
@@ -47,6 +45,27 @@ install permissions, and without clashing with the installed system
 dependencies.
 
 .. _`virtualenv`: https://virtualenv.pypa.io/en/latest/
+
+
+Code samples and snippets
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Code samples and snippets live in the `samples/` folder.
+
+
+Supported Python Versions
+^^^^^^^^^^^^^^^^^^^^^^^^^
+Our client libraries are compatible with all current [active](https://devguide.python.org/devcycle/#in-development-main-branch) and [maintenance](https://devguide.python.org/devcycle/#maintenance-branches) versions of
+Python.
+
+Python >= 3.7
+
+Unsupported Python Versions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Python <= 3.6
+
+If you are using an [end-of-life](https://devguide.python.org/devcycle/#end-of-life-branches)
+version of Python, we recommend that you update as soon as possible to an actively supported version.
 
 
 Mac/Linux
@@ -73,12 +92,12 @@ Windows
 Next Steps
 ~~~~~~~~~~
 
--  Read the `Client Library Documentation`_ for Cloud Debugger
+-  Read the `Client Library Documentation`_ for Cloud Debugger API
    to see other available methods on the client.
--  Read the `Cloud Debugger Product documentation`_ to learn
+-  Read the `Cloud Debugger API Product documentation`_ to learn
    more about the product and see How-to Guides.
 -  View this `README`_ to see the full list of Cloud
    APIs that we cover.
 
-.. _Cloud Debugger Product documentation:  https://cloud.google.com/debugger/docs
+.. _Cloud Debugger API Product documentation:  cloud.google.com/debugger
 .. _README: https://github.com/googleapis/google-cloud-python/blob/main/README.rst
