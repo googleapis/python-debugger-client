@@ -1577,7 +1577,6 @@ def test_controller2_transport_auth_adc(transport_class):
     [
         transports.Controller2GrpcTransport,
         transports.Controller2GrpcAsyncIOTransport,
-        transports.Controller2RestTransport,
     ],
 )
 def test_controller2_transport_auth_gdch_credentials(transport_class):

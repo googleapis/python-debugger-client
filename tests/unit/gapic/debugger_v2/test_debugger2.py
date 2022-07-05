@@ -2062,7 +2062,6 @@ def test_debugger2_transport_auth_adc(transport_class):
     [
         transports.Debugger2GrpcTransport,
         transports.Debugger2GrpcAsyncIOTransport,
-        transports.Debugger2RestTransport,
     ],
 )
 def test_debugger2_transport_auth_gdch_credentials(transport_class):
