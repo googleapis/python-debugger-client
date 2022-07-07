@@ -3,7 +3,7 @@ Python Client for Cloud Debugger API
 
 |stable| |pypi| |versions|
 
-`Cloud Debugger API`_: 
+`Cloud Debugger API`_: is a feature of Google Cloud Platform that lets you inspect the state of an application, at any code location, without stopping or slowing down the running app. Cloud Debugger makes it easier to view the application state without adding logging statements.
 
 - `Client Library Documentation`_
 - `Product Documentation`_
