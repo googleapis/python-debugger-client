@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.4.0](https://github.com/googleapis/python-debugger-client/compare/v1.3.2...v1.4.0) (2022-07-15)
+
+
+### Features
+
+* add audience parameter ([8f2963d](https://github.com/googleapis/python-debugger-client/commit/8f2963d5dcaffec289b4653eafd29aa7915ae16f))
+
+
+### Bug Fixes
+
+* **deps:** require google-api-core>=1.32.0,>=2.8.0 ([#110](https://github.com/googleapis/python-debugger-client/issues/110)) ([8f2963d](https://github.com/googleapis/python-debugger-client/commit/8f2963d5dcaffec289b4653eafd29aa7915ae16f))
+* require python 3.7+ ([#112](https://github.com/googleapis/python-debugger-client/issues/112)) ([0265d05](https://github.com/googleapis/python-debugger-client/commit/0265d053c9ec5c82e139268388560213e2f32985))
+
 ## [1.3.2](https://github.com/googleapis/python-debugger-client/compare/v1.3.1...v1.3.2) (2022-06-03)
 
 
