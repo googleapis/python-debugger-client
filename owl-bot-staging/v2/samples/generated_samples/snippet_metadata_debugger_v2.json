@@ -1,0 +1,1368 @@
+{
+  "clientLibrary": {
+    "apis": [
+      {
+        "id": "google.devtools.clouddebugger.v2",
+        "version": "v2"
+      }
+    ],
+    "language": "PYTHON",
+    "name": "google-cloud-debugger-client"
+  },
+  "snippets": [
+    {
+      "canonical": true,
+      "clientMethod": {
+        "async": true,
+        "client": {
+          "fullName": "google.cloud.debugger_v2.Controller2AsyncClient",
+          "shortName": "Controller2AsyncClient"
+        },
+        "fullName": "google.cloud.debugger_v2.Controller2AsyncClient.list_active_breakpoints",
+        "method": {
+          "fullName": "google.devtools.clouddebugger.v2.Controller2.ListActiveBreakpoints",
+          "service": {
+            "fullName": "google.devtools.clouddebugger.v2.Controller2",
+            "shortName": "Controller2"
+          },
+          "shortName": "ListActiveBreakpoints"
+        },
+        "parameters": [
+          {
+            "name": "request",
+            "type": "google.cloud.debugger_v2.types.ListActiveBreakpointsRequest"
+          },
+          {
+            "name": "debuggee_id",
+            "type": "str"
+          },
+          {
+            "name": "retry",
+            "type": "google.api_core.retry.Retry"
+          },
+          {
+            "name": "timeout",
+            "type": "float"
+          },
+          {
+            "name": "metadata",
+            "type": "Sequence[Tuple[str, str]"
+          }
+        ],
+        "resultType": "google.cloud.debugger_v2.types.ListActiveBreakpointsResponse",
+        "shortName": "list_active_breakpoints"
+      },
+      "description": "Sample for ListActiveBreakpoints",
+      "file": "clouddebugger_v2_generated_controller2_list_active_breakpoints_async.py",
+      "language": "PYTHON",
+      "origin": "API_DEFINITION",
+      "regionTag": "clouddebugger_v2_generated_Controller2_ListActiveBreakpoints_async",
+      "segments": [
+        {
+          "end": 51,
+          "start": 27,
+          "type": "FULL"
+        },
+        {
+          "end": 51,
+          "start": 27,
+          "type": "SHORT"
+        },
+        {
+          "end": 40,
+          "start": 38,
+          "type": "CLIENT_INITIALIZATION"
+        },
+        {
+          "end": 45,
+          "start": 41,
+          "type": "REQUEST_INITIALIZATION"
+        },
+        {
+          "end": 48,
+          "start": 46,
+          "type": "REQUEST_EXECUTION"
+        },
+        {
+          "end": 52,
+          "start": 49,
+          "type": "RESPONSE_HANDLING"
+        }
+      ],
+      "title": "clouddebugger_v2_generated_controller2_list_active_breakpoints_async.py"
+    },
+    {
+      "canonical": true,
+      "clientMethod": {
+        "client": {
+          "fullName": "google.cloud.debugger_v2.Controller2Client",
+          "shortName": "Controller2Client"
+        },
+        "fullName": "google.cloud.debugger_v2.Controller2Client.list_active_breakpoints",
+        "method": {
+          "fullName": "google.devtools.clouddebugger.v2.Controller2.ListActiveBreakpoints",
+          "service": {
+            "fullName": "google.devtools.clouddebugger.v2.Controller2",
+            "shortName": "Controller2"
+          },
+          "shortName": "ListActiveBreakpoints"
+        },
+        "parameters": [
+          {
+            "name": "request",
+            "type": "google.cloud.debugger_v2.types.ListActiveBreakpointsRequest"
+          },
+          {
+            "name": "debuggee_id",
+            "type": "str"
+          },
+          {
+            "name": "retry",
+            "type": "google.api_core.retry.Retry"
+          },
+          {
+            "name": "timeout",
+            "type": "float"
+          },
+          {
+            "name": "metadata",
+            "type": "Sequence[Tuple[str, str]"
+          }
+        ],
+        "resultType": "google.cloud.debugger_v2.types.ListActiveBreakpointsResponse",
+        "shortName": "list_active_breakpoints"
+      },
+      "description": "Sample for ListActiveBreakpoints",
+      "file": "clouddebugger_v2_generated_controller2_list_active_breakpoints_sync.py",
+      "language": "PYTHON",
+      "origin": "API_DEFINITION",
+      "regionTag": "clouddebugger_v2_generated_Controller2_ListActiveBreakpoints_sync",
+      "segments": [
+        {
+          "end": 51,
+          "start": 27,
+          "type": "FULL"
+        },
+        {
+          "end": 51,
+          "start": 27,
+          "type": "SHORT"
+        },
+        {
+          "end": 40,
+          "start": 38,
+          "type": "CLIENT_INITIALIZATION"
+        },
+        {
+          "end": 45,
+          "start": 41,
+          "type": "REQUEST_INITIALIZATION"
+        },
+        {
+          "end": 48,
+          "start": 46,
+          "type": "REQUEST_EXECUTION"
+        },
+        {
+          "end": 52,
+          "start": 49,
+          "type": "RESPONSE_HANDLING"
+        }
+      ],
+      "title": "clouddebugger_v2_generated_controller2_list_active_breakpoints_sync.py"
+    },
+    {
+      "canonical": true,
+      "clientMethod": {
+        "async": true,
+        "client": {
+          "fullName": "google.cloud.debugger_v2.Controller2AsyncClient",
+          "shortName": "Controller2AsyncClient"
+        },
+        "fullName": "google.cloud.debugger_v2.Controller2AsyncClient.register_debuggee",
+        "method": {
+          "fullName": "google.devtools.clouddebugger.v2.Controller2.RegisterDebuggee",
+          "service": {
+            "fullName": "google.devtools.clouddebugger.v2.Controller2",
+            "shortName": "Controller2"
+          },
+          "shortName": "RegisterDebuggee"
+        },
+        "parameters": [
+          {
+            "name": "request",
+            "type": "google.cloud.debugger_v2.types.RegisterDebuggeeRequest"
+          },
+          {
+            "name": "debuggee",
+            "type": "google.cloud.debugger_v2.types.Debuggee"
+          },
+          {
+            "name": "retry",
+            "type": "google.api_core.retry.Retry"
+          },
+          {
+            "name": "timeout",
+            "type": "float"
+          },
+          {
+            "name": "metadata",
+            "type": "Sequence[Tuple[str, str]"
+          }
+        ],
+        "resultType": "google.cloud.debugger_v2.types.RegisterDebuggeeResponse",
+        "shortName": "register_debuggee"
+      },
+      "description": "Sample for RegisterDebuggee",
+      "file": "clouddebugger_v2_generated_controller2_register_debuggee_async.py",
+      "language": "PYTHON",
+      "origin": "API_DEFINITION",
+      "regionTag": "clouddebugger_v2_generated_Controller2_RegisterDebuggee_async",
+      "segments": [
+        {
+          "end": 50,
+          "start": 27,
+          "type": "FULL"
+        },
+        {
+          "end": 50,
+          "start": 27,
+          "type": "SHORT"
+        },
+        {
+          "end": 40,
+          "start": 38,
+          "type": "CLIENT_INITIALIZATION"
+        },
+        {
+          "end": 44,
+          "start": 41,
+          "type": "REQUEST_INITIALIZATION"
+        },
+        {
+          "end": 47,
+          "start": 45,
+          "type": "REQUEST_EXECUTION"
+        },
+        {
+          "end": 51,
+          "start": 48,
+          "type": "RESPONSE_HANDLING"
+        }
+      ],
+      "title": "clouddebugger_v2_generated_controller2_register_debuggee_async.py"
+    },
+    {
+      "canonical": true,
+      "clientMethod": {
+        "client": {
+          "fullName": "google.cloud.debugger_v2.Controller2Client",
+          "shortName": "Controller2Client"
+        },
+        "fullName": "google.cloud.debugger_v2.Controller2Client.register_debuggee",
+        "method": {
+          "fullName": "google.devtools.clouddebugger.v2.Controller2.RegisterDebuggee",
+          "service": {
+            "fullName": "google.devtools.clouddebugger.v2.Controller2",
+            "shortName": "Controller2"
+          },
+          "shortName": "RegisterDebuggee"
+        },
+        "parameters": [
+          {
+            "name": "request",
+            "type": "google.cloud.debugger_v2.types.RegisterDebuggeeRequest"
+          },
+          {
+            "name": "debuggee",
+            "type": "google.cloud.debugger_v2.types.Debuggee"
+          },
+          {
+            "name": "retry",
+            "type": "google.api_core.retry.Retry"
+          },
+          {
+            "name": "timeout",
+            "type": "float"
+          },
+          {
+            "name": "metadata",
+            "type": "Sequence[Tuple[str, str]"
+          }
+        ],
+        "resultType": "google.cloud.debugger_v2.types.RegisterDebuggeeResponse",
+        "shortName": "register_debuggee"
+      },
+      "description": "Sample for RegisterDebuggee",
+      "file": "clouddebugger_v2_generated_controller2_register_debuggee_sync.py",
+      "language": "PYTHON",
+      "origin": "API_DEFINITION",
+      "regionTag": "clouddebugger_v2_generated_Controller2_RegisterDebuggee_sync",
+      "segments": [
+        {
+          "end": 50,
+          "start": 27,
+          "type": "FULL"
+        },
+        {
+          "end": 50,
+          "start": 27,
+          "type": "SHORT"
+        },
+        {
+          "end": 40,
+          "start": 38,
+          "type": "CLIENT_INITIALIZATION"
+        },
+        {
+          "end": 44,
+          "start": 41,
+          "type": "REQUEST_INITIALIZATION"
+        },
+        {
+          "end": 47,
+          "start": 45,
+          "type": "REQUEST_EXECUTION"
+        },
+        {
+          "end": 51,
+          "start": 48,
+          "type": "RESPONSE_HANDLING"
+        }
+      ],
+      "title": "clouddebugger_v2_generated_controller2_register_debuggee_sync.py"
+    },
+    {
+      "canonical": true,
+      "clientMethod": {
+        "async": true,
+        "client": {
+          "fullName": "google.cloud.debugger_v2.Controller2AsyncClient",
+          "shortName": "Controller2AsyncClient"
+        },
+        "fullName": "google.cloud.debugger_v2.Controller2AsyncClient.update_active_breakpoint",
+        "method": {
+          "fullName": "google.devtools.clouddebugger.v2.Controller2.UpdateActiveBreakpoint",
+          "service": {
+            "fullName": "google.devtools.clouddebugger.v2.Controller2",
+            "shortName": "Controller2"
+          },
+          "shortName": "UpdateActiveBreakpoint"
+        },
+        "parameters": [
+          {
+            "name": "request",
+            "type": "google.cloud.debugger_v2.types.UpdateActiveBreakpointRequest"
+          },
+          {
+            "name": "debuggee_id",
+            "type": "str"
+          },
+          {
+            "name": "breakpoint_",
+            "type": "google.cloud.debugger_v2.types.Breakpoint"
+          },
+          {
+            "name": "retry",
+            "type": "google.api_core.retry.Retry"
+          },
+          {
+            "name": "timeout",
+            "type": "float"
+          },
+          {
+            "name": "metadata",
+            "type": "Sequence[Tuple[str, str]"
+          }
+        ],
+        "resultType": "google.cloud.debugger_v2.types.UpdateActiveBreakpointResponse",
+        "shortName": "update_active_breakpoint"
+      },
+      "description": "Sample for UpdateActiveBreakpoint",
+      "file": "clouddebugger_v2_generated_controller2_update_active_breakpoint_async.py",
+      "language": "PYTHON",
+      "origin": "API_DEFINITION",
+      "regionTag": "clouddebugger_v2_generated_Controller2_UpdateActiveBreakpoint_async",
+      "segments": [
+        {
+          "end": 51,
+          "start": 27,
+          "type": "FULL"
+        },
+        {
+          "end": 51,
+          "start": 27,
+          "type": "SHORT"
+        },
+        {
+          "end": 40,
+          "start": 38,
+          "type": "CLIENT_INITIALIZATION"
+        },
+        {
+          "end": 45,
+          "start": 41,
+          "type": "REQUEST_INITIALIZATION"
+        },
+        {
+          "end": 48,
+          "start": 46,
+          "type": "REQUEST_EXECUTION"
+        },
+        {
+          "end": 52,
+          "start": 49,
+          "type": "RESPONSE_HANDLING"
+        }
+      ],
+      "title": "clouddebugger_v2_generated_controller2_update_active_breakpoint_async.py"
+    },
+    {
+      "canonical": true,
+      "clientMethod": {
+        "client": {
+          "fullName": "google.cloud.debugger_v2.Controller2Client",
+          "shortName": "Controller2Client"
+        },
+        "fullName": "google.cloud.debugger_v2.Controller2Client.update_active_breakpoint",
+        "method": {
+          "fullName": "google.devtools.clouddebugger.v2.Controller2.UpdateActiveBreakpoint",
+          "service": {
+            "fullName": "google.devtools.clouddebugger.v2.Controller2",
+            "shortName": "Controller2"
+          },
+          "shortName": "UpdateActiveBreakpoint"
+        },
+        "parameters": [
+          {
+            "name": "request",
+            "type": "google.cloud.debugger_v2.types.UpdateActiveBreakpointRequest"
+          },
+          {
+            "name": "debuggee_id",
+            "type": "str"
+          },
+          {
+            "name": "breakpoint_",
+            "type": "google.cloud.debugger_v2.types.Breakpoint"
+          },
+          {
+            "name": "retry",
+            "type": "google.api_core.retry.Retry"
+          },
+          {
+            "name": "timeout",
+            "type": "float"
+          },
+          {
+            "name": "metadata",
+            "type": "Sequence[Tuple[str, str]"
+          }
+        ],
+        "resultType": "google.cloud.debugger_v2.types.UpdateActiveBreakpointResponse",
+        "shortName": "update_active_breakpoint"
+      },
+      "description": "Sample for UpdateActiveBreakpoint",
+      "file": "clouddebugger_v2_generated_controller2_update_active_breakpoint_sync.py",
+      "language": "PYTHON",
+      "origin": "API_DEFINITION",
+      "regionTag": "clouddebugger_v2_generated_Controller2_UpdateActiveBreakpoint_sync",
+      "segments": [
+        {
+          "end": 51,
+          "start": 27,
+          "type": "FULL"
+        },
+        {
+          "end": 51,
+          "start": 27,
+          "type": "SHORT"
+        },
+        {
+          "end": 40,
+          "start": 38,
+          "type": "CLIENT_INITIALIZATION"
+        },
+        {
+          "end": 45,
+          "start": 41,
+          "type": "REQUEST_INITIALIZATION"
+        },
+        {
+          "end": 48,
+          "start": 46,
+          "type": "REQUEST_EXECUTION"
+        },
+        {
+          "end": 52,
+          "start": 49,
+          "type": "RESPONSE_HANDLING"
+        }
+      ],
+      "title": "clouddebugger_v2_generated_controller2_update_active_breakpoint_sync.py"
+    },
+    {
+      "canonical": true,
+      "clientMethod": {
+        "async": true,
+        "client": {
+          "fullName": "google.cloud.debugger_v2.Debugger2AsyncClient",
+          "shortName": "Debugger2AsyncClient"
+        },
+        "fullName": "google.cloud.debugger_v2.Debugger2AsyncClient.delete_breakpoint",
+        "method": {
+          "fullName": "google.devtools.clouddebugger.v2.Debugger2.DeleteBreakpoint",
+          "service": {
+            "fullName": "google.devtools.clouddebugger.v2.Debugger2",
+            "shortName": "Debugger2"
+          },
+          "shortName": "DeleteBreakpoint"
+        },
+        "parameters": [
+          {
+            "name": "request",
+            "type": "google.cloud.debugger_v2.types.DeleteBreakpointRequest"
+          },
+          {
+            "name": "debuggee_id",
+            "type": "str"
+          },
+          {
+            "name": "breakpoint_id",
+            "type": "str"
+          },
+          {
+            "name": "client_version",
+            "type": "str"
+          },
+          {
+            "name": "retry",
+            "type": "google.api_core.retry.Retry"
+          },
+          {
+            "name": "timeout",
+            "type": "float"
+          },
+          {
+            "name": "metadata",
+            "type": "Sequence[Tuple[str, str]"
+          }
+        ],
+        "shortName": "delete_breakpoint"
+      },
+      "description": "Sample for DeleteBreakpoint",
+      "file": "clouddebugger_v2_generated_debugger2_delete_breakpoint_async.py",
+      "language": "PYTHON",
+      "origin": "API_DEFINITION",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_DeleteBreakpoint_async",
+      "segments": [
+        {
+          "end": 51,
+          "start": 27,
+          "type": "FULL"
+        },
+        {
+          "end": 51,
+          "start": 27,
+          "type": "SHORT"
+        },
+        {
+          "end": 40,
+          "start": 38,
+          "type": "CLIENT_INITIALIZATION"
+        },
+        {
+          "end": 47,
+          "start": 41,
+          "type": "REQUEST_INITIALIZATION"
+        },
+        {
+          "start": 48,
+          "type": "REQUEST_EXECUTION"
+        },
+        {
+          "end": 52,
+          "type": "RESPONSE_HANDLING"
+        }
+      ],
+      "title": "clouddebugger_v2_generated_debugger2_delete_breakpoint_async.py"
+    },
+    {
+      "canonical": true,
+      "clientMethod": {
+        "client": {
+          "fullName": "google.cloud.debugger_v2.Debugger2Client",
+          "shortName": "Debugger2Client"
+        },
+        "fullName": "google.cloud.debugger_v2.Debugger2Client.delete_breakpoint",
+        "method": {
+          "fullName": "google.devtools.clouddebugger.v2.Debugger2.DeleteBreakpoint",
+          "service": {
+            "fullName": "google.devtools.clouddebugger.v2.Debugger2",
+            "shortName": "Debugger2"
+          },
+          "shortName": "DeleteBreakpoint"
+        },
+        "parameters": [
+          {
+            "name": "request",
+            "type": "google.cloud.debugger_v2.types.DeleteBreakpointRequest"
+          },
+          {
+            "name": "debuggee_id",
+            "type": "str"
+          },
+          {
+            "name": "breakpoint_id",
+            "type": "str"
+          },
+          {
+            "name": "client_version",
+            "type": "str"
+          },
+          {
+            "name": "retry",
+            "type": "google.api_core.retry.Retry"
+          },
+          {
+            "name": "timeout",
+            "type": "float"
+          },
+          {
+            "name": "metadata",
+            "type": "Sequence[Tuple[str, str]"
+          }
+        ],
+        "shortName": "delete_breakpoint"
+      },
+      "description": "Sample for DeleteBreakpoint",
+      "file": "clouddebugger_v2_generated_debugger2_delete_breakpoint_sync.py",
+      "language": "PYTHON",
+      "origin": "API_DEFINITION",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_DeleteBreakpoint_sync",
+      "segments": [
+        {
+          "end": 51,
+          "start": 27,
+          "type": "FULL"
+        },
+        {
+          "end": 51,
+          "start": 27,
+          "type": "SHORT"
+        },
+        {
+          "end": 40,
+          "start": 38,
+          "type": "CLIENT_INITIALIZATION"
+        },
+        {
+          "end": 47,
+          "start": 41,
+          "type": "REQUEST_INITIALIZATION"
+        },
+        {
+          "start": 48,
+          "type": "REQUEST_EXECUTION"
+        },
+        {
+          "end": 52,
+          "type": "RESPONSE_HANDLING"
+        }
+      ],
+      "title": "clouddebugger_v2_generated_debugger2_delete_breakpoint_sync.py"
+    },
+    {
+      "canonical": true,
+      "clientMethod": {
+        "async": true,
+        "client": {
+          "fullName": "google.cloud.debugger_v2.Debugger2AsyncClient",
+          "shortName": "Debugger2AsyncClient"
+        },
+        "fullName": "google.cloud.debugger_v2.Debugger2AsyncClient.get_breakpoint",
+        "method": {
+          "fullName": "google.devtools.clouddebugger.v2.Debugger2.GetBreakpoint",
+          "service": {
+            "fullName": "google.devtools.clouddebugger.v2.Debugger2",
+            "shortName": "Debugger2"
+          },
+          "shortName": "GetBreakpoint"
+        },
+        "parameters": [
+          {
+            "name": "request",
+            "type": "google.cloud.debugger_v2.types.GetBreakpointRequest"
+          },
+          {
+            "name": "debuggee_id",
+            "type": "str"
+          },
+          {
+            "name": "breakpoint_id",
+            "type": "str"
+          },
+          {
+            "name": "client_version",
+            "type": "str"
+          },
+          {
+            "name": "retry",
+            "type": "google.api_core.retry.Retry"
+          },
+          {
+            "name": "timeout",
+            "type": "float"
+          },
+          {
+            "name": "metadata",
+            "type": "Sequence[Tuple[str, str]"
+          }
+        ],
+        "resultType": "google.cloud.debugger_v2.types.GetBreakpointResponse",
+        "shortName": "get_breakpoint"
+      },
+      "description": "Sample for GetBreakpoint",
+      "file": "clouddebugger_v2_generated_debugger2_get_breakpoint_async.py",
+      "language": "PYTHON",
+      "origin": "API_DEFINITION",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_GetBreakpoint_async",
+      "segments": [
+        {
+          "end": 53,
+          "start": 27,
+          "type": "FULL"
+        },
+        {
+          "end": 53,
+          "start": 27,
+          "type": "SHORT"
+        },
+        {
+          "end": 40,
+          "start": 38,
+          "type": "CLIENT_INITIALIZATION"
+        },
+        {
+          "end": 47,
+          "start": 41,
+          "type": "REQUEST_INITIALIZATION"
+        },
+        {
+          "end": 50,
+          "start": 48,
+          "type": "REQUEST_EXECUTION"
+        },
+        {
+          "end": 54,
+          "start": 51,
+          "type": "RESPONSE_HANDLING"
+        }
+      ],
+      "title": "clouddebugger_v2_generated_debugger2_get_breakpoint_async.py"
+    },
+    {
+      "canonical": true,
+      "clientMethod": {
+        "client": {
+          "fullName": "google.cloud.debugger_v2.Debugger2Client",
+          "shortName": "Debugger2Client"
+        },
+        "fullName": "google.cloud.debugger_v2.Debugger2Client.get_breakpoint",
+        "method": {
+          "fullName": "google.devtools.clouddebugger.v2.Debugger2.GetBreakpoint",
+          "service": {
+            "fullName": "google.devtools.clouddebugger.v2.Debugger2",
+            "shortName": "Debugger2"
+          },
+          "shortName": "GetBreakpoint"
+        },
+        "parameters": [
+          {
+            "name": "request",
+            "type": "google.cloud.debugger_v2.types.GetBreakpointRequest"
+          },
+          {
+            "name": "debuggee_id",
+            "type": "str"
+          },
+          {
+            "name": "breakpoint_id",
+            "type": "str"
+          },
+          {
+            "name": "client_version",
+            "type": "str"
+          },
+          {
+            "name": "retry",
+            "type": "google.api_core.retry.Retry"
+          },
+          {
+            "name": "timeout",
+            "type": "float"
+          },
+          {
+            "name": "metadata",
+            "type": "Sequence[Tuple[str, str]"
+          }
+        ],
+        "resultType": "google.cloud.debugger_v2.types.GetBreakpointResponse",
+        "shortName": "get_breakpoint"
+      },
+      "description": "Sample for GetBreakpoint",
+      "file": "clouddebugger_v2_generated_debugger2_get_breakpoint_sync.py",
+      "language": "PYTHON",
+      "origin": "API_DEFINITION",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_GetBreakpoint_sync",
+      "segments": [
+        {
+          "end": 53,
+          "start": 27,
+          "type": "FULL"
+        },
+        {
+          "end": 53,
+          "start": 27,
+          "type": "SHORT"
+        },
+        {
+          "end": 40,
+          "start": 38,
+          "type": "CLIENT_INITIALIZATION"
+        },
+        {
+          "end": 47,
+          "start": 41,
+          "type": "REQUEST_INITIALIZATION"
+        },
+        {
+          "end": 50,
+          "start": 48,
+          "type": "REQUEST_EXECUTION"
+        },
+        {
+          "end": 54,
+          "start": 51,
+          "type": "RESPONSE_HANDLING"
+        }
+      ],
+      "title": "clouddebugger_v2_generated_debugger2_get_breakpoint_sync.py"
+    },
+    {
+      "canonical": true,
+      "clientMethod": {
+        "async": true,
+        "client": {
+          "fullName": "google.cloud.debugger_v2.Debugger2AsyncClient",
+          "shortName": "Debugger2AsyncClient"
+        },
+        "fullName": "google.cloud.debugger_v2.Debugger2AsyncClient.list_breakpoints",
+        "method": {
+          "fullName": "google.devtools.clouddebugger.v2.Debugger2.ListBreakpoints",
+          "service": {
+            "fullName": "google.devtools.clouddebugger.v2.Debugger2",
+            "shortName": "Debugger2"
+          },
+          "shortName": "ListBreakpoints"
+        },
+        "parameters": [
+          {
+            "name": "request",
+            "type": "google.cloud.debugger_v2.types.ListBreakpointsRequest"
+          },
+          {
+            "name": "debuggee_id",
+            "type": "str"
+          },
+          {
+            "name": "client_version",
+            "type": "str"
+          },
+          {
+            "name": "retry",
+            "type": "google.api_core.retry.Retry"
+          },
+          {
+            "name": "timeout",
+            "type": "float"
+          },
+          {
+            "name": "metadata",
+            "type": "Sequence[Tuple[str, str]"
+          }
+        ],
+        "resultType": "google.cloud.debugger_v2.types.ListBreakpointsResponse",
+        "shortName": "list_breakpoints"
+      },
+      "description": "Sample for ListBreakpoints",
+      "file": "clouddebugger_v2_generated_debugger2_list_breakpoints_async.py",
+      "language": "PYTHON",
+      "origin": "API_DEFINITION",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_ListBreakpoints_async",
+      "segments": [
+        {
+          "end": 52,
+          "start": 27,
+          "type": "FULL"
+        },
+        {
+          "end": 52,
+          "start": 27,
+          "type": "SHORT"
+        },
+        {
+          "end": 40,
+          "start": 38,
+          "type": "CLIENT_INITIALIZATION"
+        },
+        {
+          "end": 46,
+          "start": 41,
+          "type": "REQUEST_INITIALIZATION"
+        },
+        {
+          "end": 49,
+          "start": 47,
+          "type": "REQUEST_EXECUTION"
+        },
+        {
+          "end": 53,
+          "start": 50,
+          "type": "RESPONSE_HANDLING"
+        }
+      ],
+      "title": "clouddebugger_v2_generated_debugger2_list_breakpoints_async.py"
+    },
+    {
+      "canonical": true,
+      "clientMethod": {
+        "client": {
+          "fullName": "google.cloud.debugger_v2.Debugger2Client",
+          "shortName": "Debugger2Client"
+        },
+        "fullName": "google.cloud.debugger_v2.Debugger2Client.list_breakpoints",
+        "method": {
+          "fullName": "google.devtools.clouddebugger.v2.Debugger2.ListBreakpoints",
+          "service": {
+            "fullName": "google.devtools.clouddebugger.v2.Debugger2",
+            "shortName": "Debugger2"
+          },
+          "shortName": "ListBreakpoints"
+        },
+        "parameters": [
+          {
+            "name": "request",
+            "type": "google.cloud.debugger_v2.types.ListBreakpointsRequest"
+          },
+          {
+            "name": "debuggee_id",
+            "type": "str"
+          },
+          {
+            "name": "client_version",
+            "type": "str"
+          },
+          {
+            "name": "retry",
+            "type": "google.api_core.retry.Retry"
+          },
+          {
+            "name": "timeout",
+            "type": "float"
+          },
+          {
+            "name": "metadata",
+            "type": "Sequence[Tuple[str, str]"
+          }
+        ],
+        "resultType": "google.cloud.debugger_v2.types.ListBreakpointsResponse",
+        "shortName": "list_breakpoints"
+      },
+      "description": "Sample for ListBreakpoints",
+      "file": "clouddebugger_v2_generated_debugger2_list_breakpoints_sync.py",
+      "language": "PYTHON",
+      "origin": "API_DEFINITION",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_ListBreakpoints_sync",
+      "segments": [
+        {
+          "end": 52,
+          "start": 27,
+          "type": "FULL"
+        },
+        {
+          "end": 52,
+          "start": 27,
+          "type": "SHORT"
+        },
+        {
+          "end": 40,
+          "start": 38,
+          "type": "CLIENT_INITIALIZATION"
+        },
+        {
+          "end": 46,
+          "start": 41,
+          "type": "REQUEST_INITIALIZATION"
+        },
+        {
+          "end": 49,
+          "start": 47,
+          "type": "REQUEST_EXECUTION"
+        },
+        {
+          "end": 53,
+          "start": 50,
+          "type": "RESPONSE_HANDLING"
+        }
+      ],
+      "title": "clouddebugger_v2_generated_debugger2_list_breakpoints_sync.py"
+    },
+    {
+      "canonical": true,
+      "clientMethod": {
+        "async": true,
+        "client": {
+          "fullName": "google.cloud.debugger_v2.Debugger2AsyncClient",
+          "shortName": "Debugger2AsyncClient"
+        },
+        "fullName": "google.cloud.debugger_v2.Debugger2AsyncClient.list_debuggees",
+        "method": {
+          "fullName": "google.devtools.clouddebugger.v2.Debugger2.ListDebuggees",
+          "service": {
+            "fullName": "google.devtools.clouddebugger.v2.Debugger2",
+            "shortName": "Debugger2"
+          },
+          "shortName": "ListDebuggees"
+        },
+        "parameters": [
+          {
+            "name": "request",
+            "type": "google.cloud.debugger_v2.types.ListDebuggeesRequest"
+          },
+          {
+            "name": "project",
+            "type": "str"
+          },
+          {
+            "name": "client_version",
+            "type": "str"
+          },
+          {
+            "name": "retry",
+            "type": "google.api_core.retry.Retry"
+          },
+          {
+            "name": "timeout",
+            "type": "float"
+          },
+          {
+            "name": "metadata",
+            "type": "Sequence[Tuple[str, str]"
+          }
+        ],
+        "resultType": "google.cloud.debugger_v2.types.ListDebuggeesResponse",
+        "shortName": "list_debuggees"
+      },
+      "description": "Sample for ListDebuggees",
+      "file": "clouddebugger_v2_generated_debugger2_list_debuggees_async.py",
+      "language": "PYTHON",
+      "origin": "API_DEFINITION",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_ListDebuggees_async",
+      "segments": [
+        {
+          "end": 52,
+          "start": 27,
+          "type": "FULL"
+        },
+        {
+          "end": 52,
+          "start": 27,
+          "type": "SHORT"
+        },
+        {
+          "end": 40,
+          "start": 38,
+          "type": "CLIENT_INITIALIZATION"
+        },
+        {
+          "end": 46,
+          "start": 41,
+          "type": "REQUEST_INITIALIZATION"
+        },
+        {
+          "end": 49,
+          "start": 47,
+          "type": "REQUEST_EXECUTION"
+        },
+        {
+          "end": 53,
+          "start": 50,
+          "type": "RESPONSE_HANDLING"
+        }
+      ],
+      "title": "clouddebugger_v2_generated_debugger2_list_debuggees_async.py"
+    },
+    {
+      "canonical": true,
+      "clientMethod": {
+        "client": {
+          "fullName": "google.cloud.debugger_v2.Debugger2Client",
+          "shortName": "Debugger2Client"
+        },
+        "fullName": "google.cloud.debugger_v2.Debugger2Client.list_debuggees",
+        "method": {
+          "fullName": "google.devtools.clouddebugger.v2.Debugger2.ListDebuggees",
+          "service": {
+            "fullName": "google.devtools.clouddebugger.v2.Debugger2",
+            "shortName": "Debugger2"
+          },
+          "shortName": "ListDebuggees"
+        },
+        "parameters": [
+          {
+            "name": "request",
+            "type": "google.cloud.debugger_v2.types.ListDebuggeesRequest"
+          },
+          {
+            "name": "project",
+            "type": "str"
+          },
+          {
+            "name": "client_version",
+            "type": "str"
+          },
+          {
+            "name": "retry",
+            "type": "google.api_core.retry.Retry"
+          },
+          {
+            "name": "timeout",
+            "type": "float"
+          },
+          {
+            "name": "metadata",
+            "type": "Sequence[Tuple[str, str]"
+          }
+        ],
+        "resultType": "google.cloud.debugger_v2.types.ListDebuggeesResponse",
+        "shortName": "list_debuggees"
+      },
+      "description": "Sample for ListDebuggees",
+      "file": "clouddebugger_v2_generated_debugger2_list_debuggees_sync.py",
+      "language": "PYTHON",
+      "origin": "API_DEFINITION",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_ListDebuggees_sync",
+      "segments": [
+        {
+          "end": 52,
+          "start": 27,
+          "type": "FULL"
+        },
+        {
+          "end": 52,
+          "start": 27,
+          "type": "SHORT"
+        },
+        {
+          "end": 40,
+          "start": 38,
+          "type": "CLIENT_INITIALIZATION"
+        },
+        {
+          "end": 46,
+          "start": 41,
+          "type": "REQUEST_INITIALIZATION"
+        },
+        {
+          "end": 49,
+          "start": 47,
+          "type": "REQUEST_EXECUTION"
+        },
+        {
+          "end": 53,
+          "start": 50,
+          "type": "RESPONSE_HANDLING"
+        }
+      ],
+      "title": "clouddebugger_v2_generated_debugger2_list_debuggees_sync.py"
+    },
+    {
+      "canonical": true,
+      "clientMethod": {
+        "async": true,
+        "client": {
+          "fullName": "google.cloud.debugger_v2.Debugger2AsyncClient",
+          "shortName": "Debugger2AsyncClient"
+        },
+        "fullName": "google.cloud.debugger_v2.Debugger2AsyncClient.set_breakpoint",
+        "method": {
+          "fullName": "google.devtools.clouddebugger.v2.Debugger2.SetBreakpoint",
+          "service": {
+            "fullName": "google.devtools.clouddebugger.v2.Debugger2",
+            "shortName": "Debugger2"
+          },
+          "shortName": "SetBreakpoint"
+        },
+        "parameters": [
+          {
+            "name": "request",
+            "type": "google.cloud.debugger_v2.types.SetBreakpointRequest"
+          },
+          {
+            "name": "debuggee_id",
+            "type": "str"
+          },
+          {
+            "name": "breakpoint_",
+            "type": "google.cloud.debugger_v2.types.Breakpoint"
+          },
+          {
+            "name": "client_version",
+            "type": "str"
+          },
+          {
+            "name": "retry",
+            "type": "google.api_core.retry.Retry"
+          },
+          {
+            "name": "timeout",
+            "type": "float"
+          },
+          {
+            "name": "metadata",
+            "type": "Sequence[Tuple[str, str]"
+          }
+        ],
+        "resultType": "google.cloud.debugger_v2.types.SetBreakpointResponse",
+        "shortName": "set_breakpoint"
+      },
+      "description": "Sample for SetBreakpoint",
+      "file": "clouddebugger_v2_generated_debugger2_set_breakpoint_async.py",
+      "language": "PYTHON",
+      "origin": "API_DEFINITION",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_SetBreakpoint_async",
+      "segments": [
+        {
+          "end": 52,
+          "start": 27,
+          "type": "FULL"
+        },
+        {
+          "end": 52,
+          "start": 27,
+          "type": "SHORT"
+        },
+        {
+          "end": 40,
+          "start": 38,
+          "type": "CLIENT_INITIALIZATION"
+        },
+        {
+          "end": 46,
+          "start": 41,
+          "type": "REQUEST_INITIALIZATION"
+        },
+        {
+          "end": 49,
+          "start": 47,
+          "type": "REQUEST_EXECUTION"
+        },
+        {
+          "end": 53,
+          "start": 50,
+          "type": "RESPONSE_HANDLING"
+        }
+      ],
+      "title": "clouddebugger_v2_generated_debugger2_set_breakpoint_async.py"
+    },
+    {
+      "canonical": true,
+      "clientMethod": {
+        "client": {
+          "fullName": "google.cloud.debugger_v2.Debugger2Client",
+          "shortName": "Debugger2Client"
+        },
+        "fullName": "google.cloud.debugger_v2.Debugger2Client.set_breakpoint",
+        "method": {
+          "fullName": "google.devtools.clouddebugger.v2.Debugger2.SetBreakpoint",
+          "service": {
+            "fullName": "google.devtools.clouddebugger.v2.Debugger2",
+            "shortName": "Debugger2"
+          },
+          "shortName": "SetBreakpoint"
+        },
+        "parameters": [
+          {
+            "name": "request",
+            "type": "google.cloud.debugger_v2.types.SetBreakpointRequest"
+          },
+          {
+            "name": "debuggee_id",
+            "type": "str"
+          },
+          {
+            "name": "breakpoint_",
+            "type": "google.cloud.debugger_v2.types.Breakpoint"
+          },
+          {
+            "name": "client_version",
+            "type": "str"
+          },
+          {
+            "name": "retry",
+            "type": "google.api_core.retry.Retry"
+          },
+          {
+            "name": "timeout",
+            "type": "float"
+          },
+          {
+            "name": "metadata",
+            "type": "Sequence[Tuple[str, str]"
+          }
+        ],
+        "resultType": "google.cloud.debugger_v2.types.SetBreakpointResponse",
+        "shortName": "set_breakpoint"
+      },
+      "description": "Sample for SetBreakpoint",
+      "file": "clouddebugger_v2_generated_debugger2_set_breakpoint_sync.py",
+      "language": "PYTHON",
+      "origin": "API_DEFINITION",
+      "regionTag": "clouddebugger_v2_generated_Debugger2_SetBreakpoint_sync",
+      "segments": [
+        {
+          "end": 52,
+          "start": 27,
+          "type": "FULL"
+        },
+        {
+          "end": 52,
+          "start": 27,
+          "type": "SHORT"
+        },
+        {
+          "end": 40,
+          "start": 38,
+          "type": "CLIENT_INITIALIZATION"
+        },
+        {
+          "end": 46,
+          "start": 41,
+          "type": "REQUEST_INITIALIZATION"
+        },
+        {
+          "end": 49,
+          "start": 47,
+          "type": "REQUEST_EXECUTION"
+        },
+        {
+          "end": 53,
+          "start": 50,
+          "type": "RESPONSE_HANDLING"
+        }
+      ],
+      "title": "clouddebugger_v2_generated_debugger2_set_breakpoint_sync.py"
+    }
+  ]
+}
