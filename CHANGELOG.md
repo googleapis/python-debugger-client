@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.3](https://github.com/googleapis/python-debugger-client/compare/v1.4.2...v1.4.3) (2022-10-07)
+
+
+### Bug Fixes
+
+* **deps:** Allow protobuf 3.19.5 ([#133](https://github.com/googleapis/python-debugger-client/issues/133)) ([9f5ea8c](https://github.com/googleapis/python-debugger-client/commit/9f5ea8cafb8f9f5d39e827927b75bc076cba2504))
+
 ## [1.4.2](https://github.com/googleapis/python-debugger-client/compare/v1.4.1...v1.4.2) (2022-10-03)
 
 
