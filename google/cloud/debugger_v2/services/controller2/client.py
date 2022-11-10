@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -55,7 +66,7 @@ class Controller2ClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[Controller2Transport]:
         """Returns an appropriate transport class.
 
@@ -330,7 +341,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, Controller2Transport, None] = None,
+        transport: Optional[Union[str, Controller2Transport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -428,11 +439,11 @@ class Controller2Client(metaclass=Controller2ClientMeta):
 
     def register_debuggee(
         self,
-        request: Union[controller.RegisterDebuggeeRequest, dict] = None,
+        request: Optional[Union[controller.RegisterDebuggeeRequest, dict]] = None,
         *,
-        debuggee: data.Debuggee = None,
+        debuggee: Optional[data.Debuggee] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> controller.RegisterDebuggeeResponse:
         r"""Registers the debuggee with the controller service.
@@ -532,11 +543,11 @@ class Controller2Client(metaclass=Controller2ClientMeta):
 
     def list_active_breakpoints(
         self,
-        request: Union[controller.ListActiveBreakpointsRequest, dict] = None,
+        request: Optional[Union[controller.ListActiveBreakpointsRequest, dict]] = None,
         *,
-        debuggee_id: str = None,
+        debuggee_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> controller.ListActiveBreakpointsResponse:
         r"""Returns the list of all active breakpoints for the debuggee.
@@ -646,12 +657,12 @@ class Controller2Client(metaclass=Controller2ClientMeta):
 
     def update_active_breakpoint(
         self,
-        request: Union[controller.UpdateActiveBreakpointRequest, dict] = None,
+        request: Optional[Union[controller.UpdateActiveBreakpointRequest, dict]] = None,
         *,
-        debuggee_id: str = None,
-        breakpoint_: data.Breakpoint = None,
+        debuggee_id: Optional[str] = None,
+        breakpoint_: Optional[data.Breakpoint] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> controller.UpdateActiveBreakpointResponse:
         r"""Updates the breakpoint state or mutable fields. The entire

@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+from typing import MutableMapping, MutableSequence
+
 import proto  # type: ignore
 
 from google.cloud.debugger_v2.types import data
@@ -41,7 +43,7 @@ class RegisterDebuggeeRequest(proto.Message):
             ``agent_version`` of the debuggee must be set.
     """
 
-    debuggee = proto.Field(
+    debuggee: data.Debuggee = proto.Field(
         proto.MESSAGE,
         number=1,
         message=data.Debuggee,
@@ -61,7 +63,7 @@ class RegisterDebuggeeResponse(proto.Message):
             ``RegisterDebuggee`` until reenabled.
     """
 
-    debuggee = proto.Field(
+    debuggee: data.Debuggee = proto.Field(
         proto.MESSAGE,
         number=1,
         message=data.Debuggee,
@@ -91,15 +93,15 @@ class ListActiveBreakpointsRequest(proto.Message):
             timeout has expired.
     """
 
-    debuggee_id = proto.Field(
+    debuggee_id: str = proto.Field(
         proto.STRING,
         number=1,
     )
-    wait_token = proto.Field(
+    wait_token: str = proto.Field(
         proto.STRING,
         number=2,
     )
-    success_on_timeout = proto.Field(
+    success_on_timeout: bool = proto.Field(
         proto.BOOL,
         number=3,
     )
@@ -109,7 +111,7 @@ class ListActiveBreakpointsResponse(proto.Message):
     r"""Response for listing active breakpoints.
 
     Attributes:
-        breakpoints (Sequence[google.cloud.debugger_v2.types.Breakpoint]):
+        breakpoints (MutableSequence[google.cloud.debugger_v2.types.Breakpoint]):
             List of all active breakpoints. The fields ``id`` and
             ``location`` are guaranteed to be set on each breakpoint.
         next_wait_token (str):
@@ -123,16 +125,16 @@ class ListActiveBreakpointsResponse(proto.Message):
             should be ignored.
     """
 
-    breakpoints = proto.RepeatedField(
+    breakpoints: MutableSequence[data.Breakpoint] = proto.RepeatedField(
         proto.MESSAGE,
         number=1,
         message=data.Breakpoint,
     )
-    next_wait_token = proto.Field(
+    next_wait_token: str = proto.Field(
         proto.STRING,
         number=2,
     )
-    wait_expired = proto.Field(
+    wait_expired: bool = proto.Field(
         proto.BOOL,
         number=3,
     )
@@ -151,11 +153,11 @@ class UpdateActiveBreakpointRequest(proto.Message):
             specification fields in the update.
     """
 
-    debuggee_id = proto.Field(
+    debuggee_id: str = proto.Field(
         proto.STRING,
         number=1,
     )
-    breakpoint_ = proto.Field(
+    breakpoint_: data.Breakpoint = proto.Field(
         proto.MESSAGE,
         number=2,
         message=data.Breakpoint,

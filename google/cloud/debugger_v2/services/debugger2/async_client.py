@@ -16,7 +16,17 @@
 from collections import OrderedDict
 import functools
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+)
 import pkg_resources
 
 from google.api_core.client_options import ClientOptions
@@ -163,9 +173,9 @@ class Debugger2AsyncClient:
     def __init__(
         self,
         *,
-        credentials: ga_credentials.Credentials = None,
+        credentials: Optional[ga_credentials.Credentials] = None,
         transport: Union[str, Debugger2Transport] = "grpc_asyncio",
-        client_options: ClientOptions = None,
+        client_options: Optional[ClientOptions] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
         """Instantiates the debugger2 client.
@@ -209,13 +219,13 @@ class Debugger2AsyncClient:
 
     async def set_breakpoint(
         self,
-        request: Union[debugger.SetBreakpointRequest, dict] = None,
+        request: Optional[Union[debugger.SetBreakpointRequest, dict]] = None,
         *,
-        debuggee_id: str = None,
-        breakpoint_: data.Breakpoint = None,
-        client_version: str = None,
+        debuggee_id: Optional[str] = None,
+        breakpoint_: Optional[data.Breakpoint] = None,
+        client_version: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> debugger.SetBreakpointResponse:
         r"""Sets the breakpoint to the debuggee.
@@ -248,7 +258,7 @@ class Debugger2AsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.debugger_v2.types.SetBreakpointRequest, dict]):
+            request (Optional[Union[google.cloud.debugger_v2.types.SetBreakpointRequest, dict]]):
                 The request object. Request to set a breakpoint
             debuggee_id (:class:`str`):
                 Required. ID of the debuggee where
@@ -332,13 +342,13 @@ class Debugger2AsyncClient:
 
     async def get_breakpoint(
         self,
-        request: Union[debugger.GetBreakpointRequest, dict] = None,
+        request: Optional[Union[debugger.GetBreakpointRequest, dict]] = None,
         *,
-        debuggee_id: str = None,
-        breakpoint_id: str = None,
-        client_version: str = None,
+        debuggee_id: Optional[str] = None,
+        breakpoint_id: Optional[str] = None,
+        client_version: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> debugger.GetBreakpointResponse:
         r"""Gets breakpoint information.
@@ -372,7 +382,7 @@ class Debugger2AsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.debugger_v2.types.GetBreakpointRequest, dict]):
+            request (Optional[Union[google.cloud.debugger_v2.types.GetBreakpointRequest, dict]]):
                 The request object. Request to get breakpoint
                 information.
             debuggee_id (:class:`str`):
@@ -472,13 +482,13 @@ class Debugger2AsyncClient:
 
     async def delete_breakpoint(
         self,
-        request: Union[debugger.DeleteBreakpointRequest, dict] = None,
+        request: Optional[Union[debugger.DeleteBreakpointRequest, dict]] = None,
         *,
-        debuggee_id: str = None,
-        breakpoint_id: str = None,
-        client_version: str = None,
+        debuggee_id: Optional[str] = None,
+        breakpoint_id: Optional[str] = None,
+        client_version: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes the breakpoint from the debuggee.
@@ -509,7 +519,7 @@ class Debugger2AsyncClient:
                 await client.delete_breakpoint(request=request)
 
         Args:
-            request (Union[google.cloud.debugger_v2.types.DeleteBreakpointRequest, dict]):
+            request (Optional[Union[google.cloud.debugger_v2.types.DeleteBreakpointRequest, dict]]):
                 The request object. Request to delete a breakpoint.
             debuggee_id (:class:`str`):
                 Required. ID of the debuggee whose
@@ -599,12 +609,12 @@ class Debugger2AsyncClient:
 
     async def list_breakpoints(
         self,
-        request: Union[debugger.ListBreakpointsRequest, dict] = None,
+        request: Optional[Union[debugger.ListBreakpointsRequest, dict]] = None,
         *,
-        debuggee_id: str = None,
-        client_version: str = None,
+        debuggee_id: Optional[str] = None,
+        client_version: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> debugger.ListBreakpointsResponse:
         r"""Lists all breakpoints for the debuggee.
@@ -637,7 +647,7 @@ class Debugger2AsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.debugger_v2.types.ListBreakpointsRequest, dict]):
+            request (Optional[Union[google.cloud.debugger_v2.types.ListBreakpointsRequest, dict]]):
                 The request object. Request to list breakpoints.
             debuggee_id (:class:`str`):
                 Required. ID of the debuggee whose
@@ -722,12 +732,12 @@ class Debugger2AsyncClient:
 
     async def list_debuggees(
         self,
-        request: Union[debugger.ListDebuggeesRequest, dict] = None,
+        request: Optional[Union[debugger.ListDebuggeesRequest, dict]] = None,
         *,
-        project: str = None,
-        client_version: str = None,
+        project: Optional[str] = None,
+        client_version: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> debugger.ListDebuggeesResponse:
         r"""Lists all the debuggees that the user has access to.
@@ -760,7 +770,7 @@ class Debugger2AsyncClient:
                 print(response)
 
         Args:
-            request (Union[google.cloud.debugger_v2.types.ListDebuggeesRequest, dict]):
+            request (Optional[Union[google.cloud.debugger_v2.types.ListDebuggeesRequest, dict]]):
                 The request object. Request to list debuggees.
             project (:class:`str`):
                 Required. Project number of a Google

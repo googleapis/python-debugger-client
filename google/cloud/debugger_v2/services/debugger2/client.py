@@ -16,7 +16,18 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union, cast
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -55,7 +66,7 @@ class Debugger2ClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[Debugger2Transport]:
         """Returns an appropriate transport class.
 
@@ -321,7 +332,7 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, Debugger2Transport, None] = None,
+        transport: Optional[Union[str, Debugger2Transport]] = None,
         client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
@@ -419,13 +430,13 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
 
     def set_breakpoint(
         self,
-        request: Union[debugger.SetBreakpointRequest, dict] = None,
+        request: Optional[Union[debugger.SetBreakpointRequest, dict]] = None,
         *,
-        debuggee_id: str = None,
-        breakpoint_: data.Breakpoint = None,
-        client_version: str = None,
+        debuggee_id: Optional[str] = None,
+        breakpoint_: Optional[data.Breakpoint] = None,
+        client_version: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> debugger.SetBreakpointResponse:
         r"""Sets the breakpoint to the debuggee.
@@ -542,13 +553,13 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
 
     def get_breakpoint(
         self,
-        request: Union[debugger.GetBreakpointRequest, dict] = None,
+        request: Optional[Union[debugger.GetBreakpointRequest, dict]] = None,
         *,
-        debuggee_id: str = None,
-        breakpoint_id: str = None,
-        client_version: str = None,
+        debuggee_id: Optional[str] = None,
+        breakpoint_id: Optional[str] = None,
+        client_version: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> debugger.GetBreakpointResponse:
         r"""Gets breakpoint information.
@@ -672,13 +683,13 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
 
     def delete_breakpoint(
         self,
-        request: Union[debugger.DeleteBreakpointRequest, dict] = None,
+        request: Optional[Union[debugger.DeleteBreakpointRequest, dict]] = None,
         *,
-        debuggee_id: str = None,
-        breakpoint_id: str = None,
-        client_version: str = None,
+        debuggee_id: Optional[str] = None,
+        breakpoint_id: Optional[str] = None,
+        client_version: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes the breakpoint from the debuggee.
@@ -789,12 +800,12 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
 
     def list_breakpoints(
         self,
-        request: Union[debugger.ListBreakpointsRequest, dict] = None,
+        request: Optional[Union[debugger.ListBreakpointsRequest, dict]] = None,
         *,
-        debuggee_id: str = None,
-        client_version: str = None,
+        debuggee_id: Optional[str] = None,
+        client_version: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> debugger.ListBreakpointsResponse:
         r"""Lists all breakpoints for the debuggee.
@@ -902,12 +913,12 @@ class Debugger2Client(metaclass=Debugger2ClientMeta):
 
     def list_debuggees(
         self,
-        request: Union[debugger.ListDebuggeesRequest, dict] = None,
+        request: Optional[Union[debugger.ListDebuggeesRequest, dict]] = None,
         *,
-        project: str = None,
-        client_version: str = None,
+        project: Optional[str] = None,
+        client_version: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> debugger.ListDebuggeesResponse:
         r"""Lists all the debuggees that the user has access to.
