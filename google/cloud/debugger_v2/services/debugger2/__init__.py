@@ -13,8 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from .client import Debugger2Client
 from .async_client import Debugger2AsyncClient
+from .client import Debugger2Client
 
 __all__ = (
     "Debugger2Client",

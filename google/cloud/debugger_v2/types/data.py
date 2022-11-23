@@ -15,12 +15,12 @@
 #
 from typing import MutableMapping, MutableSequence
 
-import proto  # type: ignore
-
-from google.cloud.source_context_v1.types import source_context as source_context_pb2  # type: ignore
+from google.cloud.source_context_v1.types import (
+    source_context as source_context_pb2,
+)  # type: ignore
 from google.protobuf import timestamp_pb2  # type: ignore
 from google.protobuf import wrappers_pb2  # type: ignore
-
+import proto  # type: ignore
 
 __protobuf__ = proto.module(
     package="google.devtools.clouddebugger.v2",

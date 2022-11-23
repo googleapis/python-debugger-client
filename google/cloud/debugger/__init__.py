@@ -18,37 +18,42 @@ from google.cloud.debugger import gapic_version as package_version
 __version__ = package_version.__version__
 
 
-from google.cloud.debugger_v2.services.controller2.client import Controller2Client
 from google.cloud.debugger_v2.services.controller2.async_client import (
     Controller2AsyncClient,
 )
-from google.cloud.debugger_v2.services.debugger2.client import Debugger2Client
+from google.cloud.debugger_v2.services.controller2.client import Controller2Client
 from google.cloud.debugger_v2.services.debugger2.async_client import (
     Debugger2AsyncClient,
 )
-
-from google.cloud.debugger_v2.types.controller import ListActiveBreakpointsRequest
-from google.cloud.debugger_v2.types.controller import ListActiveBreakpointsResponse
-from google.cloud.debugger_v2.types.controller import RegisterDebuggeeRequest
-from google.cloud.debugger_v2.types.controller import RegisterDebuggeeResponse
-from google.cloud.debugger_v2.types.controller import UpdateActiveBreakpointRequest
-from google.cloud.debugger_v2.types.controller import UpdateActiveBreakpointResponse
-from google.cloud.debugger_v2.types.data import Breakpoint
-from google.cloud.debugger_v2.types.data import Debuggee
-from google.cloud.debugger_v2.types.data import FormatMessage
-from google.cloud.debugger_v2.types.data import SourceLocation
-from google.cloud.debugger_v2.types.data import StackFrame
-from google.cloud.debugger_v2.types.data import StatusMessage
-from google.cloud.debugger_v2.types.data import Variable
-from google.cloud.debugger_v2.types.debugger import DeleteBreakpointRequest
-from google.cloud.debugger_v2.types.debugger import GetBreakpointRequest
-from google.cloud.debugger_v2.types.debugger import GetBreakpointResponse
-from google.cloud.debugger_v2.types.debugger import ListBreakpointsRequest
-from google.cloud.debugger_v2.types.debugger import ListBreakpointsResponse
-from google.cloud.debugger_v2.types.debugger import ListDebuggeesRequest
-from google.cloud.debugger_v2.types.debugger import ListDebuggeesResponse
-from google.cloud.debugger_v2.types.debugger import SetBreakpointRequest
-from google.cloud.debugger_v2.types.debugger import SetBreakpointResponse
+from google.cloud.debugger_v2.services.debugger2.client import Debugger2Client
+from google.cloud.debugger_v2.types.controller import (
+    ListActiveBreakpointsRequest,
+    ListActiveBreakpointsResponse,
+    RegisterDebuggeeRequest,
+    RegisterDebuggeeResponse,
+    UpdateActiveBreakpointRequest,
+    UpdateActiveBreakpointResponse,
+)
+from google.cloud.debugger_v2.types.data import (
+    Breakpoint,
+    Debuggee,
+    FormatMessage,
+    SourceLocation,
+    StackFrame,
+    StatusMessage,
+    Variable,
+)
+from google.cloud.debugger_v2.types.debugger import (
+    DeleteBreakpointRequest,
+    GetBreakpointRequest,
+    GetBreakpointResponse,
+    ListBreakpointsRequest,
+    ListBreakpointsResponse,
+    ListDebuggeesRequest,
+    ListDebuggeesResponse,
+    SetBreakpointRequest,
+    SetBreakpointResponse,
+)
 
 __all__ = (
     "Controller2Client",

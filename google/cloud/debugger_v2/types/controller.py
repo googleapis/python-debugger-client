@@ -19,7 +19,6 @@ import proto  # type: ignore
 
 from google.cloud.debugger_v2.types import data
 
-
 __protobuf__ = proto.module(
     package="google.devtools.clouddebugger.v2",
     manifest={

@@ -18,33 +18,36 @@ from google.cloud.debugger import gapic_version as package_version
 __version__ = package_version.__version__
 
 
-from .services.controller2 import Controller2Client
-from .services.controller2 import Controller2AsyncClient
-from .services.debugger2 import Debugger2Client
-from .services.debugger2 import Debugger2AsyncClient
-
-from .types.controller import ListActiveBreakpointsRequest
-from .types.controller import ListActiveBreakpointsResponse
-from .types.controller import RegisterDebuggeeRequest
-from .types.controller import RegisterDebuggeeResponse
-from .types.controller import UpdateActiveBreakpointRequest
-from .types.controller import UpdateActiveBreakpointResponse
-from .types.data import Breakpoint
-from .types.data import Debuggee
-from .types.data import FormatMessage
-from .types.data import SourceLocation
-from .types.data import StackFrame
-from .types.data import StatusMessage
-from .types.data import Variable
-from .types.debugger import DeleteBreakpointRequest
-from .types.debugger import GetBreakpointRequest
-from .types.debugger import GetBreakpointResponse
-from .types.debugger import ListBreakpointsRequest
-from .types.debugger import ListBreakpointsResponse
-from .types.debugger import ListDebuggeesRequest
-from .types.debugger import ListDebuggeesResponse
-from .types.debugger import SetBreakpointRequest
-from .types.debugger import SetBreakpointResponse
+from .services.controller2 import Controller2AsyncClient, Controller2Client
+from .services.debugger2 import Debugger2AsyncClient, Debugger2Client
+from .types.controller import (
+    ListActiveBreakpointsRequest,
+    ListActiveBreakpointsResponse,
+    RegisterDebuggeeRequest,
+    RegisterDebuggeeResponse,
+    UpdateActiveBreakpointRequest,
+    UpdateActiveBreakpointResponse,
+)
+from .types.data import (
+    Breakpoint,
+    Debuggee,
+    FormatMessage,
+    SourceLocation,
+    StackFrame,
+    StatusMessage,
+    Variable,
+)
+from .types.debugger import (
+    DeleteBreakpointRequest,
+    GetBreakpointRequest,
+    GetBreakpointResponse,
+    ListBreakpointsRequest,
+    ListBreakpointsResponse,
+    ListDebuggeesRequest,
+    ListDebuggeesResponse,
+    SetBreakpointRequest,
+    SetBreakpointResponse,
+)
 
 __all__ = (
     "Controller2AsyncClient",

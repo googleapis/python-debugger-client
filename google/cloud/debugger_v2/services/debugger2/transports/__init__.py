@@ -20,7 +20,6 @@ from .base import Debugger2Transport
 from .grpc import Debugger2GrpcTransport
 from .grpc_asyncio import Debugger2GrpcAsyncIOTransport
 
-
 # Compile a registry of transports.
 _transport_registry = OrderedDict()  # type: Dict[str, Type[Debugger2Transport]]
 _transport_registry["grpc"] = Debugger2GrpcTransport

@@ -27,25 +27,25 @@ from typing import (
     Type,
     Union,
 )
-import pkg_resources
 
-from google.api_core.client_options import ClientOptions
 from google.api_core import exceptions as core_exceptions
 from google.api_core import gapic_v1
 from google.api_core import retry as retries
+from google.api_core.client_options import ClientOptions
 from google.auth import credentials as ga_credentials  # type: ignore
 from google.oauth2 import service_account  # type: ignore
+import pkg_resources
 
 try:
     OptionalRetry = Union[retries.Retry, gapic_v1.method._MethodDefault]
 except AttributeError:  # pragma: NO COVER
     OptionalRetry = Union[retries.Retry, object]  # type: ignore
 
-from google.cloud.debugger_v2.types import controller
-from google.cloud.debugger_v2.types import data
-from .transports.base import Controller2Transport, DEFAULT_CLIENT_INFO
-from .transports.grpc_asyncio import Controller2GrpcAsyncIOTransport
+from google.cloud.debugger_v2.types import controller, data
+
 from .client import Controller2Client
+from .transports.base import DEFAULT_CLIENT_INFO, Controller2Transport
+from .transports.grpc_asyncio import Controller2GrpcAsyncIOTransport
 
 
 class Controller2AsyncClient:
