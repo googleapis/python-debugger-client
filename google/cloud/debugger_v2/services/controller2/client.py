@@ -16,27 +16,38 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
-import pkg_resources
+from typing import (
+    Dict,
+    Mapping,
+    MutableMapping,
+    MutableSequence,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    Union,
+    cast,
+)
 
 from google.api_core import client_options as client_options_lib
 from google.api_core import exceptions as core_exceptions
 from google.api_core import gapic_v1
 from google.api_core import retry as retries
 from google.auth import credentials as ga_credentials  # type: ignore
+from google.auth.exceptions import MutualTLSChannelError  # type: ignore
 from google.auth.transport import mtls  # type: ignore
 from google.auth.transport.grpc import SslCredentials  # type: ignore
-from google.auth.exceptions import MutualTLSChannelError  # type: ignore
 from google.oauth2 import service_account  # type: ignore
+import pkg_resources
 
 try:
     OptionalRetry = Union[retries.Retry, gapic_v1.method._MethodDefault]
 except AttributeError:  # pragma: NO COVER
     OptionalRetry = Union[retries.Retry, object]  # type: ignore
 
-from google.cloud.debugger_v2.types import controller
-from google.cloud.debugger_v2.types import data
-from .transports.base import Controller2Transport, DEFAULT_CLIENT_INFO
+from google.cloud.debugger_v2.types import controller, data
+
+from .transports.base import DEFAULT_CLIENT_INFO, Controller2Transport
 from .transports.grpc import Controller2GrpcTransport
 from .transports.grpc_asyncio import Controller2GrpcAsyncIOTransport
 
@@ -55,7 +66,7 @@ class Controller2ClientMeta(type):
 
     def get_transport_class(
         cls,
-        label: str = None,
+        label: Optional[str] = None,
     ) -> Type[Controller2Transport]:
         """Returns an appropriate transport class.
 
@@ -330,8 +341,8 @@ class Controller2Client(metaclass=Controller2ClientMeta):
         self,
         *,
         credentials: Optional[ga_credentials.Credentials] = None,
-        transport: Union[str, Controller2Transport, None] = None,
-        client_options: Optional[client_options_lib.ClientOptions] = None,
+        transport: Optional[Union[str, Controller2Transport]] = None,
+        client_options: Optional[Union[client_options_lib.ClientOptions, dict]] = None,
         client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
         """Instantiates the controller2 client.
@@ -345,7 +356,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
             transport (Union[str, Controller2Transport]): The
                 transport to use. If set to None, a transport is chosen
                 automatically.
-            client_options (google.api_core.client_options.ClientOptions): Custom options for the
+            client_options (Optional[Union[google.api_core.client_options.ClientOptions, dict]]): Custom options for the
                 client. It won't take effect if a ``transport`` instance is provided.
                 (1) The ``api_endpoint`` property can be used to override the
                 default endpoint provided by the client. GOOGLE_API_USE_MTLS_ENDPOINT
@@ -375,6 +386,7 @@ class Controller2Client(metaclass=Controller2ClientMeta):
             client_options = client_options_lib.from_dict(client_options)
         if client_options is None:
             client_options = client_options_lib.ClientOptions()
+        client_options = cast(client_options_lib.ClientOptions, client_options)
 
         api_endpoint, client_cert_source_func = self.get_mtls_endpoint_and_cert_source(
             client_options
@@ -427,11 +439,11 @@ class Controller2Client(metaclass=Controller2ClientMeta):
 
     def register_debuggee(
         self,
-        request: Union[controller.RegisterDebuggeeRequest, dict] = None,
+        request: Optional[Union[controller.RegisterDebuggeeRequest, dict]] = None,
         *,
-        debuggee: data.Debuggee = None,
+        debuggee: Optional[data.Debuggee] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> controller.RegisterDebuggeeResponse:
         r"""Registers the debuggee with the controller service.
@@ -531,11 +543,11 @@ class Controller2Client(metaclass=Controller2ClientMeta):
 
     def list_active_breakpoints(
         self,
-        request: Union[controller.ListActiveBreakpointsRequest, dict] = None,
+        request: Optional[Union[controller.ListActiveBreakpointsRequest, dict]] = None,
         *,
-        debuggee_id: str = None,
+        debuggee_id: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> controller.ListActiveBreakpointsResponse:
         r"""Returns the list of all active breakpoints for the debuggee.
@@ -645,12 +657,12 @@ class Controller2Client(metaclass=Controller2ClientMeta):
 
     def update_active_breakpoint(
         self,
-        request: Union[controller.UpdateActiveBreakpointRequest, dict] = None,
+        request: Optional[Union[controller.UpdateActiveBreakpointRequest, dict]] = None,
         *,
-        debuggee_id: str = None,
-        breakpoint_: data.Breakpoint = None,
+        debuggee_id: Optional[str] = None,
+        breakpoint_: Optional[data.Breakpoint] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: float = None,
+        timeout: Optional[float] = None,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> controller.UpdateActiveBreakpointResponse:
         r"""Updates the breakpoint state or mutable fields. The entire

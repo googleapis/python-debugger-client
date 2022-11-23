@@ -13,20 +13,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from collections import OrderedDict
-from typing import Dict, Type
-
-from .base import Debugger2Transport
-from .grpc import Debugger2GrpcTransport
-from .grpc_asyncio import Debugger2GrpcAsyncIOTransport
-
-# Compile a registry of transports.
-_transport_registry = OrderedDict()  # type: Dict[str, Type[Debugger2Transport]]
-_transport_registry["grpc"] = Debugger2GrpcTransport
-_transport_registry["grpc_asyncio"] = Debugger2GrpcAsyncIOTransport
-
-__all__ = (
-    "Debugger2Transport",
-    "Debugger2GrpcTransport",
-    "Debugger2GrpcAsyncIOTransport",
-)
+__version__ = "1.4.3"  # {x-release-please-version}

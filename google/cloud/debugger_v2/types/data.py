@@ -13,12 +13,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-import proto  # type: ignore
+from typing import MutableMapping, MutableSequence
 
-from google.cloud.source_context_v1.types import source_context as source_context_pb2  # type: ignore
+from google.cloud.source_context_v1.types import (
+    source_context as source_context_pb2,
+)  # type: ignore
 from google.protobuf import timestamp_pb2  # type: ignore
 from google.protobuf import wrappers_pb2  # type: ignore
-
+import proto  # type: ignore
 
 __protobuf__ = proto.module(
     package="google.devtools.clouddebugger.v2",
@@ -47,16 +49,16 @@ class FormatMessage(proto.Message):
 
             -  ``Failed to load '$0' which helps debug $1 the first time it is loaded. Again, $0 is very important.``
             -  ``Please pay $$10 to use $0 instead of $1.``
-        parameters (Sequence[str]):
+        parameters (MutableSequence[str]):
             Optional parameters to be embedded into the
             message.
     """
 
-    format_ = proto.Field(
+    format_: str = proto.Field(
         proto.STRING,
         number=1,
     )
-    parameters = proto.RepeatedField(
+    parameters: MutableSequence[str] = proto.RepeatedField(
         proto.STRING,
         number=2,
     )
@@ -89,16 +91,16 @@ class StatusMessage(proto.Message):
         VARIABLE_NAME = 5
         VARIABLE_VALUE = 6
 
-    is_error = proto.Field(
+    is_error: bool = proto.Field(
         proto.BOOL,
         number=1,
     )
-    refers_to = proto.Field(
+    refers_to: Reference = proto.Field(
         proto.ENUM,
         number=2,
         enum=Reference,
     )
-    description = proto.Field(
+    description: "FormatMessage" = proto.Field(
         proto.MESSAGE,
         number=3,
         message="FormatMessage",
@@ -121,15 +123,15 @@ class SourceLocation(proto.Message):
             on specific columns ignore this field.
     """
 
-    path = proto.Field(
+    path: str = proto.Field(
         proto.STRING,
         number=1,
     )
-    line = proto.Field(
+    line: int = proto.Field(
         proto.INT32,
         number=2,
     )
-    column = proto.Field(
+    column: int = proto.Field(
         proto.INT32,
         number=3,
     )
@@ -233,7 +235,7 @@ class Variable(proto.Message):
             The interpretation of a type is agent specific. It is
             recommended to include the dynamic type rather than a static
             type of an object.
-        members (Sequence[google.cloud.debugger_v2.types.Variable]):
+        members (MutableSequence[google.cloud.debugger_v2.types.Variable]):
             Members contained or pointed to by the
             variable.
         var_table_index (google.protobuf.wrappers_pb2.Int32Value):
@@ -266,29 +268,29 @@ class Variable(proto.Message):
             -  ``Null pointer dereference``
     """
 
-    name = proto.Field(
+    name: str = proto.Field(
         proto.STRING,
         number=1,
     )
-    value = proto.Field(
+    value: str = proto.Field(
         proto.STRING,
         number=2,
     )
-    type_ = proto.Field(
+    type_: str = proto.Field(
         proto.STRING,
         number=6,
     )
-    members = proto.RepeatedField(
+    members: MutableSequence["Variable"] = proto.RepeatedField(
         proto.MESSAGE,
         number=3,
         message="Variable",
     )
-    var_table_index = proto.Field(
+    var_table_index: wrappers_pb2.Int32Value = proto.Field(
         proto.MESSAGE,
         number=4,
         message=wrappers_pb2.Int32Value,
     )
-    status = proto.Field(
+    status: "StatusMessage" = proto.Field(
         proto.MESSAGE,
         number=5,
         message="StatusMessage",
@@ -303,31 +305,31 @@ class StackFrame(proto.Message):
             Demangled function name at the call site.
         location (google.cloud.debugger_v2.types.SourceLocation):
             Source location of the call site.
-        arguments (Sequence[google.cloud.debugger_v2.types.Variable]):
+        arguments (MutableSequence[google.cloud.debugger_v2.types.Variable]):
             Set of arguments passed to this function.
             Note that this might not be populated for all
             stack frames.
-        locals_ (Sequence[google.cloud.debugger_v2.types.Variable]):
+        locals_ (MutableSequence[google.cloud.debugger_v2.types.Variable]):
             Set of local variables at the stack frame
             location. Note that this might not be populated
             for all stack frames.
     """
 
-    function = proto.Field(
+    function: str = proto.Field(
         proto.STRING,
         number=1,
     )
-    location = proto.Field(
+    location: "SourceLocation" = proto.Field(
         proto.MESSAGE,
         number=2,
         message="SourceLocation",
     )
-    arguments = proto.RepeatedField(
+    arguments: MutableSequence["Variable"] = proto.RepeatedField(
         proto.MESSAGE,
         number=3,
         message="Variable",
     )
-    locals_ = proto.RepeatedField(
+    locals_: MutableSequence["Variable"] = proto.RepeatedField(
         proto.MESSAGE,
         number=4,
         message="Variable",
@@ -351,7 +353,7 @@ class Breakpoint(proto.Message):
             The condition is a compound boolean expression
             composed using expressions in a programming
             language at the source location.
-        expressions (Sequence[str]):
+        expressions (MutableSequence[str]):
             List of read-only expressions to evaluate at the breakpoint
             location. The expressions are composed using expressions in
             the programming language at the source location. If the
@@ -400,10 +402,10 @@ class Breakpoint(proto.Message):
 
             -  ``Invalid line number`` referring to location
             -  ``Field f not found in class C`` referring to condition
-        stack_frames (Sequence[google.cloud.debugger_v2.types.StackFrame]):
+        stack_frames (MutableSequence[google.cloud.debugger_v2.types.StackFrame]):
             The stack at breakpoint time, where stack_frames[0]
             represents the most recently entered function.
-        evaluated_expressions (Sequence[google.cloud.debugger_v2.types.Variable]):
+        evaluated_expressions (MutableSequence[google.cloud.debugger_v2.types.Variable]):
             Values of evaluated expressions at breakpoint time. The
             evaluated expressions appear in exactly the same order they
             are listed in the ``expressions`` field. The ``name`` field
@@ -412,7 +414,7 @@ class Breakpoint(proto.Message):
             expression. If the expression cannot be evaluated, the
             ``status`` inside the ``Variable`` will indicate an error
             and contain the error text.
-        variable_table (Sequence[google.cloud.debugger_v2.types.Variable]):
+        variable_table (MutableSequence[google.cloud.debugger_v2.types.Variable]):
             The ``variable_table`` exists to aid with computation,
             memory and network traffic optimization. It enables storing
             a variable once and reference it from multiple variables,
@@ -427,7 +429,7 @@ class Breakpoint(proto.Message):
             their name from the referencing variable. The effective
             variable is a merge of the referencing variable and the
             referenced variable.
-        labels (Mapping[str, str]):
+        labels (MutableMapping[str, str]):
             A set of custom breakpoint properties,
             populated by the agent, to be displayed to the
             user.
@@ -447,76 +449,76 @@ class Breakpoint(proto.Message):
         WARNING = 1
         ERROR = 2
 
-    id = proto.Field(
+    id: str = proto.Field(
         proto.STRING,
         number=1,
     )
-    action = proto.Field(
+    action: Action = proto.Field(
         proto.ENUM,
         number=13,
         enum=Action,
     )
-    location = proto.Field(
+    location: "SourceLocation" = proto.Field(
         proto.MESSAGE,
         number=2,
         message="SourceLocation",
     )
-    condition = proto.Field(
+    condition: str = proto.Field(
         proto.STRING,
         number=3,
     )
-    expressions = proto.RepeatedField(
+    expressions: MutableSequence[str] = proto.RepeatedField(
         proto.STRING,
         number=4,
     )
-    log_message_format = proto.Field(
+    log_message_format: str = proto.Field(
         proto.STRING,
         number=14,
     )
-    log_level = proto.Field(
+    log_level: LogLevel = proto.Field(
         proto.ENUM,
         number=15,
         enum=LogLevel,
     )
-    is_final_state = proto.Field(
+    is_final_state: bool = proto.Field(
         proto.BOOL,
         number=5,
     )
-    create_time = proto.Field(
+    create_time: timestamp_pb2.Timestamp = proto.Field(
         proto.MESSAGE,
         number=11,
         message=timestamp_pb2.Timestamp,
     )
-    final_time = proto.Field(
+    final_time: timestamp_pb2.Timestamp = proto.Field(
         proto.MESSAGE,
         number=12,
         message=timestamp_pb2.Timestamp,
     )
-    user_email = proto.Field(
+    user_email: str = proto.Field(
         proto.STRING,
         number=16,
     )
-    status = proto.Field(
+    status: "StatusMessage" = proto.Field(
         proto.MESSAGE,
         number=10,
         message="StatusMessage",
     )
-    stack_frames = proto.RepeatedField(
+    stack_frames: MutableSequence["StackFrame"] = proto.RepeatedField(
         proto.MESSAGE,
         number=7,
         message="StackFrame",
     )
-    evaluated_expressions = proto.RepeatedField(
+    evaluated_expressions: MutableSequence["Variable"] = proto.RepeatedField(
         proto.MESSAGE,
         number=8,
         message="Variable",
     )
-    variable_table = proto.RepeatedField(
+    variable_table: MutableSequence["Variable"] = proto.RepeatedField(
         proto.MESSAGE,
         number=9,
         message="Variable",
     )
-    labels = proto.MapField(
+    labels: MutableMapping[str, str] = proto.MapField(
         proto.STRING,
         proto.STRING,
         number=17,
@@ -571,64 +573,68 @@ class Debuggee(proto.Message):
             user about this debuggee. Absence of this field
             indicates no status. The message can be either
             informational or an error status.
-        source_contexts (Sequence[google.cloud.source_context_v1.types.source_context_pb2.SourceContext]):
+        source_contexts (MutableSequence[google.cloud.source_context_v1.types.source_context_pb2.SourceContext]):
             References to the locations and revisions of
             the source code used in the deployed
             application.
-        ext_source_contexts (Sequence[google.cloud.source_context_v1.types.source_context_pb2.ExtendedSourceContext]):
+        ext_source_contexts (MutableSequence[google.cloud.source_context_v1.types.source_context_pb2.ExtendedSourceContext]):
             References to the locations and revisions of
             the source code used in the deployed
             application.
-        labels (Mapping[str, str]):
+        labels (MutableMapping[str, str]):
             A set of custom debuggee properties,
             populated by the agent, to be displayed to the
             user.
     """
 
-    id = proto.Field(
+    id: str = proto.Field(
         proto.STRING,
         number=1,
     )
-    project = proto.Field(
+    project: str = proto.Field(
         proto.STRING,
         number=2,
     )
-    uniquifier = proto.Field(
+    uniquifier: str = proto.Field(
         proto.STRING,
         number=3,
     )
-    description = proto.Field(
+    description: str = proto.Field(
         proto.STRING,
         number=4,
     )
-    is_inactive = proto.Field(
+    is_inactive: bool = proto.Field(
         proto.BOOL,
         number=5,
     )
-    agent_version = proto.Field(
+    agent_version: str = proto.Field(
         proto.STRING,
         number=6,
     )
-    is_disabled = proto.Field(
+    is_disabled: bool = proto.Field(
         proto.BOOL,
         number=7,
     )
-    status = proto.Field(
+    status: "StatusMessage" = proto.Field(
         proto.MESSAGE,
         number=8,
         message="StatusMessage",
     )
-    source_contexts = proto.RepeatedField(
+    source_contexts: MutableSequence[
+        source_context_pb2.SourceContext
+    ] = proto.RepeatedField(
         proto.MESSAGE,
         number=9,
         message=source_context_pb2.SourceContext,
     )
-    ext_source_contexts = proto.RepeatedField(
+    ext_source_contexts: MutableSequence[
+        source_context_pb2.ExtendedSourceContext
+    ] = proto.RepeatedField(
         proto.MESSAGE,
         number=13,
         message=source_context_pb2.ExtendedSourceContext,
     )
-    labels = proto.MapField(
+    labels: MutableMapping[str, str] = proto.MapField(
         proto.STRING,
         proto.STRING,
         number=11,

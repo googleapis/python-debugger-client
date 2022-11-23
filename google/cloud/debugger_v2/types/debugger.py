@@ -13,10 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+from typing import MutableMapping, MutableSequence
+
 import proto  # type: ignore
 
 from google.cloud.debugger_v2.types import data
-
 
 __protobuf__ = proto.module(
     package="google.devtools.clouddebugger.v2",
@@ -49,16 +50,16 @@ class SetBreakpointRequest(proto.Message):
             ``domain/type/version`` (e.g., ``google.com/intellij/v1``).
     """
 
-    debuggee_id = proto.Field(
+    debuggee_id: str = proto.Field(
         proto.STRING,
         number=1,
     )
-    breakpoint_ = proto.Field(
+    breakpoint_: data.Breakpoint = proto.Field(
         proto.MESSAGE,
         number=2,
         message=data.Breakpoint,
     )
-    client_version = proto.Field(
+    client_version: str = proto.Field(
         proto.STRING,
         number=4,
     )
@@ -73,7 +74,7 @@ class SetBreakpointResponse(proto.Message):
             set (in addition to the echoed fileds).
     """
 
-    breakpoint_ = proto.Field(
+    breakpoint_: data.Breakpoint = proto.Field(
         proto.MESSAGE,
         number=1,
         message=data.Breakpoint,
@@ -94,15 +95,15 @@ class GetBreakpointRequest(proto.Message):
             ``domain/type/version`` (e.g., ``google.com/intellij/v1``).
     """
 
-    debuggee_id = proto.Field(
+    debuggee_id: str = proto.Field(
         proto.STRING,
         number=1,
     )
-    breakpoint_id = proto.Field(
+    breakpoint_id: str = proto.Field(
         proto.STRING,
         number=2,
     )
-    client_version = proto.Field(
+    client_version: str = proto.Field(
         proto.STRING,
         number=4,
     )
@@ -117,7 +118,7 @@ class GetBreakpointResponse(proto.Message):
             ``location`` are guaranteed to be set.
     """
 
-    breakpoint_ = proto.Field(
+    breakpoint_: data.Breakpoint = proto.Field(
         proto.MESSAGE,
         number=1,
         message=data.Breakpoint,
@@ -138,15 +139,15 @@ class DeleteBreakpointRequest(proto.Message):
             ``domain/type/version`` (e.g., ``google.com/intellij/v1``).
     """
 
-    debuggee_id = proto.Field(
+    debuggee_id: str = proto.Field(
         proto.STRING,
         number=1,
     )
-    breakpoint_id = proto.Field(
+    breakpoint_id: str = proto.Field(
         proto.STRING,
         number=2,
     )
-    client_version = proto.Field(
+    client_version: str = proto.Field(
         proto.STRING,
         number=3,
     )
@@ -196,38 +197,38 @@ class ListBreakpointsRequest(proto.Message):
                 will pass the filter.
         """
 
-        value = proto.Field(
+        value: data.Breakpoint.Action = proto.Field(
             proto.ENUM,
             number=1,
             enum=data.Breakpoint.Action,
         )
 
-    debuggee_id = proto.Field(
+    debuggee_id: str = proto.Field(
         proto.STRING,
         number=1,
     )
-    include_all_users = proto.Field(
+    include_all_users: bool = proto.Field(
         proto.BOOL,
         number=2,
     )
-    include_inactive = proto.Field(
+    include_inactive: bool = proto.Field(
         proto.BOOL,
         number=3,
     )
-    action = proto.Field(
+    action: BreakpointActionValue = proto.Field(
         proto.MESSAGE,
         number=4,
         message=BreakpointActionValue,
     )
-    strip_results = proto.Field(
+    strip_results: bool = proto.Field(
         proto.BOOL,
         number=5,
     )
-    wait_token = proto.Field(
+    wait_token: str = proto.Field(
         proto.STRING,
         number=6,
     )
-    client_version = proto.Field(
+    client_version: str = proto.Field(
         proto.STRING,
         number=8,
     )
@@ -237,7 +238,7 @@ class ListBreakpointsResponse(proto.Message):
     r"""Response for listing breakpoints.
 
     Attributes:
-        breakpoints (Sequence[google.cloud.debugger_v2.types.Breakpoint]):
+        breakpoints (MutableSequence[google.cloud.debugger_v2.types.Breakpoint]):
             List of breakpoints matching the request. The fields ``id``
             and ``location`` are guaranteed to be set on each
             breakpoint. The fields: ``stack_frames``,
@@ -249,12 +250,12 @@ class ListBreakpointsResponse(proto.Message):
             of breakpoints has changes.
     """
 
-    breakpoints = proto.RepeatedField(
+    breakpoints: MutableSequence[data.Breakpoint] = proto.RepeatedField(
         proto.MESSAGE,
         number=1,
         message=data.Breakpoint,
     )
-    next_wait_token = proto.Field(
+    next_wait_token: str = proto.Field(
         proto.STRING,
         number=2,
     )
@@ -276,15 +277,15 @@ class ListDebuggeesRequest(proto.Message):
             ``domain/type/version`` (e.g., ``google.com/intellij/v1``).
     """
 
-    project = proto.Field(
+    project: str = proto.Field(
         proto.STRING,
         number=2,
     )
-    include_inactive = proto.Field(
+    include_inactive: bool = proto.Field(
         proto.BOOL,
         number=3,
     )
-    client_version = proto.Field(
+    client_version: str = proto.Field(
         proto.STRING,
         number=4,
     )
@@ -294,14 +295,14 @@ class ListDebuggeesResponse(proto.Message):
     r"""Response for listing debuggees.
 
     Attributes:
-        debuggees (Sequence[google.cloud.debugger_v2.types.Debuggee]):
+        debuggees (MutableSequence[google.cloud.debugger_v2.types.Debuggee]):
             List of debuggees accessible to the calling user. The fields
             ``debuggee.id`` and ``description`` are guaranteed to be
             set. The ``description`` field is a human readable field
             provided by agents and can be displayed to users.
     """
 
-    debuggees = proto.RepeatedField(
+    debuggees: MutableSequence[data.Debuggee] = proto.RepeatedField(
         proto.MESSAGE,
         number=1,
         message=data.Debuggee,
