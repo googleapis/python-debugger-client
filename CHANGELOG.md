@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.5.0](https://github.com/googleapis/python-debugger-client/compare/v1.4.3...v1.5.0) (2022-12-15)
+
+
+### Features
+
+* Add support for `google.cloud.debugger.__version__` ([78ffd89](https://github.com/googleapis/python-debugger-client/commit/78ffd890fba217e03febe8b5ff858515cf43f555))
+* Add typing to proto.Message based class attributes ([78ffd89](https://github.com/googleapis/python-debugger-client/commit/78ffd890fba217e03febe8b5ff858515cf43f555))
+
+
+### Bug Fixes
+
+* Add dict typing for client_options ([78ffd89](https://github.com/googleapis/python-debugger-client/commit/78ffd890fba217e03febe8b5ff858515cf43f555))
+* **deps:** Require google-api-core &gt;=1.34.0, >=2.11.0  ([f3dc6f9](https://github.com/googleapis/python-debugger-client/commit/f3dc6f9ede689f48486a9c84c7c233d6508f7fb9))
+* Drop usage of pkg_resources ([f3dc6f9](https://github.com/googleapis/python-debugger-client/commit/f3dc6f9ede689f48486a9c84c7c233d6508f7fb9))
+* Fix timeout default values ([f3dc6f9](https://github.com/googleapis/python-debugger-client/commit/f3dc6f9ede689f48486a9c84c7c233d6508f7fb9))
+
+
+### Documentation
+
+* **samples:** Snippetgen handling of repeated enum field ([78ffd89](https://github.com/googleapis/python-debugger-client/commit/78ffd890fba217e03febe8b5ff858515cf43f555))
+* **samples:** Snippetgen should call await on the operation coroutine before calling result ([f3dc6f9](https://github.com/googleapis/python-debugger-client/commit/f3dc6f9ede689f48486a9c84c7c233d6508f7fb9))
+
 ## [1.4.3](https://github.com/googleapis/python-debugger-client/compare/v1.4.2...v1.4.3) (2022-10-07)
 
 
