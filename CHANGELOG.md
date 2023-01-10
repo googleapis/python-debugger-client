@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/googleapis/python-debugger-client/compare/v1.5.0...v1.6.0) (2023-01-10)
+
+
+### Features
+
+* Add support for python 3.11 ([#143](https://github.com/googleapis/python-debugger-client/issues/143)) ([3cb3ca6](https://github.com/googleapis/python-debugger-client/commit/3cb3ca68b6f4b8ff4e88d996c7391420498ea35a))
+
 ## [1.5.0](https://github.com/googleapis/python-debugger-client/compare/v1.4.3...v1.5.0) (2022-12-15)
 
 
