@@ -82,7 +82,29 @@ class StatusMessage(proto.Message):
     """
 
     class Reference(proto.Enum):
-        r"""Enumerates references to which the message applies."""
+        r"""Enumerates references to which the message applies.
+
+        Values:
+            UNSPECIFIED (0):
+                Status doesn't refer to any particular input.
+            BREAKPOINT_SOURCE_LOCATION (3):
+                Status applies to the breakpoint and is
+                related to its location.
+            BREAKPOINT_CONDITION (4):
+                Status applies to the breakpoint and is
+                related to its condition.
+            BREAKPOINT_EXPRESSION (7):
+                Status applies to the breakpoint and is
+                related to its expressions.
+            BREAKPOINT_AGE (8):
+                Status applies to the breakpoint and is
+                related to its age.
+            VARIABLE_NAME (5):
+                Status applies to the entire variable.
+            VARIABLE_VALUE (6):
+                Status applies to variable value (variable
+                name is valid).
+        """
         UNSPECIFIED = 0
         BREAKPOINT_SOURCE_LOCATION = 3
         BREAKPOINT_CONDITION = 4
@@ -439,12 +461,31 @@ class Breakpoint(proto.Message):
         r"""Actions that can be taken when a breakpoint hits.
         Agents should reject breakpoints with unsupported or unknown
         action values.
+
+        Values:
+            CAPTURE (0):
+                Capture stack frame and variables and update
+                the breakpoint. The data is only captured once.
+                After that the breakpoint is set in a final
+                state.
+            LOG (1):
+                Log each breakpoint hit. The breakpoint
+                remains active until deleted or expired.
         """
         CAPTURE = 0
         LOG = 1
 
     class LogLevel(proto.Enum):
-        r"""Log severity levels."""
+        r"""Log severity levels.
+
+        Values:
+            INFO (0):
+                Information log message.
+            WARNING (1):
+                Warning log message.
+            ERROR (2):
+                Error log message.
+        """
         INFO = 0
         WARNING = 1
         ERROR = 2
