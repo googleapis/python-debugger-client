@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.6.1](https://github.com/googleapis/python-debugger-client/compare/v1.6.0...v1.6.1) (2023-01-20)
+
+
+### Bug Fixes
+
+* Add context manager return types ([3a95f76](https://github.com/googleapis/python-debugger-client/commit/3a95f76295407b60d20c2be35a07611e1ec3ed2d))
+
+
+### Documentation
+
+* Add documentation for enums ([3a95f76](https://github.com/googleapis/python-debugger-client/commit/3a95f76295407b60d20c2be35a07611e1ec3ed2d))
+
 ## [1.6.0](https://github.com/googleapis/python-debugger-client/compare/v1.5.0...v1.6.0) (2023-01-10)
 
 
