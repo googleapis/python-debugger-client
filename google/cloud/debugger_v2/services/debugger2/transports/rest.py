@@ -14,24 +14,21 @@
 # limitations under the License.
 #
 
-from google.auth.transport.requests import AuthorizedSession  # type: ignore
-import json  # type: ignore
-import grpc  # type: ignore
-from google.auth.transport.grpc import SslCredentials  # type: ignore
-from google.auth import credentials as ga_credentials  # type: ignore
-from google.api_core import exceptions as core_exceptions
-from google.api_core import retry as retries
-from google.api_core import rest_helpers
-from google.api_core import rest_streaming
-from google.api_core import path_template
-from google.api_core import gapic_v1
-
-from google.protobuf import json_format
-from requests import __version__ as requests_version
 import dataclasses
+import json  # type: ignore
 import re
 from typing import Callable, Dict, List, Optional, Sequence, Tuple, Union
 import warnings
+
+from google.api_core import gapic_v1, path_template, rest_helpers, rest_streaming
+from google.api_core import exceptions as core_exceptions
+from google.api_core import retry as retries
+from google.auth import credentials as ga_credentials  # type: ignore
+from google.auth.transport.grpc import SslCredentials  # type: ignore
+from google.auth.transport.requests import AuthorizedSession  # type: ignore
+from google.protobuf import json_format
+import grpc  # type: ignore
+from requests import __version__ as requests_version
 
 try:
     OptionalRetry = Union[retries.Retry, gapic_v1.method._MethodDefault]
@@ -39,11 +36,12 @@ except AttributeError:  # pragma: NO COVER
     OptionalRetry = Union[retries.Retry, object]  # type: ignore
 
 
-from google.cloud.debugger_v2.types import debugger
 from google.protobuf import empty_pb2  # type: ignore
 
-from .base import Debugger2Transport, DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
+from google.cloud.debugger_v2.types import debugger
 
+from .base import DEFAULT_CLIENT_INFO as BASE_DEFAULT_CLIENT_INFO
+from .base import Debugger2Transport
 
 DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
     gapic_version=BASE_DEFAULT_CLIENT_INFO.gapic_version,
@@ -108,7 +106,12 @@ class Debugger2RestInterceptor:
 
 
     """
-    def pre_delete_breakpoint(self, request: debugger.DeleteBreakpointRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[debugger.DeleteBreakpointRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_delete_breakpoint(
+        self,
+        request: debugger.DeleteBreakpointRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[debugger.DeleteBreakpointRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for delete_breakpoint
 
         Override in a subclass to manipulate the request or metadata
@@ -116,7 +119,11 @@ class Debugger2RestInterceptor:
         """
         return request, metadata
 
-    def pre_get_breakpoint(self, request: debugger.GetBreakpointRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[debugger.GetBreakpointRequest, Sequence[Tuple[str, str]]]:
+    def pre_get_breakpoint(
+        self,
+        request: debugger.GetBreakpointRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[debugger.GetBreakpointRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_breakpoint
 
         Override in a subclass to manipulate the request or metadata
@@ -124,7 +131,9 @@ class Debugger2RestInterceptor:
         """
         return request, metadata
 
-    def post_get_breakpoint(self, response: debugger.GetBreakpointResponse) -> debugger.GetBreakpointResponse:
+    def post_get_breakpoint(
+        self, response: debugger.GetBreakpointResponse
+    ) -> debugger.GetBreakpointResponse:
         """Post-rpc interceptor for get_breakpoint
 
         Override in a subclass to manipulate the response
@@ -132,7 +141,12 @@ class Debugger2RestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_breakpoints(self, request: debugger.ListBreakpointsRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[debugger.ListBreakpointsRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_breakpoints(
+        self,
+        request: debugger.ListBreakpointsRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[debugger.ListBreakpointsRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_breakpoints
 
         Override in a subclass to manipulate the request or metadata
@@ -140,7 +154,9 @@ class Debugger2RestInterceptor:
         """
         return request, metadata
 
-    def post_list_breakpoints(self, response: debugger.ListBreakpointsResponse) -> debugger.ListBreakpointsResponse:
+    def post_list_breakpoints(
+        self, response: debugger.ListBreakpointsResponse
+    ) -> debugger.ListBreakpointsResponse:
         """Post-rpc interceptor for list_breakpoints
 
         Override in a subclass to manipulate the response
@@ -148,7 +164,12 @@ class Debugger2RestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_debuggees(self, request: debugger.ListDebuggeesRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[debugger.ListDebuggeesRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_debuggees(
+        self,
+        request: debugger.ListDebuggeesRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[debugger.ListDebuggeesRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_debuggees
 
         Override in a subclass to manipulate the request or metadata
@@ -156,7 +177,9 @@ class Debugger2RestInterceptor:
         """
         return request, metadata
 
-    def post_list_debuggees(self, response: debugger.ListDebuggeesResponse) -> debugger.ListDebuggeesResponse:
+    def post_list_debuggees(
+        self, response: debugger.ListDebuggeesResponse
+    ) -> debugger.ListDebuggeesResponse:
         """Post-rpc interceptor for list_debuggees
 
         Override in a subclass to manipulate the response
@@ -164,7 +187,12 @@ class Debugger2RestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_set_breakpoint(self, request: debugger.SetBreakpointRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[debugger.SetBreakpointRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_set_breakpoint(
+        self,
+        request: debugger.SetBreakpointRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[debugger.SetBreakpointRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for set_breakpoint
 
         Override in a subclass to manipulate the request or metadata
@@ -172,7 +200,9 @@ class Debugger2RestInterceptor:
         """
         return request, metadata
 
-    def post_set_breakpoint(self, response: debugger.SetBreakpointResponse) -> debugger.SetBreakpointResponse:
+    def post_set_breakpoint(
+        self, response: debugger.SetBreakpointResponse
+    ) -> debugger.SetBreakpointResponse:
         """Post-rpc interceptor for set_breakpoint
 
         Override in a subclass to manipulate the response
@@ -214,20 +244,21 @@ class Debugger2RestTransport(Debugger2Transport):
 
     """
 
-    def __init__(self, *,
-            host: str = 'clouddebugger.googleapis.com',
-            credentials: Optional[ga_credentials.Credentials] = None,
-            credentials_file: Optional[str] = None,
-            scopes: Optional[Sequence[str]] = None,
-            client_cert_source_for_mtls: Optional[Callable[[
-                ], Tuple[bytes, bytes]]] = None,
-            quota_project_id: Optional[str] = None,
-            client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
-            always_use_jwt_access: Optional[bool] = False,
-            url_scheme: str = 'https',
-            interceptor: Optional[Debugger2RestInterceptor] = None,
-            api_audience: Optional[str] = None,
-            ) -> None:
+    def __init__(
+        self,
+        *,
+        host: str = "clouddebugger.googleapis.com",
+        credentials: Optional[ga_credentials.Credentials] = None,
+        credentials_file: Optional[str] = None,
+        scopes: Optional[Sequence[str]] = None,
+        client_cert_source_for_mtls: Optional[Callable[[], Tuple[bytes, bytes]]] = None,
+        quota_project_id: Optional[str] = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
+        always_use_jwt_access: Optional[bool] = False,
+        url_scheme: str = "https",
+        interceptor: Optional[Debugger2RestInterceptor] = None,
+        api_audience: Optional[str] = None,
+    ) -> None:
         """Instantiate the transport.
 
         Args:
@@ -266,7 +297,9 @@ class Debugger2RestTransport(Debugger2Transport):
         # credentials object
         maybe_url_match = re.match("^(?P<scheme>http(?:s)?://)?(?P<host>.*)$", host)
         if maybe_url_match is None:
-            raise ValueError(f"Unexpected hostname structure: {host}")  # pragma: NO COVER
+            raise ValueError(
+                f"Unexpected hostname structure: {host}"
+            )  # pragma: NO COVER
 
         url_match_items = maybe_url_match.groupdict()
 
@@ -277,10 +310,11 @@ class Debugger2RestTransport(Debugger2Transport):
             credentials=credentials,
             client_info=client_info,
             always_use_jwt_access=always_use_jwt_access,
-            api_audience=api_audience
+            api_audience=api_audience,
         )
         self._session = AuthorizedSession(
-            self._credentials, default_host=self.DEFAULT_HOST)
+            self._credentials, default_host=self.DEFAULT_HOST
+        )
         if client_cert_source_for_mtls:
             self._session.configure_mtls_channel(client_cert_source_for_mtls)
         self._interceptor = interceptor or Debugger2RestInterceptor()
@@ -290,19 +324,26 @@ class Debugger2RestTransport(Debugger2Transport):
         def __hash__(self):
             return hash("DeleteBreakpoint")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-            "clientVersion" : "",        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+            "clientVersion": "",
+        }
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: debugger.DeleteBreakpointRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ):
+        def __call__(
+            self,
+            request: debugger.DeleteBreakpointRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ):
             r"""Call the delete breakpoint method over HTTP.
 
             Args:
@@ -315,37 +356,42 @@ class Debugger2RestTransport(Debugger2Transport):
                     sent along with the request as metadata.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'delete',
-                'uri': '/v2/debugger/debuggees/{debuggee_id}/breakpoints/{breakpoint_id}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "delete",
+                    "uri": "/v2/debugger/debuggees/{debuggee_id}/breakpoints/{breakpoint_id}",
+                },
             ]
-            request, metadata = self._interceptor.pre_delete_breakpoint(request, metadata)
+            request, metadata = self._interceptor.pre_delete_breakpoint(
+                request, metadata
+            )
             pb_request = debugger.DeleteBreakpointRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -356,19 +402,26 @@ class Debugger2RestTransport(Debugger2Transport):
         def __hash__(self):
             return hash("GetBreakpoint")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-            "clientVersion" : "",        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+            "clientVersion": "",
+        }
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: debugger.GetBreakpointRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> debugger.GetBreakpointResponse:
+        def __call__(
+            self,
+            request: debugger.GetBreakpointRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> debugger.GetBreakpointResponse:
             r"""Call the get breakpoint method over HTTP.
 
             Args:
@@ -389,37 +442,40 @@ class Debugger2RestTransport(Debugger2Transport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v2/debugger/debuggees/{debuggee_id}/breakpoints/{breakpoint_id}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v2/debugger/debuggees/{debuggee_id}/breakpoints/{breakpoint_id}",
+                },
             ]
             request, metadata = self._interceptor.pre_get_breakpoint(request, metadata)
             pb_request = debugger.GetBreakpointRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -438,19 +494,26 @@ class Debugger2RestTransport(Debugger2Transport):
         def __hash__(self):
             return hash("ListBreakpoints")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-            "clientVersion" : "",        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+            "clientVersion": "",
+        }
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: debugger.ListBreakpointsRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> debugger.ListBreakpointsResponse:
+        def __call__(
+            self,
+            request: debugger.ListBreakpointsRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> debugger.ListBreakpointsResponse:
             r"""Call the list breakpoints method over HTTP.
 
             Args:
@@ -467,37 +530,42 @@ class Debugger2RestTransport(Debugger2Transport):
                     Response for listing breakpoints.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v2/debugger/debuggees/{debuggee_id}/breakpoints',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v2/debugger/debuggees/{debuggee_id}/breakpoints",
+                },
             ]
-            request, metadata = self._interceptor.pre_list_breakpoints(request, metadata)
+            request, metadata = self._interceptor.pre_list_breakpoints(
+                request, metadata
+            )
             pb_request = debugger.ListBreakpointsRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -516,19 +584,27 @@ class Debugger2RestTransport(Debugger2Transport):
         def __hash__(self):
             return hash("ListDebuggees")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-            "project" : "",            "clientVersion" : "",        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+            "project": "",
+            "clientVersion": "",
+        }
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: debugger.ListDebuggeesRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> debugger.ListDebuggeesResponse:
+        def __call__(
+            self,
+            request: debugger.ListDebuggeesRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> debugger.ListDebuggeesResponse:
             r"""Call the list debuggees method over HTTP.
 
             Args:
@@ -545,37 +621,40 @@ class Debugger2RestTransport(Debugger2Transport):
                     Response for listing debuggees.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v2/debugger/debuggees',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v2/debugger/debuggees",
+                },
             ]
             request, metadata = self._interceptor.pre_list_debuggees(request, metadata)
             pb_request = debugger.ListDebuggeesRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -594,19 +673,27 @@ class Debugger2RestTransport(Debugger2Transport):
         def __hash__(self):
             return hash("SetBreakpoint")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-            "breakpoint" : {},            "clientVersion" : "",        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+            "breakpoint": {},
+            "clientVersion": "",
+        }
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: debugger.SetBreakpointRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> debugger.SetBreakpointResponse:
+        def __call__(
+            self,
+            request: debugger.SetBreakpointRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> debugger.SetBreakpointResponse:
             r"""Call the set breakpoint method over HTTP.
 
             Args:
@@ -623,11 +710,12 @@ class Debugger2RestTransport(Debugger2Transport):
                     Response for setting a breakpoint.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v2/debugger/debuggees/{debuggee_id}/breakpoints/set',
-                'body': 'breakpoint',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v2/debugger/debuggees/{debuggee_id}/breakpoints/set",
+                    "body": "breakpoint",
+                },
             ]
             request, metadata = self._interceptor.pre_set_breakpoint(request, metadata)
             pb_request = debugger.SetBreakpointRequest.pb(request)
@@ -636,33 +724,35 @@ class Debugger2RestTransport(Debugger2Transport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -678,44 +768,44 @@ class Debugger2RestTransport(Debugger2Transport):
             return resp
 
     @property
-    def delete_breakpoint(self) -> Callable[
-            [debugger.DeleteBreakpointRequest],
-            empty_pb2.Empty]:
+    def delete_breakpoint(
+        self,
+    ) -> Callable[[debugger.DeleteBreakpointRequest], empty_pb2.Empty]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._DeleteBreakpoint(self._session, self._host, self._interceptor) # type: ignore
+        return self._DeleteBreakpoint(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_breakpoint(self) -> Callable[
-            [debugger.GetBreakpointRequest],
-            debugger.GetBreakpointResponse]:
+    def get_breakpoint(
+        self,
+    ) -> Callable[[debugger.GetBreakpointRequest], debugger.GetBreakpointResponse]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetBreakpoint(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetBreakpoint(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_breakpoints(self) -> Callable[
-            [debugger.ListBreakpointsRequest],
-            debugger.ListBreakpointsResponse]:
+    def list_breakpoints(
+        self,
+    ) -> Callable[[debugger.ListBreakpointsRequest], debugger.ListBreakpointsResponse]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListBreakpoints(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListBreakpoints(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_debuggees(self) -> Callable[
-            [debugger.ListDebuggeesRequest],
-            debugger.ListDebuggeesResponse]:
+    def list_debuggees(
+        self,
+    ) -> Callable[[debugger.ListDebuggeesRequest], debugger.ListDebuggeesResponse]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListDebuggees(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListDebuggees(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def set_breakpoint(self) -> Callable[
-            [debugger.SetBreakpointRequest],
-            debugger.SetBreakpointResponse]:
+    def set_breakpoint(
+        self,
+    ) -> Callable[[debugger.SetBreakpointRequest], debugger.SetBreakpointResponse]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._SetBreakpoint(self._session, self._host, self._interceptor) # type: ignore
+        return self._SetBreakpoint(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
     def kind(self) -> str:
@@ -725,6 +815,4 @@ class Debugger2RestTransport(Debugger2Transport):
         self._session.close()
 
 
-__all__=(
-    'Debugger2RestTransport',
-)
+__all__ = ("Debugger2RestTransport",)

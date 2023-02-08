@@ -22,6 +22,8 @@ try:
 except ImportError:  # pragma: NO COVER
     import mock
 
+from collections.abc import Iterable
+import json
 import math
 
 from google.api_core import gapic_v1, grpc_helpers, grpc_helpers_async, path_template
@@ -31,6 +33,7 @@ import google.auth
 from google.auth import credentials as ga_credentials
 from google.auth.exceptions import MutualTLSChannelError
 from google.oauth2 import service_account
+from google.protobuf import json_format
 from google.protobuf import timestamp_pb2  # type: ignore
 from google.protobuf import wrappers_pb2  # type: ignore
 import grpc
@@ -38,6 +41,8 @@ from grpc.experimental import aio
 from proto.marshal.rules import wrappers
 from proto.marshal.rules.dates import DurationRule, TimestampRule
 import pytest
+from requests import PreparedRequest, Request, Response
+from requests.sessions import Session
 
 from google.cloud.debugger_v2.services.debugger2 import (
     Debugger2AsyncClient,
@@ -91,6 +96,7 @@ def test__get_default_mtls_endpoint():
     [
         (Debugger2Client, "grpc"),
         (Debugger2AsyncClient, "grpc_asyncio"),
+        (Debugger2Client, "rest"),
     ],
 )
 def test_debugger2_client_from_service_account_info(client_class, transport_name):
@@ -104,7 +110,11 @@ def test_debugger2_client_from_service_account_info(client_class, transport_name
         assert client.transport._credentials == creds
         assert isinstance(client, client_class)
 
-        assert client.transport._host == ("clouddebugger.googleapis.com:443")
+        assert client.transport._host == (
+            "clouddebugger.googleapis.com:443"
+            if transport_name in ["grpc", "grpc_asyncio"]
+            else "https://clouddebugger.googleapis.com"
+        )
 
 
 @pytest.mark.parametrize(
@@ -112,6 +122,7 @@ def test_debugger2_client_from_service_account_info(client_class, transport_name
     [
         (transports.Debugger2GrpcTransport, "grpc"),
         (transports.Debugger2GrpcAsyncIOTransport, "grpc_asyncio"),
+        (transports.Debugger2RestTransport, "rest"),
     ],
 )
 def test_debugger2_client_service_account_always_use_jwt(
@@ -137,6 +148,7 @@ def test_debugger2_client_service_account_always_use_jwt(
     [
         (Debugger2Client, "grpc"),
         (Debugger2AsyncClient, "grpc_asyncio"),
+        (Debugger2Client, "rest"),
     ],
 )
 def test_debugger2_client_from_service_account_file(client_class, transport_name):
@@ -157,13 +169,18 @@ def test_debugger2_client_from_service_account_file(client_class, transport_name
         assert client.transport._credentials == creds
         assert isinstance(client, client_class)
 
-        assert client.transport._host == ("clouddebugger.googleapis.com:443")
+        assert client.transport._host == (
+            "clouddebugger.googleapis.com:443"
+            if transport_name in ["grpc", "grpc_asyncio"]
+            else "https://clouddebugger.googleapis.com"
+        )
 
 
 def test_debugger2_client_get_transport_class():
     transport = Debugger2Client.get_transport_class()
     available_transports = [
         transports.Debugger2GrpcTransport,
+        transports.Debugger2RestTransport,
     ]
     assert transport in available_transports
 
@@ -180,6 +197,7 @@ def test_debugger2_client_get_transport_class():
             transports.Debugger2GrpcAsyncIOTransport,
             "grpc_asyncio",
         ),
+        (Debugger2Client, transports.Debugger2RestTransport, "rest"),
     ],
 )
 @mock.patch.object(
@@ -321,6 +339,8 @@ def test_debugger2_client_client_options(client_class, transport_class, transpor
             "grpc_asyncio",
             "false",
         ),
+        (Debugger2Client, transports.Debugger2RestTransport, "rest", "true"),
+        (Debugger2Client, transports.Debugger2RestTransport, "rest", "false"),
     ],
 )
 @mock.patch.object(
@@ -514,6 +534,7 @@ def test_debugger2_client_get_mtls_endpoint_and_cert_source(client_class):
             transports.Debugger2GrpcAsyncIOTransport,
             "grpc_asyncio",
         ),
+        (Debugger2Client, transports.Debugger2RestTransport, "rest"),
     ],
 )
 def test_debugger2_client_client_options_scopes(
@@ -549,6 +570,7 @@ def test_debugger2_client_client_options_scopes(
             "grpc_asyncio",
             grpc_helpers_async,
         ),
+        (Debugger2Client, transports.Debugger2RestTransport, "rest", None),
     ],
 )
 def test_debugger2_client_client_options_credentials_file(
@@ -1824,6 +1846,1576 @@ async def test_list_debuggees_flattened_error_async():
         )
 
 
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        debugger.SetBreakpointRequest,
+        dict,
+    ],
+)
+def test_set_breakpoint_rest(request_type):
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"debuggee_id": "sample1"}
+    request_init["breakpoint_"] = {
+        "id": "id_value",
+        "action": 1,
+        "location": {"path": "path_value", "line": 424, "column": 654},
+        "condition": "condition_value",
+        "expressions": ["expressions_value1", "expressions_value2"],
+        "log_message_format": "log_message_format_value",
+        "log_level": 1,
+        "is_final_state": True,
+        "create_time": {"seconds": 751, "nanos": 543},
+        "final_time": {},
+        "user_email": "user_email_value",
+        "status": {
+            "is_error": True,
+            "refers_to": 3,
+            "description": {
+                "format_": "format__value",
+                "parameters": ["parameters_value1", "parameters_value2"],
+            },
+        },
+        "stack_frames": [
+            {
+                "function": "function_value",
+                "location": {},
+                "arguments": [
+                    {
+                        "name": "name_value",
+                        "value": "value_value",
+                        "type_": "type__value",
+                        "members": {},
+                        "var_table_index": {"value": 541},
+                        "status": {},
+                    }
+                ],
+                "locals_": {},
+            }
+        ],
+        "evaluated_expressions": {},
+        "variable_table": {},
+        "labels": {},
+    }
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = debugger.SetBreakpointResponse()
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = debugger.SetBreakpointResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.set_breakpoint(request)
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, debugger.SetBreakpointResponse)
+
+
+def test_set_breakpoint_rest_required_fields(
+    request_type=debugger.SetBreakpointRequest,
+):
+    transport_class = transports.Debugger2RestTransport
+
+    request_init = {}
+    request_init["debuggee_id"] = ""
+    request_init["client_version"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+    assert "clientVersion" not in jsonified_request
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).set_breakpoint._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+    assert "clientVersion" in jsonified_request
+    assert jsonified_request["clientVersion"] == request_init["client_version"]
+
+    jsonified_request["debuggeeId"] = "debuggee_id_value"
+    jsonified_request["clientVersion"] = "client_version_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).set_breakpoint._get_unset_required_fields(jsonified_request)
+    # Check that path parameters and body parameters are not mixing in.
+    assert not set(unset_fields) - set(
+        (
+            "breakpoint_",
+            "client_version",
+        )
+    )
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "debuggeeId" in jsonified_request
+    assert jsonified_request["debuggeeId"] == "debuggee_id_value"
+    assert "clientVersion" in jsonified_request
+    assert jsonified_request["clientVersion"] == "client_version_value"
+
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = debugger.SetBreakpointResponse()
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "post",
+                "query_params": pb_request,
+            }
+            transcode_result["body"] = pb_request
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+
+            pb_return_value = debugger.SetBreakpointResponse.pb(return_value)
+            json_return_value = json_format.MessageToJson(pb_return_value)
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.set_breakpoint(request)
+
+            expected_params = [
+                (
+                    "clientVersion",
+                    "",
+                ),
+                ("$alt", "json;enum-encoding=int"),
+            ]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_set_breakpoint_rest_unset_required_fields():
+    transport = transports.Debugger2RestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.set_breakpoint._get_unset_required_fields({})
+    assert set(unset_fields) == (
+        set(
+            (
+                "breakpoint",
+                "clientVersion",
+            )
+        )
+        & set(
+            (
+                "debuggeeId",
+                "breakpoint",
+                "clientVersion",
+            )
+        )
+    )
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_set_breakpoint_rest_interceptors(null_interceptor):
+    transport = transports.Debugger2RestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
+        interceptor=None if null_interceptor else transports.Debugger2RestInterceptor(),
+    )
+    client = Debugger2Client(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.Debugger2RestInterceptor, "post_set_breakpoint"
+    ) as post, mock.patch.object(
+        transports.Debugger2RestInterceptor, "pre_set_breakpoint"
+    ) as pre:
+        pre.assert_not_called()
+        post.assert_not_called()
+        pb_message = debugger.SetBreakpointRequest.pb(debugger.SetBreakpointRequest())
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+        req.return_value._content = debugger.SetBreakpointResponse.to_json(
+            debugger.SetBreakpointResponse()
+        )
+
+        request = debugger.SetBreakpointRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+        post.return_value = debugger.SetBreakpointResponse()
+
+        client.set_breakpoint(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+        post.assert_called_once()
+
+
+def test_set_breakpoint_rest_bad_request(
+    transport: str = "rest", request_type=debugger.SetBreakpointRequest
+):
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"debuggee_id": "sample1"}
+    request_init["breakpoint_"] = {
+        "id": "id_value",
+        "action": 1,
+        "location": {"path": "path_value", "line": 424, "column": 654},
+        "condition": "condition_value",
+        "expressions": ["expressions_value1", "expressions_value2"],
+        "log_message_format": "log_message_format_value",
+        "log_level": 1,
+        "is_final_state": True,
+        "create_time": {"seconds": 751, "nanos": 543},
+        "final_time": {},
+        "user_email": "user_email_value",
+        "status": {
+            "is_error": True,
+            "refers_to": 3,
+            "description": {
+                "format_": "format__value",
+                "parameters": ["parameters_value1", "parameters_value2"],
+            },
+        },
+        "stack_frames": [
+            {
+                "function": "function_value",
+                "location": {},
+                "arguments": [
+                    {
+                        "name": "name_value",
+                        "value": "value_value",
+                        "type_": "type__value",
+                        "members": {},
+                        "var_table_index": {"value": 541},
+                        "status": {},
+                    }
+                ],
+                "locals_": {},
+            }
+        ],
+        "evaluated_expressions": {},
+        "variable_table": {},
+        "labels": {},
+    }
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.set_breakpoint(request)
+
+
+def test_set_breakpoint_rest_flattened():
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = debugger.SetBreakpointResponse()
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {"debuggee_id": "sample1"}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            debuggee_id="debuggee_id_value",
+            breakpoint_=data.Breakpoint(id="id_value"),
+            client_version="client_version_value",
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = debugger.SetBreakpointResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.set_breakpoint(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v2/debugger/debuggees/{debuggee_id}/breakpoints/set"
+            % client.transport._host,
+            args[1],
+        )
+
+
+def test_set_breakpoint_rest_flattened_error(transport: str = "rest"):
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.set_breakpoint(
+            debugger.SetBreakpointRequest(),
+            debuggee_id="debuggee_id_value",
+            breakpoint_=data.Breakpoint(id="id_value"),
+            client_version="client_version_value",
+        )
+
+
+def test_set_breakpoint_rest_error():
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(), transport="rest"
+    )
+
+
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        debugger.GetBreakpointRequest,
+        dict,
+    ],
+)
+def test_get_breakpoint_rest(request_type):
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"debuggee_id": "sample1", "breakpoint_id": "sample2"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = debugger.GetBreakpointResponse()
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = debugger.GetBreakpointResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.get_breakpoint(request)
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, debugger.GetBreakpointResponse)
+
+
+def test_get_breakpoint_rest_required_fields(
+    request_type=debugger.GetBreakpointRequest,
+):
+    transport_class = transports.Debugger2RestTransport
+
+    request_init = {}
+    request_init["debuggee_id"] = ""
+    request_init["breakpoint_id"] = ""
+    request_init["client_version"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+    assert "clientVersion" not in jsonified_request
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).get_breakpoint._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+    assert "clientVersion" in jsonified_request
+    assert jsonified_request["clientVersion"] == request_init["client_version"]
+
+    jsonified_request["debuggeeId"] = "debuggee_id_value"
+    jsonified_request["breakpointId"] = "breakpoint_id_value"
+    jsonified_request["clientVersion"] = "client_version_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).get_breakpoint._get_unset_required_fields(jsonified_request)
+    # Check that path parameters and body parameters are not mixing in.
+    assert not set(unset_fields) - set(("client_version",))
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "debuggeeId" in jsonified_request
+    assert jsonified_request["debuggeeId"] == "debuggee_id_value"
+    assert "breakpointId" in jsonified_request
+    assert jsonified_request["breakpointId"] == "breakpoint_id_value"
+    assert "clientVersion" in jsonified_request
+    assert jsonified_request["clientVersion"] == "client_version_value"
+
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = debugger.GetBreakpointResponse()
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "get",
+                "query_params": pb_request,
+            }
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+
+            pb_return_value = debugger.GetBreakpointResponse.pb(return_value)
+            json_return_value = json_format.MessageToJson(pb_return_value)
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.get_breakpoint(request)
+
+            expected_params = [
+                (
+                    "clientVersion",
+                    "",
+                ),
+                ("$alt", "json;enum-encoding=int"),
+            ]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_get_breakpoint_rest_unset_required_fields():
+    transport = transports.Debugger2RestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.get_breakpoint._get_unset_required_fields({})
+    assert set(unset_fields) == (
+        set(("clientVersion",))
+        & set(
+            (
+                "debuggeeId",
+                "breakpointId",
+                "clientVersion",
+            )
+        )
+    )
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_get_breakpoint_rest_interceptors(null_interceptor):
+    transport = transports.Debugger2RestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
+        interceptor=None if null_interceptor else transports.Debugger2RestInterceptor(),
+    )
+    client = Debugger2Client(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.Debugger2RestInterceptor, "post_get_breakpoint"
+    ) as post, mock.patch.object(
+        transports.Debugger2RestInterceptor, "pre_get_breakpoint"
+    ) as pre:
+        pre.assert_not_called()
+        post.assert_not_called()
+        pb_message = debugger.GetBreakpointRequest.pb(debugger.GetBreakpointRequest())
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+        req.return_value._content = debugger.GetBreakpointResponse.to_json(
+            debugger.GetBreakpointResponse()
+        )
+
+        request = debugger.GetBreakpointRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+        post.return_value = debugger.GetBreakpointResponse()
+
+        client.get_breakpoint(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+        post.assert_called_once()
+
+
+def test_get_breakpoint_rest_bad_request(
+    transport: str = "rest", request_type=debugger.GetBreakpointRequest
+):
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"debuggee_id": "sample1", "breakpoint_id": "sample2"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.get_breakpoint(request)
+
+
+def test_get_breakpoint_rest_flattened():
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = debugger.GetBreakpointResponse()
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {"debuggee_id": "sample1", "breakpoint_id": "sample2"}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            debuggee_id="debuggee_id_value",
+            breakpoint_id="breakpoint_id_value",
+            client_version="client_version_value",
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = debugger.GetBreakpointResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.get_breakpoint(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v2/debugger/debuggees/{debuggee_id}/breakpoints/{breakpoint_id}"
+            % client.transport._host,
+            args[1],
+        )
+
+
+def test_get_breakpoint_rest_flattened_error(transport: str = "rest"):
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.get_breakpoint(
+            debugger.GetBreakpointRequest(),
+            debuggee_id="debuggee_id_value",
+            breakpoint_id="breakpoint_id_value",
+            client_version="client_version_value",
+        )
+
+
+def test_get_breakpoint_rest_error():
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(), transport="rest"
+    )
+
+
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        debugger.DeleteBreakpointRequest,
+        dict,
+    ],
+)
+def test_delete_breakpoint_rest(request_type):
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"debuggee_id": "sample1", "breakpoint_id": "sample2"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = None
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        json_return_value = ""
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.delete_breakpoint(request)
+
+    # Establish that the response is the type that we expect.
+    assert response is None
+
+
+def test_delete_breakpoint_rest_required_fields(
+    request_type=debugger.DeleteBreakpointRequest,
+):
+    transport_class = transports.Debugger2RestTransport
+
+    request_init = {}
+    request_init["debuggee_id"] = ""
+    request_init["breakpoint_id"] = ""
+    request_init["client_version"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+    assert "clientVersion" not in jsonified_request
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).delete_breakpoint._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+    assert "clientVersion" in jsonified_request
+    assert jsonified_request["clientVersion"] == request_init["client_version"]
+
+    jsonified_request["debuggeeId"] = "debuggee_id_value"
+    jsonified_request["breakpointId"] = "breakpoint_id_value"
+    jsonified_request["clientVersion"] = "client_version_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).delete_breakpoint._get_unset_required_fields(jsonified_request)
+    # Check that path parameters and body parameters are not mixing in.
+    assert not set(unset_fields) - set(("client_version",))
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "debuggeeId" in jsonified_request
+    assert jsonified_request["debuggeeId"] == "debuggee_id_value"
+    assert "breakpointId" in jsonified_request
+    assert jsonified_request["breakpointId"] == "breakpoint_id_value"
+    assert "clientVersion" in jsonified_request
+    assert jsonified_request["clientVersion"] == "client_version_value"
+
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = None
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "delete",
+                "query_params": pb_request,
+            }
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+            json_return_value = ""
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.delete_breakpoint(request)
+
+            expected_params = [
+                (
+                    "clientVersion",
+                    "",
+                ),
+                ("$alt", "json;enum-encoding=int"),
+            ]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_delete_breakpoint_rest_unset_required_fields():
+    transport = transports.Debugger2RestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.delete_breakpoint._get_unset_required_fields({})
+    assert set(unset_fields) == (
+        set(("clientVersion",))
+        & set(
+            (
+                "debuggeeId",
+                "breakpointId",
+                "clientVersion",
+            )
+        )
+    )
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_delete_breakpoint_rest_interceptors(null_interceptor):
+    transport = transports.Debugger2RestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
+        interceptor=None if null_interceptor else transports.Debugger2RestInterceptor(),
+    )
+    client = Debugger2Client(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.Debugger2RestInterceptor, "pre_delete_breakpoint"
+    ) as pre:
+        pre.assert_not_called()
+        pb_message = debugger.DeleteBreakpointRequest.pb(
+            debugger.DeleteBreakpointRequest()
+        )
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+
+        request = debugger.DeleteBreakpointRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+
+        client.delete_breakpoint(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+
+
+def test_delete_breakpoint_rest_bad_request(
+    transport: str = "rest", request_type=debugger.DeleteBreakpointRequest
+):
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"debuggee_id": "sample1", "breakpoint_id": "sample2"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.delete_breakpoint(request)
+
+
+def test_delete_breakpoint_rest_flattened():
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = None
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {"debuggee_id": "sample1", "breakpoint_id": "sample2"}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            debuggee_id="debuggee_id_value",
+            breakpoint_id="breakpoint_id_value",
+            client_version="client_version_value",
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        json_return_value = ""
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.delete_breakpoint(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v2/debugger/debuggees/{debuggee_id}/breakpoints/{breakpoint_id}"
+            % client.transport._host,
+            args[1],
+        )
+
+
+def test_delete_breakpoint_rest_flattened_error(transport: str = "rest"):
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.delete_breakpoint(
+            debugger.DeleteBreakpointRequest(),
+            debuggee_id="debuggee_id_value",
+            breakpoint_id="breakpoint_id_value",
+            client_version="client_version_value",
+        )
+
+
+def test_delete_breakpoint_rest_error():
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(), transport="rest"
+    )
+
+
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        debugger.ListBreakpointsRequest,
+        dict,
+    ],
+)
+def test_list_breakpoints_rest(request_type):
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"debuggee_id": "sample1"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = debugger.ListBreakpointsResponse(
+            next_wait_token="next_wait_token_value",
+        )
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = debugger.ListBreakpointsResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.list_breakpoints(request)
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, debugger.ListBreakpointsResponse)
+    assert response.next_wait_token == "next_wait_token_value"
+
+
+def test_list_breakpoints_rest_required_fields(
+    request_type=debugger.ListBreakpointsRequest,
+):
+    transport_class = transports.Debugger2RestTransport
+
+    request_init = {}
+    request_init["debuggee_id"] = ""
+    request_init["client_version"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+    assert "clientVersion" not in jsonified_request
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).list_breakpoints._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+    assert "clientVersion" in jsonified_request
+    assert jsonified_request["clientVersion"] == request_init["client_version"]
+
+    jsonified_request["debuggeeId"] = "debuggee_id_value"
+    jsonified_request["clientVersion"] = "client_version_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).list_breakpoints._get_unset_required_fields(jsonified_request)
+    # Check that path parameters and body parameters are not mixing in.
+    assert not set(unset_fields) - set(
+        (
+            "action",
+            "client_version",
+            "include_all_users",
+            "include_inactive",
+            "strip_results",
+            "wait_token",
+        )
+    )
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "debuggeeId" in jsonified_request
+    assert jsonified_request["debuggeeId"] == "debuggee_id_value"
+    assert "clientVersion" in jsonified_request
+    assert jsonified_request["clientVersion"] == "client_version_value"
+
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = debugger.ListBreakpointsResponse()
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "get",
+                "query_params": pb_request,
+            }
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+
+            pb_return_value = debugger.ListBreakpointsResponse.pb(return_value)
+            json_return_value = json_format.MessageToJson(pb_return_value)
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.list_breakpoints(request)
+
+            expected_params = [
+                (
+                    "clientVersion",
+                    "",
+                ),
+                ("$alt", "json;enum-encoding=int"),
+            ]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_list_breakpoints_rest_unset_required_fields():
+    transport = transports.Debugger2RestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.list_breakpoints._get_unset_required_fields({})
+    assert set(unset_fields) == (
+        set(
+            (
+                "action",
+                "clientVersion",
+                "includeAllUsers",
+                "includeInactive",
+                "stripResults",
+                "waitToken",
+            )
+        )
+        & set(
+            (
+                "debuggeeId",
+                "clientVersion",
+            )
+        )
+    )
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_list_breakpoints_rest_interceptors(null_interceptor):
+    transport = transports.Debugger2RestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
+        interceptor=None if null_interceptor else transports.Debugger2RestInterceptor(),
+    )
+    client = Debugger2Client(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.Debugger2RestInterceptor, "post_list_breakpoints"
+    ) as post, mock.patch.object(
+        transports.Debugger2RestInterceptor, "pre_list_breakpoints"
+    ) as pre:
+        pre.assert_not_called()
+        post.assert_not_called()
+        pb_message = debugger.ListBreakpointsRequest.pb(
+            debugger.ListBreakpointsRequest()
+        )
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+        req.return_value._content = debugger.ListBreakpointsResponse.to_json(
+            debugger.ListBreakpointsResponse()
+        )
+
+        request = debugger.ListBreakpointsRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+        post.return_value = debugger.ListBreakpointsResponse()
+
+        client.list_breakpoints(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+        post.assert_called_once()
+
+
+def test_list_breakpoints_rest_bad_request(
+    transport: str = "rest", request_type=debugger.ListBreakpointsRequest
+):
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"debuggee_id": "sample1"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.list_breakpoints(request)
+
+
+def test_list_breakpoints_rest_flattened():
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = debugger.ListBreakpointsResponse()
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {"debuggee_id": "sample1"}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            debuggee_id="debuggee_id_value",
+            client_version="client_version_value",
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = debugger.ListBreakpointsResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.list_breakpoints(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v2/debugger/debuggees/{debuggee_id}/breakpoints"
+            % client.transport._host,
+            args[1],
+        )
+
+
+def test_list_breakpoints_rest_flattened_error(transport: str = "rest"):
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.list_breakpoints(
+            debugger.ListBreakpointsRequest(),
+            debuggee_id="debuggee_id_value",
+            client_version="client_version_value",
+        )
+
+
+def test_list_breakpoints_rest_error():
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(), transport="rest"
+    )
+
+
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        debugger.ListDebuggeesRequest,
+        dict,
+    ],
+)
+def test_list_debuggees_rest(request_type):
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = debugger.ListDebuggeesResponse()
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = debugger.ListDebuggeesResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.list_debuggees(request)
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, debugger.ListDebuggeesResponse)
+
+
+def test_list_debuggees_rest_required_fields(
+    request_type=debugger.ListDebuggeesRequest,
+):
+    transport_class = transports.Debugger2RestTransport
+
+    request_init = {}
+    request_init["project"] = ""
+    request_init["client_version"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+    assert "project" not in jsonified_request
+    assert "clientVersion" not in jsonified_request
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).list_debuggees._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+    assert "project" in jsonified_request
+    assert jsonified_request["project"] == request_init["project"]
+    assert "clientVersion" in jsonified_request
+    assert jsonified_request["clientVersion"] == request_init["client_version"]
+
+    jsonified_request["project"] = "project_value"
+    jsonified_request["clientVersion"] = "client_version_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).list_debuggees._get_unset_required_fields(jsonified_request)
+    # Check that path parameters and body parameters are not mixing in.
+    assert not set(unset_fields) - set(
+        (
+            "client_version",
+            "include_inactive",
+            "project",
+        )
+    )
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "project" in jsonified_request
+    assert jsonified_request["project"] == "project_value"
+    assert "clientVersion" in jsonified_request
+    assert jsonified_request["clientVersion"] == "client_version_value"
+
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = debugger.ListDebuggeesResponse()
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "get",
+                "query_params": pb_request,
+            }
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+
+            pb_return_value = debugger.ListDebuggeesResponse.pb(return_value)
+            json_return_value = json_format.MessageToJson(pb_return_value)
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.list_debuggees(request)
+
+            expected_params = [
+                (
+                    "project",
+                    "",
+                ),
+                (
+                    "clientVersion",
+                    "",
+                ),
+                ("$alt", "json;enum-encoding=int"),
+            ]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_list_debuggees_rest_unset_required_fields():
+    transport = transports.Debugger2RestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.list_debuggees._get_unset_required_fields({})
+    assert set(unset_fields) == (
+        set(
+            (
+                "clientVersion",
+                "includeInactive",
+                "project",
+            )
+        )
+        & set(
+            (
+                "project",
+                "clientVersion",
+            )
+        )
+    )
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_list_debuggees_rest_interceptors(null_interceptor):
+    transport = transports.Debugger2RestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
+        interceptor=None if null_interceptor else transports.Debugger2RestInterceptor(),
+    )
+    client = Debugger2Client(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.Debugger2RestInterceptor, "post_list_debuggees"
+    ) as post, mock.patch.object(
+        transports.Debugger2RestInterceptor, "pre_list_debuggees"
+    ) as pre:
+        pre.assert_not_called()
+        post.assert_not_called()
+        pb_message = debugger.ListDebuggeesRequest.pb(debugger.ListDebuggeesRequest())
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+        req.return_value._content = debugger.ListDebuggeesResponse.to_json(
+            debugger.ListDebuggeesResponse()
+        )
+
+        request = debugger.ListDebuggeesRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+        post.return_value = debugger.ListDebuggeesResponse()
+
+        client.list_debuggees(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+        post.assert_called_once()
+
+
+def test_list_debuggees_rest_bad_request(
+    transport: str = "rest", request_type=debugger.ListDebuggeesRequest
+):
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.list_debuggees(request)
+
+
+def test_list_debuggees_rest_flattened():
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = debugger.ListDebuggeesResponse()
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            project="project_value",
+            client_version="client_version_value",
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = debugger.ListDebuggeesResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.list_debuggees(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v2/debugger/debuggees" % client.transport._host, args[1]
+        )
+
+
+def test_list_debuggees_rest_flattened_error(transport: str = "rest"):
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(),
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.list_debuggees(
+            debugger.ListDebuggeesRequest(),
+            project="project_value",
+            client_version="client_version_value",
+        )
+
+
+def test_list_debuggees_rest_error():
+    client = Debugger2Client(
+        credentials=ga_credentials.AnonymousCredentials(), transport="rest"
+    )
+
+
 def test_credentials_transport_error():
     # It is an error to provide credentials and a transport instance.
     transport = transports.Debugger2GrpcTransport(
@@ -1905,6 +3497,7 @@ def test_transport_get_channel():
     [
         transports.Debugger2GrpcTransport,
         transports.Debugger2GrpcAsyncIOTransport,
+        transports.Debugger2RestTransport,
     ],
 )
 def test_transport_adc(transport_class):
@@ -1919,6 +3512,7 @@ def test_transport_adc(transport_class):
     "transport_name",
     [
         "grpc",
+        "rest",
     ],
 )
 def test_transport_kind(transport_name):
@@ -2061,6 +3655,7 @@ def test_debugger2_transport_auth_adc(transport_class):
     [
         transports.Debugger2GrpcTransport,
         transports.Debugger2GrpcAsyncIOTransport,
+        transports.Debugger2RestTransport,
     ],
 )
 def test_debugger2_transport_auth_gdch_credentials(transport_class):
@@ -2158,11 +3753,23 @@ def test_debugger2_grpc_transport_client_cert_source_for_mtls(transport_class):
             )
 
 
+def test_debugger2_http_transport_client_cert_source_for_mtls():
+    cred = ga_credentials.AnonymousCredentials()
+    with mock.patch(
+        "google.auth.transport.requests.AuthorizedSession.configure_mtls_channel"
+    ) as mock_configure_mtls_channel:
+        transports.Debugger2RestTransport(
+            credentials=cred, client_cert_source_for_mtls=client_cert_source_callback
+        )
+        mock_configure_mtls_channel.assert_called_once_with(client_cert_source_callback)
+
+
 @pytest.mark.parametrize(
     "transport_name",
     [
         "grpc",
         "grpc_asyncio",
+        "rest",
     ],
 )
 def test_debugger2_host_no_port(transport_name):
@@ -2173,7 +3780,11 @@ def test_debugger2_host_no_port(transport_name):
         ),
         transport=transport_name,
     )
-    assert client.transport._host == ("clouddebugger.googleapis.com:443")
+    assert client.transport._host == (
+        "clouddebugger.googleapis.com:443"
+        if transport_name in ["grpc", "grpc_asyncio"]
+        else "https://clouddebugger.googleapis.com"
+    )
 
 
 @pytest.mark.parametrize(
@@ -2181,6 +3792,7 @@ def test_debugger2_host_no_port(transport_name):
     [
         "grpc",
         "grpc_asyncio",
+        "rest",
     ],
 )
 def test_debugger2_host_with_port(transport_name):
@@ -2191,7 +3803,45 @@ def test_debugger2_host_with_port(transport_name):
         ),
         transport=transport_name,
     )
-    assert client.transport._host == ("clouddebugger.googleapis.com:8000")
+    assert client.transport._host == (
+        "clouddebugger.googleapis.com:8000"
+        if transport_name in ["grpc", "grpc_asyncio"]
+        else "https://clouddebugger.googleapis.com:8000"
+    )
+
+
+@pytest.mark.parametrize(
+    "transport_name",
+    [
+        "rest",
+    ],
+)
+def test_debugger2_client_transport_session_collision(transport_name):
+    creds1 = ga_credentials.AnonymousCredentials()
+    creds2 = ga_credentials.AnonymousCredentials()
+    client1 = Debugger2Client(
+        credentials=creds1,
+        transport=transport_name,
+    )
+    client2 = Debugger2Client(
+        credentials=creds2,
+        transport=transport_name,
+    )
+    session1 = client1.transport.set_breakpoint._session
+    session2 = client2.transport.set_breakpoint._session
+    assert session1 != session2
+    session1 = client1.transport.get_breakpoint._session
+    session2 = client2.transport.get_breakpoint._session
+    assert session1 != session2
+    session1 = client1.transport.delete_breakpoint._session
+    session2 = client2.transport.delete_breakpoint._session
+    assert session1 != session2
+    session1 = client1.transport.list_breakpoints._session
+    session2 = client2.transport.list_breakpoints._session
+    assert session1 != session2
+    session1 = client1.transport.list_debuggees._session
+    session2 = client2.transport.list_debuggees._session
+    assert session1 != session2
 
 
 def test_debugger2_grpc_transport_channel():
@@ -2454,6 +4104,7 @@ async def test_transport_close_async():
 
 def test_transport_close():
     transports = {
+        "rest": "_session",
         "grpc": "_grpc_channel",
     }
 
@@ -2471,6 +4122,7 @@ def test_transport_close():
 
 def test_client_ctx():
     transports = [
+        "rest",
         "grpc",
     ]
     for transport in transports:
