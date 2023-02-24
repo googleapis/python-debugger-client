@@ -17,7 +17,7 @@
 import dataclasses
 import json  # type: ignore
 import re
-from typing import Callable, Dict, List, Optional, Sequence, Tuple, Union
+from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Union
 import warnings
 
 from google.api_core import gapic_v1, path_template, rest_helpers, rest_streaming
@@ -324,7 +324,7 @@ class Debugger2RestTransport(Debugger2Transport):
         def __hash__(self):
             return hash("DeleteBreakpoint")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {
             "clientVersion": "",
         }
 
@@ -402,7 +402,7 @@ class Debugger2RestTransport(Debugger2Transport):
         def __hash__(self):
             return hash("GetBreakpoint")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {
             "clientVersion": "",
         }
 
@@ -494,7 +494,7 @@ class Debugger2RestTransport(Debugger2Transport):
         def __hash__(self):
             return hash("ListBreakpoints")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {
             "clientVersion": "",
         }
 
@@ -584,7 +584,7 @@ class Debugger2RestTransport(Debugger2Transport):
         def __hash__(self):
             return hash("ListDebuggees")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {
             "project": "",
             "clientVersion": "",
         }
@@ -673,7 +673,7 @@ class Debugger2RestTransport(Debugger2Transport):
         def __hash__(self):
             return hash("SetBreakpoint")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {
             "breakpoint": {},
             "clientVersion": "",
         }
