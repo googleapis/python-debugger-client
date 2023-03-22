@@ -495,7 +495,6 @@ class Controller2RestTransport(Controller2Transport):
                 request (~.controller.UpdateActiveBreakpointRequest):
                     The request object. Request to update an active
                 breakpoint.
-
                 retry (google.api_core.retry.Retry): Designation of what errors, if any,
                     should be retried.
                 timeout (float): The timeout for this request.

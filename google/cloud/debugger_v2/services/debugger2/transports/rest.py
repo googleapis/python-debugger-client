@@ -428,7 +428,6 @@ class Debugger2RestTransport(Debugger2Transport):
                 request (~.debugger.GetBreakpointRequest):
                     The request object. Request to get breakpoint
                 information.
-
                 retry (google.api_core.retry.Retry): Designation of what errors, if any,
                     should be retried.
                 timeout (float): The timeout for this request.
