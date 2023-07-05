@@ -713,7 +713,7 @@ class Debugger2RestTransport(Debugger2Transport):
                 {
                     "method": "post",
                     "uri": "/v2/debugger/debuggees/{debuggee_id}/breakpoints/set",
-                    "body": "breakpoint",
+                    "body": "breakpoint_",
                 },
             ]
             request, metadata = self._interceptor.pre_set_breakpoint(request, metadata)
