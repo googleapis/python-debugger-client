@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.7.0](https://github.com/googleapis/python-debugger-client/compare/v1.6.1...v1.7.0) (2023-07-06)
+
+
+### Features
+
+* Enable "rest" transport in Python for services supporting numeric enums ([64dbabb](https://github.com/googleapis/python-debugger-client/commit/64dbabb93040f158fde96467a72b091f70ce7e05))
+
+
+### Bug Fixes
+
+* Add async context manager return types ([64dbabb](https://github.com/googleapis/python-debugger-client/commit/64dbabb93040f158fde96467a72b091f70ce7e05))
+
+
+### Documentation
+
+* Fix formatting of request arg in docstring ([64dbabb](https://github.com/googleapis/python-debugger-client/commit/64dbabb93040f158fde96467a72b091f70ce7e05))
+
 ## [1.6.1](https://github.com/googleapis/python-debugger-client/compare/v1.6.0...v1.6.1) (2023-01-20)
 
 
