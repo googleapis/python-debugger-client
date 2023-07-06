@@ -51,6 +51,7 @@ from google.cloud.debugger_v2.types import controller, data
 from .transports.base import DEFAULT_CLIENT_INFO, Controller2Transport
 from .transports.grpc import Controller2GrpcTransport
 from .transports.grpc_asyncio import Controller2GrpcAsyncIOTransport
+from .transports.rest import Controller2RestTransport
 
 
 class Controller2ClientMeta(type):
@@ -64,6 +65,7 @@ class Controller2ClientMeta(type):
     _transport_registry = OrderedDict()  # type: Dict[str, Type[Controller2Transport]]
     _transport_registry["grpc"] = Controller2GrpcTransport
     _transport_registry["grpc_asyncio"] = Controller2GrpcAsyncIOTransport
+    _transport_registry["rest"] = Controller2RestTransport
 
     def get_transport_class(
         cls,

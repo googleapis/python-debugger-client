@@ -46,6 +46,26 @@
               ]
             }
           }
+        },
+        "rest": {
+          "libraryClient": "Controller2Client",
+          "rpcs": {
+            "ListActiveBreakpoints": {
+              "methods": [
+                "list_active_breakpoints"
+              ]
+            },
+            "RegisterDebuggee": {
+              "methods": [
+                "register_debuggee"
+              ]
+            },
+            "UpdateActiveBreakpoint": {
+              "methods": [
+                "update_active_breakpoint"
+              ]
+            }
+          }
         }
       }
     },
@@ -83,6 +103,36 @@
         },
         "grpc-async": {
           "libraryClient": "Debugger2AsyncClient",
+          "rpcs": {
+            "DeleteBreakpoint": {
+              "methods": [
+                "delete_breakpoint"
+              ]
+            },
+            "GetBreakpoint": {
+              "methods": [
+                "get_breakpoint"
+              ]
+            },
+            "ListBreakpoints": {
+              "methods": [
+                "list_breakpoints"
+              ]
+            },
+            "ListDebuggees": {
+              "methods": [
+                "list_debuggees"
+              ]
+            },
+            "SetBreakpoint": {
+              "methods": [
+                "set_breakpoint"
+              ]
+            }
+          }
+        },
+        "rest": {
+          "libraryClient": "Debugger2Client",
           "rpcs": {
             "DeleteBreakpoint": {
               "methods": [
