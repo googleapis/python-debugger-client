@@ -1,3 +1,5 @@
+:**NOTE**: **This github repository is archived. The repository contents and history have moved to** `google-cloud-python`_.
+
 Python Client for Cloud Debugger API
 ====================================
 
