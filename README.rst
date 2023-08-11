@@ -1,3 +1,5 @@
+:**NOTE**: **This github repository is archived. Cloud Debugger API has shut down as of May 2023. For details, see https://cloud.google.com/stackdriver/docs/deprecations/debugger-deprecation **
+
 Python Client for Cloud Debugger API
 ====================================
 
